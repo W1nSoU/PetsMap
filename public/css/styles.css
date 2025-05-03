@@ -1,0 +1,550 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+/* Кольори */
+:root {
+    --main-bg: #fff;
+    --container-bg: #fff;
+    --border-color: #e3e3df;
+    --brown: #5b4d3b;
+    --brown-light: #7c6b55;
+    --gray-dark: #3c3c39;
+    --gray: #b3b3ad;
+    --gray-light: #e6e6e1;
+    --button-bg: #5b4d3b;
+    --button-bg-hover: #3c3c39;
+    --button-secondary-bg: transparent;
+    --button-secondary-border: #5b4d3b;
+    --button-secondary-hover: #ebe7e1;
+    --stat-bg: #f6f5f2;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    background: var(--main-bg);
+    font-family: 'Montserrat', Arial, sans-serif;
+    color: var(--brown);
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    width: 100vw;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 64px 0 64px;
+    /* зменшено нижній відступ */
+    background: var(--main-bg);
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    z-index: 10;
+    margin-top: 15px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-dot {
+    width: 28px;
+    height: 28px;
+    background: var(--brown);
+    border-radius: 50%;
+}
+
+.logo h1 {
+    font-size: 2.1rem;
+    font-weight: 700;
+    color: var(--brown);
+    margin: 0;
+    letter-spacing: 1.5px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+nav a {
+    color: var(--gray-dark);
+    text-decoration: none;
+    padding: 10px 32px;
+    /* трохи більше відступів */
+    font-weight: 500;
+    border-radius: 8px;
+    font-size: 1.3rem;
+    /* було 1.08rem, тепер значно більше */
+    transition: background 0.2s;
+    line-height: 1.2;
+}
+
+nav a:hover {
+    background: var(--gray-light);
+}
+
+.user-badge {
+    font-size: 1.3rem;
+    /* такий самий розмір, як у nav a */
+    padding: 10px 32px;
+    /* підбір під новий розмір — можна змінити для бажаної висоти */
+    min-width: 120px;
+    /* мінімальна ширина, щоб текст гарно вміщувався */
+    height: 48px;
+    /* фіксована висота для стабільності */
+    border-radius: 24px;
+    /* більше заокруглення для великої кнопки */
+    font-weight: 700;
+    /* залишаємо жирний для акценту */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    cursor: pointer;
+    background: var(--brown);
+    color: #fff;
+    margin-left: 8px;
+    position: relative;
+    z-index: 20;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.center-wrapper {
+    flex: 1 0 auto;
+    max-width: 1320px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: var(--main-bg);
+}
+
+main {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: none;
+    width: 100%;
+}
+
+.main-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 56px;
+    padding: 0;
+    margin-top: 110px;
+    /* піднімає контент ближче до header */
+    margin-bottom: 0px;
+    /* відстань до .stats */
+}
+
+.hero-left {
+    flex: 1.15;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 28px 0 24px 0;
+    /* менше “повітря” зверху */
+    align-items: flex-start;
+    max-width: 500px;
+}
+
+.hero-left h2 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin: 0 0 12px 0;
+    color: var(--brown);
+    line-height: 1.23;
+    letter-spacing: 0.5px;
+}
+
+.subtitle {
+    color: var(--brown-light);
+    font-size: 1.13rem;
+    margin-bottom: 120px;
+    line-height: 1.6;
+}
+
+.form-title {
+    font-size: 1.13rem;
+    font-weight: 500;
+    margin-bottom: 16px;
+    color: var(--gray-dark);
+}
+
+.buttons {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 22px;
+    margin-top: 30px;
+}
+
+.buttons button {
+    border: none;
+    border-radius: 24px;
+    padding: 14px 36px;
+    font-size: 1.08rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(91, 77, 59, 0.07);
+    transition: background 0.2s, color 0.2s, border 0.2s, transform 0.18s;
+    outline: none;
+}
+
+.buttons .primary {
+    background: var(--button-bg);
+    color: #fff;
+}
+
+.buttons .primary:hover,
+.buttons .primary:focus {
+    background: var(--button-bg-hover);
+    transform: translateY(-2px) scale(1.04);
+}
+
+.buttons .secondary {
+    background: var(--button-secondary-bg);
+    border: 2px solid var(--button-secondary-border);
+    color: var(--button-bg);
+}
+
+.buttons .secondary:hover,
+.buttons .secondary:focus {
+    background: var(--button-secondary-hover);
+    transform: translateY(-2px) scale(1.04);
+}
+
+.hero-map {
+    flex: 1.85;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 540px;
+}
+
+#map {
+    width: 520px;
+    height: 384px;
+    min-width: 240px;
+    background: #dfdfdf;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 2px 16px rgba(60, 60, 57, 0.09);
+    margin: 0 auto;
+    border: 1.5px solid var(--gray-light);
+}
+
+/* Статистика */
+.stats {
+    margin: 0 auto 0 auto;
+    display: flex;
+    gap: 80px;
+    background: none;
+    justify-content: center;
+    margin-top: 50px;
+    max-width: 900px;
+    width: 100%;
+}
+
+.stats div {
+    background: var(--stat-bg);
+    border-radius: 20px;
+    box-shadow: 0 2px 12px rgba(91, 77, 59, 0.07);
+    padding: 24px 36px 18px 36px;
+    min-width: 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-icon {
+    font-size: 1.5rem;
+    margin-bottom: 2px;
+    color: var(--gray-dark);
+}
+
+.stats h3 {
+    margin: 0;
+    font-size: 1.7rem;
+    color: var(--brown);
+    font-weight: 700;
+}
+
+.stats p {
+    margin: 0;
+    margin-top: 2px;
+    color: var(--gray-dark);
+    font-size: 1.05rem;
+}
+
+/* Футер одразу під .stats, без скролу */
+footer {
+    flex-shrink: 0;
+    background: var(--main-bg);
+    color: var(--gray-dark);
+    text-align: center;
+    padding: 12px 0 8px 0;
+    font-size: 1rem;
+    margin-top: 15px;
+    border-top: 1.5px solid var(--gray-light);
+    width: 100%;
+}
+
+/* Адаптивність */
+@media (max-width: 1280px) {
+    .center-wrapper {
+        max-width: 100vw;
+    }
+
+    .main-content {
+        gap: 24px;
+        margin-bottom: 36px;
+    }
+
+    header {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .stats {
+        gap: 32px;
+    }
+}
+
+@media (max-width: 980px) {
+    header {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px 4vw 0 4vw;
+    }
+
+    .main-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 32px;
+    }
+
+    .hero-left {
+        align-items: center;
+        text-align: center;
+        max-width: none;
+    }
+
+    .hero-map {
+        width: 100%;
+        min-width: 0;
+    }
+
+    #map {
+        width: 95vw;
+        min-width: 140px;
+        height: 220px;
+    }
+
+    .stats {
+        flex-direction: column;
+        gap: 24px;
+        max-width: 95vw;
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        gap: 8px;
+        padding: 10px 2vw 0 2vw;
+    }
+
+    .main-content {
+        padding: 10px 0 0 0;
+        gap: 8px;
+        margin-bottom: 12px;
+    }
+
+    .hero-left {
+        padding: 12px 0 8px 0;
+    }
+
+    #map {
+        height: 120px;
+    }
+
+    .stats {
+        margin-top: 12px;
+        gap: 12px;
+    }
+
+    .stats div {
+        padding: 12px 8px 8px 8px;
+    }
+
+    footer {
+        margin-top: 8px;
+        padding: 12px 0 8px 0;
+    }
+}
+
+.user-menu {
+    position: relative;
+    display: inline-block;
+}
+
+/* Фіксований badge, плавне перемикання, без “зависань” і дьоргання */
+.user-badge {
+    background: var(--brown);
+    color: #fff;
+    border-radius: 16px;
+    padding: 8px 22px;
+    margin-left: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 20;
+    outline: none;
+    min-width: 110px;
+    height: 42px;
+    box-sizing: border-box;
+    transition: background 0.2s, min-width 0.3s, width 0.3s;
+}
+
+.user-badge .badge-text,
+.user-badge .badge-bars {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.2s;
+    pointer-events: none;
+}
+
+.user-badge .badge-bars {
+    opacity: 0;
+    /* pointer-events: none; (залишаємо для чистоти) */
+}
+
+.user-badge:hover .badge-text,
+.user-badge:focus .badge-text {
+    opacity: 0;
+}
+
+.user-badge:hover .badge-bars,
+.user-badge:focus .badge-bars {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Гамбургер-бар — три смужки */
+.user-badge .badge-bars {
+    flex-direction: column;
+    gap: 5px;
+}
+
+.user-badge .badge-bars span {
+    display: block;
+    height: 3px;
+    width: 28px;
+    background: #fff;
+    border-radius: 2px;
+    transition: all 0.3s;
+}
+
+/* Випадаюче меню */
+.user-menu .dropdown {
+    background: #f6f5f2;
+    min-width: 160px;
+    border-radius: 12px;
+    box-shadow: 0 2px 16px rgba(60, 60, 57, 0.09);
+    position: absolute;
+    top: 45px;
+    right: 0;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transition: all .5s cubic-bezier(.44, 1.45, .54, .99);
+    z-index: 10;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    border: 1px solid var(--gray-light);
+    pointer-events: none;
+}
+
+.user-menu:hover .dropdown,
+.user-menu:focus-within .dropdown {
+    opacity: 1;
+    height: 132px;
+    /* 3 items * 44px */
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.dropdown li {
+    width: 100%;
+}
+
+.dropdown a {
+    display: block;
+    width: 100%;
+    padding: 12px 22px;
+    color: var(--brown);
+    text-align: left;
+    text-decoration: none;
+    font-size: 1.08rem;
+    background: none;
+    transition: background 0.18s;
+    border-radius: 0;
+}
+
+.dropdown a:hover {
+    background: var(--gray-light);
+    color: var(--gray-dark);
+}
+
+@media (max-width: 600px) {
+    .user-badge {
+        padding: 8px 6px;
+        font-size: 0.98rem;
+        min-width: 76px;
+        height: 38px;
+    }
+
+    .user-badge .badge-bars span {
+        width: 18px;
+    }
+
+    .dropdown a {
+        font-size: 0.97rem;
+        padding: 10px 12px;
+    }
+
+    .user-menu .dropdown {
+        min-width: 110px;
+        right: 0;
+    }
+}

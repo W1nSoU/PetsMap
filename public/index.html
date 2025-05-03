@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetShelterMap</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <span class="logo-dot"></span>
+            <h1>PetShelterMap</h1>
+        </div>
+        <nav>
+            <a href="#">GitHub</a>
+            <a href="#">Контакти</a>
+            <a href="#">Про нас</a>
+            <div class="user-menu">
+                <span class="user-badge" tabindex="0">
+                    <span class="badge-text">W1nSoU</span>
+                    <span class="badge-bars"></span>
+                </span>
+                <ul class="dropdown">
+                    <li><a href="#">Профіль</a></li>
+                    <li><a href="#">Налаштування</a></li>
+                    <li><a href="#">Вийти</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="center-wrapper">
+        <main>
+            <div class="main-content">
+                <section class="hero-left">
+                    <h2>Пошук тварин у притулках України</h2>
+                    <p class="subtitle">
+                        Онлайн-мапа для координації пошуку та підтримки тварин у притулках по всій Україні.
+                    </p>
+                    <div class="buttons">
+                        <button class="primary">Знайти тварину</button>
+                        <button class="secondary">Додати притулок</button>
+                    </div>
+                </section>
+                <section class="hero-map">
+                    <div id="map"></div>
+                </section>
+            </div>
+            <section class="stats">
+                <div>
+                    <span class="stat-icon">🐾</span>
+                    <h3>200</h3>
+                    <p>Притулків</p>
+                </div>
+                <div>
+                    <span class="stat-icon">💰</span>
+                    <h3>100,000 ₴</h3>
+                    <p>Зібрано</p>
+                </div>
+                <div>
+                    <span class="stat-icon">👥</span>
+                    <h3>5,000</h3>
+                    <p>Користувачів</p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 PetShelterMap. Всі права захищені.</p>
+        </footer>
+    </div>
+    <!-- Google Maps API (підставте свій ключ) -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap" async
+        defer></script>
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>
