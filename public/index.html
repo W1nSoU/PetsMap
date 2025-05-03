@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PetShelterMap</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="user-menu.css">
+    <link rel="stylesheet" href="signup-modal.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
@@ -21,21 +23,19 @@
             <a href="#">GitHub</a>
             <a href="#">Контакти</a>
             <a href="#">Про нас</a>
-        <div class="user-menu">
-            <span class="user-badge" tabindex="0" id="userBadge">
-                <span class="badge-text" id="badgeText">W1nSoU</span>
-                <span class="badge-bars">
-                    <span></span><span></span><span></span>
+            <div class="user-menu">
+                <span class="user-badge" tabindex="0" id="userBadge">
+                    <span class="badge-text" id="badgeText">W1nSoU</span>
+                    <span class="badge-bars">
+                        <span></span><span></span><span></span>
+                    </span>
                 </span>
-            </span>
-            <ul class="dropdown" id="dropdownMenu">
-                <li><button type="button">Профіль</button></li>
-                <li><button type="button">Налаштування</button></li>
-                <li><button type="button" id="logout-btn">Вийти</button></li>
-            </ul>
-        </div>
-        <link rel="stylesheet" href="user-menu.css">
-        <script src="user-menu.js"></script>
+                <ul class="dropdown" id="dropdownMenu">
+                    <li><button type="button">Профіль</button></li>
+                    <li><button type="button">Налаштування</button></li>
+                    <li><button type="button" id="logout-btn">Вийти</button></li>
+                </ul>
+            </div>
         </nav>
     </header>
 
@@ -47,7 +47,6 @@
                     <p class="subtitle">
                         Онлайн-мапа для координації пошуку та підтримки тварин у притулках по всій Україні.
                     </p>
-                    <!-- Додай цей блок -->
                     <a href="volunteer-register.html" class="volunteer-register-link">
                         Ви Волонтер? Зареєструйтесь згідно свого статусу
                     </a>
@@ -84,10 +83,27 @@
             <p>&copy; 2025 PetShelterMap. Всі права захищені.</p>
         </footer>
     </div>
+
+    <!-- Банер реєстрації -->
+    <div id="signup-modal" class="modal-backdrop" style="display:none;">
+        <div class="signup-banner">
+            <h2>Sign up</h2>
+            <form>
+                <input type="email" placeholder="Email" required />
+                <input type="text" placeholder="Number" required />
+                <input type="password" placeholder="Password" required />
+                <button type="submit" class="signup-submit-btn">Sign up</button>
+            </form>
+            <button class="login-switch">Log in</button>
+        </div>
+    </div>
+
     <!-- Google Maps API (підставте свій ключ) -->
     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap" async
         defer></script>
     <script src="js/scripts.js"></script>
+    <script src="user-menu.js"></script>
+    <script src="signup-modal.js"></script>
 </body>
 
 </html>

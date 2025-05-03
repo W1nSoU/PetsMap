@@ -1,0 +1,72 @@
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.signup-banner {
+    background: #5b4b3a;
+    border-radius: 38px 38px 120px 120px/38px 38px 120px 120px;
+    padding: 48px 32px 32px 32px;
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.15);
+    color: #fff;
+    min-width: 340px;
+    max-width: 95vw;
+    text-align: center;
+    position: relative;
+}
+
+.signup-banner h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.signup-banner form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.signup-banner input {
+    border-radius: 18px;
+    border: none;
+    padding: 16px 18px;
+    font-size: 1.15rem;
+    outline: none;
+    background: #fff;
+    color: #5b4b3a;
+}
+
+.signup-banner button.signup-submit-btn {
+    background: #fff;
+    color: #5b4b3a;
+    border: none;
+    border-radius: 16px;
+    padding: 12px 0;
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-top: 6px;
+    box-shadow: 2px 2px 6px #ccc;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.signup-banner .login-switch {
+    background: #fff;
+    color: #5b4b3a;
+    border: none;
+    border-radius: 0 0 90px 90px/0 0 120px 120px;
+    width: 100%;
+    font-size: 2.2rem;
+    font-weight: 500;
+    margin-top: 8px;
+    padding: 18px 0 12px 0;
+    cursor: pointer;
+}
