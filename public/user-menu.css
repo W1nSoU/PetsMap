@@ -1,0 +1,130 @@
+.user-menu {
+    position: relative;
+    display: inline-block;
+}
+
+.user-badge {
+    background: var(--brown, #6e4b2f);
+    color: #fff;
+    border-radius: 16px;
+    padding: 8px 22px;
+    margin-left: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 20;
+    outline: none;
+    min-width: 110px;
+    height: 42px;
+    box-sizing: border-box;
+    transition: background 0.2s, min-width 0.3s, width 0.3s;
+}
+
+.user-badge .badge-text,
+.user-badge .badge-bars {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.2s;
+    pointer-events: none;
+}
+
+.user-badge .badge-bars {
+    opacity: 0;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.user-badge .badge-bars span {
+    display: block;
+    height: 3px;
+    width: 28px;
+    background: #fff;
+    border-radius: 2px;
+    transition: all 0.3s;
+}
+
+.user-badge:hover .badge-text,
+.user-badge:focus .badge-text {
+    opacity: 0;
+}
+
+.user-badge:hover .badge-bars,
+.user-badge:focus .badge-bars {
+    opacity: 1;
+}
+
+.user-badge.signed-out {
+    background: var(--gray-light, #e0e0e0);
+    color: var(--gray-dark, #333);
+    cursor: default;
+}
+
+.user-badge.signed-out .badge-bars {
+    opacity: 0 !important;
+    /* Ensure hamburger never appears when signed out */
+}
+
+.user-menu .dropdown {
+    background: #f6f5f2;
+    min-width: 160px;
+    border-radius: 12px;
+    box-shadow: 0 2px 16px rgba(60, 60, 57, 0.09);
+    position: absolute;
+    top: 45px;
+    right: 0;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transition: all .5s cubic-bezier(.44, 1.45, .54, .99);
+    z-index: 10;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    border: 1px solid var(--gray-light, #e0e0e0);
+    pointer-events: none;
+}
+
+.user-menu .dropdown.open {
+    opacity: 1;
+    height: 132px;
+    pointer-events: auto;
+}
+
+.dropdown li {
+    width: 100%;
+}
+
+.dropdown button {
+    display: block;
+    width: 100%;
+    padding: 12px 22px;
+    color: var(--brown, #6e4b2f);
+    text-align: left;
+    font-size: 1.08rem;
+    background: none;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s;
+    font-family: inherit;
+    font-weight: inherit;
+    outline: none;
+}
+
+.dropdown button:hover,
+.dropdown button:focus {
+    background: var(--gray-light, #e0e0e0);
+    color: var(--gray-dark, #333);
+}

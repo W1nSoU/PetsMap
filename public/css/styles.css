@@ -177,8 +177,8 @@ main {
 .subtitle {
     color: var(--brown-light);
     font-size: 1.13rem;
-    margin-bottom: 120px;
-    line-height: 1.6;
+    margin-bottom: 4px !important;
+    line-height: 1.1;
 }
 
 .form-title {
@@ -257,7 +257,7 @@ main {
     gap: 80px;
     background: none;
     justify-content: center;
-    margin-top: 50px;
+    margin-top: 70px;
     max-width: 900px;
     width: 100%;
 }
@@ -547,4 +547,66 @@ footer {
         min-width: 110px;
         right: 0;
     }
+}
+.volunteer-register-link {
+    display: block;
+    margin: 30px 0 20px 0;
+    text-align: left;
+        align-self: flex-start;
+        /* Якщо треба — для цього елемента ліве вирівнювання */
+        display: block;
+    color: #444;
+    /* Можна змінити на ваш фірмовий колір */
+    font-size: 19px;
+    text-decoration: none;
+    /* Забирає підкреслення */
+    font-weight: 600;
+    transition: color 0.2s;
+    cursor: pointer;
+}
+
+.volunteer-register-link:hover {
+    color: #222;
+    /* Або ваш hover-колір */
+    text-decoration: none;
+    /* Підкреслення не зʼявляється при наведенні */
+}
+
+.dropdown button {
+    display: block;
+    width: 100%;
+    padding: 12px 22px;
+    color: var(--brown);
+    text-align: left;
+    font-size: 1.08rem;
+    background: none;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s;
+    font-family: inherit;
+    /* Щоб не змінювався шрифт */
+    font-weight: inherit;
+    /* Наслідувати жирність */
+    outline: none;
+}
+
+.dropdown button:hover,
+.dropdown button:focus {
+    background: var(--gray-light);
+    color: var(--gray-dark);
+}
+.user-badge.signed-out {
+    background: var(--gray-light);
+    color: var(--gray-dark);
+    cursor: pointer;
+}
+
+.user-menu .dropdown {
+    display: none;
+}
+
+.user-menu .dropdown.open {
+    display: block;
+    /* Додайте ваші анімації/стилі */
 }

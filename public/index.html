@@ -21,17 +21,21 @@
             <a href="#">GitHub</a>
             <a href="#">Контакти</a>
             <a href="#">Про нас</a>
-            <div class="user-menu">
-                <span class="user-badge" tabindex="0">
-                    <span class="badge-text">W1nSoU</span>
-                    <span class="badge-bars"></span>
+        <div class="user-menu">
+            <span class="user-badge" tabindex="0" id="userBadge">
+                <span class="badge-text" id="badgeText">W1nSoU</span>
+                <span class="badge-bars">
+                    <span></span><span></span><span></span>
                 </span>
-                <ul class="dropdown">
-                    <li><a href="#">Профіль</a></li>
-                    <li><a href="#">Налаштування</a></li>
-                    <li><a href="#">Вийти</a></li>
-                </ul>
-            </div>
+            </span>
+            <ul class="dropdown" id="dropdownMenu">
+                <li><button type="button">Профіль</button></li>
+                <li><button type="button">Налаштування</button></li>
+                <li><button type="button" id="logout-btn">Вийти</button></li>
+            </ul>
+        </div>
+        <link rel="stylesheet" href="user-menu.css">
+        <script src="user-menu.js"></script>
         </nav>
     </header>
 
@@ -43,6 +47,11 @@
                     <p class="subtitle">
                         Онлайн-мапа для координації пошуку та підтримки тварин у притулках по всій Україні.
                     </p>
+                    <!-- Додай цей блок -->
+                    <a href="volunteer-register.html" class="volunteer-register-link">
+                        Ви Волонтер? Зареєструйтесь згідно свого статусу
+                    </a>
+
                     <div class="buttons">
                         <button class="primary">Знайти тварину</button>
                         <button class="secondary">Додати притулок</button>

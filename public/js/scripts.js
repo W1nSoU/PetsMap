@@ -39,3 +39,41 @@ document.getElementById("findShelter").addEventListener("click", () => {
 document.getElementById("donate").addEventListener("click", () => {
   alert("Redirecting to donation page...");
 });
+
+// Елементи
+const userBadge = document.getElementById('userBadge');
+const badgeText = document.getElementById('badgeText');
+const dropdownMenu = document.getElementById('dropdownMenu');
+const logoutBtn = document.getElementById('logout-btn');
+
+let isLoggedIn = true;
+
+// Показ/приховування меню
+userBadge.addEventListener('click', () => {
+  if (!isLoggedIn) return; // Якщо не залогінений — меню не відкривається
+  dropdownMenu.classList.toggle('open');
+});
+
+// Закриття меню при кліку поза ним (опціонально)
+document.addEventListener('click', (e) => {
+  if (!userBadge.contains(e.target) && !dropdownMenu.contains(e.target)) {
+    dropdownMenu.classList.remove('open');
+  }
+});
+
+// Вийти з акаунта
+logoutBtn.addEventListener('click', () => {
+  isLoggedIn = false;
+  badgeText.textContent = 'Sign In';
+  dropdownMenu.classList.remove('open');
+  userBadge.classList.add('signed-out');
+});
+
+// (Опціонально) простий вхід назад
+userBadge.addEventListener('click', () => {
+  if (!isLoggedIn) {
+    isLoggedIn = true;
+    badgeText.textContent = 'W1nSoU';
+    userBadge.classList.remove('signed-out');
+  }
+});
