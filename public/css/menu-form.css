@@ -1,0 +1,204 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #888888;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: system-ui, Arial, sans-serif;
+}
+
+/* Main container with rounded top and bottom corners */
+.auth-main {
+    width: 400px;
+    background: #736659;
+    border-radius: 36px;
+    box-shadow: 0 2px 24px #0004;
+    position: relative;
+    overflow: visible;
+    padding-bottom: 80px;
+    min-height: 540px;
+}
+
+/* Signup form styling */
+.auth-signup {
+    padding: 36px 24px 36px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Main title */
+.auth-title {
+    display: block;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 32px;
+    margin-top: 0;
+    letter-spacing: 0.01em;
+}
+
+/* Inputs styling */
+.auth-signup input[type="email"],
+.auth-signup input[type="number"],
+.auth-signup input[type="password"] {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 18px 20px 18px 20px;
+    border: none;
+    border-radius: 20px;
+    background: #faf9f7;
+    color: #333;
+    font-size: 1.25rem;
+    box-sizing: border-box;
+    outline: none;
+    font-family: inherit;
+    font-weight: 500;
+    transition: box-shadow 0.2s;
+}
+
+.auth-signup input:focus {
+    box-shadow: 0 0 0 2px #cfc2b4;
+}
+
+/* Sign up button */
+.auth-signup button[type="submit"] {
+    width: 80%;
+    padding: 14px 0;
+    margin: 20px auto 0 auto;
+    border: none;
+    border-radius: 15px;
+    background: #f7f6f6;
+    color: #736659;
+    font-size: 1.4rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.15s;
+    box-shadow: 0 1px 4px #0001;
+}
+
+.auth-signup button[type="submit"]:hover {
+    background: #ebe8e6;
+}
+
+.auth-login {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    bottom: -60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: auto;
+}
+
+/* Large "Log in" toggle button */
+.auth-login-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    height: 90px;
+    margin: 0 auto;
+    background: #f7f6f6;
+    color: #736659;
+    border-radius: 0 0 48px 48px / 0 0 60px 60px;
+    font-size: 2.2rem;
+    font-weight: bold;
+    box-shadow: 0 3px 20px #0002;
+    cursor: pointer;
+    border: 2px solid #73665910;
+    user-select: none;
+    z-index: 1;
+    transition: background 0.18s, color 0.18s;
+}
+
+.auth-login form {
+    display: none;
+}
+
+/* Checkbox logic for switching forms */
+#auth-chk {
+    display: none;
+}
+
+#auth-chk:checked~.auth-login {
+    bottom: 100%;
+    animation: slideUpLogin 0.6s cubic-bezier(.82, 0, .33, 1) forwards;
+}
+
+#auth-chk:checked~.auth-signup {
+    display: none;
+}
+
+#auth-chk:checked~.auth-login form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    background: #736659;
+    border-radius: 36px;
+    padding: 30px 24px 24px 24px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#auth-chk:checked~.auth-login .auth-login-toggle {
+    display: none;
+}
+
+@keyframes slideUpLogin {
+    from {
+        bottom: -60px;
+    }
+
+    to {
+        bottom: 0;
+    }
+}
+
+/* Login form inputs/buttons (re-use styles) */
+.auth-login form input[type="email"],
+.auth-login form input[type="password"] {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 18px 20px 18px 20px;
+    border: none;
+    border-radius: 20px;
+    background: #faf9f7;
+    color: #333;
+    font-size: 1.25rem;
+    box-sizing: border-box;
+    outline: none;
+    font-family: inherit;
+    font-weight: 500;
+}
+
+.auth-login form button[type="submit"] {
+    width: 80%;
+    padding: 14px 0;
+    margin: 20px auto 0 auto;
+    border: none;
+    border-radius: 15px;
+    background: #f7f6f6;
+    color: #736659;
+    font-size: 1.4rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Responsive (optional) */
+@media (max-width: 480px) {
+    .auth-main {
+        width: 95vw;
+        min-width: 0;
+        padding-bottom: 60px;
+    }
+
+    .auth-title {
+        font-size: 2rem;
+    }
+}
