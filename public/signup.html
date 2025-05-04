@@ -1,11 +1,39 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Sign Up / Login</title>
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/signup.css">
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
+    <header>
+        <div class="logo">
+            <span class="logo-dot"></span>
+            <h1>PetShelterMap</h1>
+        </div>
+        <nav>
+            <a href="#">GitHub</a>
+            <a href="#">Контакти</a>
+            <a href="#">Про нас</a>
+            <div class="user-menu">
+                <span class="user-badge" tabindex="0" id="userBadge">
+                    <span class="badge-text" id="badgeText">Sign up</span>
+                    <span class="badge-bars">
+                        <span></span><span></span><span></span>
+                    </span>
+                <ul class="dropdown" id="dropdownMenu">
+                    <li><button type="button">Профіль</button></li>
+                    <li><button type="button">Налаштування</button></li>
+                    <li><button type="button" id="logout-btn">Вийти</button></li>
+                    <li><a href="signup.html" target="_blank" class="signup-link" style="display:none;">Sign up</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
     <div class="center-wrapper">
         <div class="main">
             <input type="checkbox" id="chk" aria-hidden="true">
@@ -29,5 +57,17 @@
             </div>
         </div>
     </div>
+    <script src="js/scripts.js"></script>
+    <script src="js/user-menu.js"></script>
+    <script src="js/signup-modal.js"></script>
+    <script>
+        // Динамічна зміна тексту бейджа при перемиканні форми
+        const chk = document.getElementById('chk');
+        const badgeText = document.getElementById('badgeText');
+        chk.addEventListener('change', function () {
+            badgeText.textContent = chk.checked ? 'Login' : 'Sign up';
+        });
+    </script>
 </body>
+
 </html>

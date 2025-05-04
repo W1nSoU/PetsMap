@@ -8,12 +8,11 @@ body {
 }
 
 .main {
-    width: 350px;
-    height: 500px;
+    width: 420px;
+    height: 600px;
     background: #5b4d3b url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/cover;
     overflow: hidden;
     border-radius: 10px;
-    box-shadow: 5px 20px 50px #000;
 }
 
 #chk {
@@ -145,4 +144,79 @@ footer {
     /* піднімає поле вище */
     margin-bottom: 10px;
     /* залишає нижній відступ */
+}
+
+.badge-text {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;
+    text-transform: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.user-badge .badge-bars span {
+    display: block;
+    height: 3px;
+    width: 28px;
+    background: #f6f5f2;
+    /* змінив колір на потрібний */
+    border-radius: 2px;
+    transition: all 0.3s;
+}
+
+/* Випадаюче меню неактивне */
+.user-menu .dropdown {
+    pointer-events: none !important;
+    opacity: 0.5;
+    background: #f6f5f2;
+    min-width: 160px;
+    border-radius: 12px;
+    box-shadow: 0 2px 16px rgba(60, 60, 57, 0.09);
+    position: absolute;
+    top: 45px;
+    right: 0;
+    height: 0;
+    overflow: hidden;
+    transition: none;
+    z-index: 10;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    border: 1px solid var(--gray-light, #e0e0e0);
+}
+.user-menu:hover .dropdown,
+.user-menu:focus .dropdown,
+.user-badge:hover+.dropdown,
+.user-badge:focus+.dropdown {
+    display: none !important;
+    pointer-events: none !important;
+    opacity: 0.5 !important;
+}
+.user-badge .badge-bars {
+    display: none !important;
+}
+.user-badge .badge-bars span,
+.user-badge:hover .badge-bars,
+.user-badge:focus .badge-bars,
+.user-badge:hover .badge-bars span,
+.user-badge:focus .badge-bars span {
+    background: none !important;
+    box-shadow: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    transition: none !important;
+}
+
+/* Базовий вигляд бургер-іконки */
+.user-badge .badge-bars span {
+    display: block;
+    height: 3px;
+    width: 28px;
+    background: #f6f5f2 !important;
+    border-radius: 2px;
+    margin: 4px 0;
 }
