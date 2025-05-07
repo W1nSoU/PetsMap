@@ -1,19 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="uk">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up / Login</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/user-menu.css">
     <link rel="stylesheet" href="css/signup.css">
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="signup-page">
     <header>
         <div class="logo">
             <span class="logo-dot"></span>
-            <h1>PetShelterMap</h1>
+            <a href="index.html" class="logo-link">
+                <h1>PetShelterMap</h1>
+            </a>
         </div>
         <nav>
             <a href="#">GitHub</a>
@@ -22,14 +27,12 @@
             <div class="user-menu">
                 <span class="user-badge" tabindex="0" id="userBadge">
                     <span class="badge-text" id="badgeText">Sign up</span>
-                    <span class="badge-bars">
-                        <span></span><span></span><span></span>
-                    </span>
+                </span>
                 <ul class="dropdown" id="dropdownMenu">
                     <li><button type="button">Профіль</button></li>
                     <li><button type="button">Налаштування</button></li>
                     <li><button type="button" id="logout-btn">Вийти</button></li>
-                    <li><a href="signup.html" target="_blank" class="signup-link" style="display:none;">Sign up</a></li>
+                    <li><a href="signup.html" class="signup-link" style="display:none;">Sign up</a></li>
                 </ul>
             </div>
         </nav>
@@ -38,36 +41,85 @@
         <div class="main">
             <input type="checkbox" id="chk" aria-hidden="true">
             <div class="signup">
-                <form>
+                <form id="signupForm">
                     <label class="signup-label" for="chk" aria-hidden="true">Sign up</label>
-                    <input type="text" name="txt" placeholder="User name" required="">
-                    <input type="email" name="email" placeholder="Email" required="">
-                    <input type="tel" name="phone" placeholder="Phone number" required="" class="signup-phone">
-                    <input type="password" name="pswd" placeholder="Password" required="">
-                    <button class="signup-btn">Sign up</button>
+                    <input type="text" name="txt" placeholder="User name" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="tel" name="phone" placeholder="Phone number" required class="signup-phone">
+                    <input type="password" name="pswd" placeholder="Password" required>
+                    <button class="signup-btn" type="submit">Sign up</button>
                 </form>
             </div>
             <div class="login">
-                <form>
+                <form id="loginForm">
                     <label class="login-label" for="chk" aria-hidden="true">Login</label>
-                    <input type="email" name="email" placeholder="Email" required="" class="login-email">
-                    <input type="password" name="pswd" placeholder="Password" required="">
-                    <button class="login-btn">Login</button>
+                    <input type="email" name="email" placeholder="Email" required class="login-email">
+                    <input type="password" name="pswd" placeholder="Password" required>
+                    <button class="login-btn" type="submit">Login</button>
                 </form>
             </div>
         </div>
     </div>
+    <footer>
+        <p>&copy; 2025 PetShelterMap. Всі права захищені.</p>
+    </footer>
     <script src="js/scripts.js"></script>
     <script src="js/user-menu.js"></script>
     <script src="js/signup-modal.js"></script>
+    <script src="js/signup.js"></script>
     <script>
         // Динамічна зміна тексту бейджа при перемиканні форми
         const chk = document.getElementById('chk');
         const badgeText = document.getElementById('badgeText');
-        chk.addEventListener('change', function () {
-            badgeText.textContent = chk.checked ? 'Login' : 'Sign up';
+        if (chk && badgeText) {
+            chk.addEventListener('change', function () {
+                badgeText.textContent = chk.checked ? 'Login' : 'Sign up';
+            });
+        }
+
+        // Відправка signup форми
+        document.getElementById('signupForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const data = {
+                username: this.txt.value,
+                email: this.email.value,
+                phone: this.phone.value,
+                password: this.pswd.value
+            };
+            const res = await fetch('/api/signup', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            const result = await res.json();
+            if (result.success) {
+                alert('Реєстрація успішна!');
+                // Можна автоматично залогінити або перекинути на login
+            } else {
+                alert(result.error || 'Помилка реєстрації');
+            }
+        });
+
+        // Відправка login форми
+        document.getElementById('loginForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const data = {
+                email: this.email.value,
+                password: this.pswd.value
+            };
+            const res = await fetch('/api/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            const result = await res.json();
+            if (result.success) {
+                alert('Вхід успішний!');
+                // Тут можна зберегти сесію, показати ім'я тощо
+            } else {
+                alert(result.error || 'Помилка входу');
+            }
         });
     </script>
 </body>
-
 </html>

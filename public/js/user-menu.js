@@ -5,7 +5,7 @@
     const logoutBtn = document.getElementById('logout-btn');
     const userMenu = document.querySelector('.user-menu');
     const signupHeaderLink = document.getElementById('signupHeaderLink');
-    let isLoggedIn = true;
+    let isLoggedIn = false;
 
     // Відкривати меню по наведенню (hover)
     userMenu.addEventListener('mouseenter', () => {
@@ -23,7 +23,7 @@
     userBadge.addEventListener('click', (e) => {
         if (!isLoggedIn) {
             // Відкрити сторінку реєстрації у новому вікні
-            window.open('signup.html', '_blank');
+            window.location.href = 'signup.html';
             // Текст "Sign up" не зникає
             e.stopPropagation();
             return;
@@ -49,3 +49,4 @@
     if (signupHeaderLink) signupHeaderLink.style.display = 'inline-block';
 });
 })();
+

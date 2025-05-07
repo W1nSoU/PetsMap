@@ -14,27 +14,29 @@
 
 <body>
     <header>
-        <div class="logo">
-            <span class="logo-dot"></span>
+    <div class="logo">
+        <span class="logo-dot"></span>
+        <a href="index.html" class="logo-link">
             <h1>PetShelterMap</h1>
-        </div>
+        </a>
+    </div>
         <nav>
             <a href="#">GitHub</a>
             <a href="#">Контакти</a>
             <a href="#">Про нас</a>
             <div class="user-menu">
-                <span class="user-badge" tabindex="0" id="userBadge">
-                    <span class="badge-text" id="badgeText">W1nSoU</span>
-                    <span class="badge-bars">
-                        <span></span><span></span><span></span>
-                    </span>
-                </span>
-                <ul class="dropdown" id="dropdownMenu">
-                    <li><button type="button">Профіль</button></li>
-                    <li><button type="button">Налаштування</button></li>
-                    <li><button type="button" id="logout-btn">Вийти</button></li>
-                    li><a href="signup.html" target="_blank" class="signup-link" style="display:none;">Sign up</a></li>
-                </ul>
+                                                           <span class="user-badge signed-out" tabindex="0" id="userBadge">
+                                <span class="badge-text" id="badgeText">Sign up</span>
+                                <span class="badge-bars">
+                                    <span></span><span></span><span></span>
+                                </span>
+                            </span>
+                            <ul class="dropdown" id="dropdownMenu">
+                                <li><button type="button">Профіль</button></li>
+                                <li><button type="button">Налаштування</button></li>
+                                <li><button type="button" id="logout-btn">Вийти</button></li>
+                                <li><a href="signup.html" target="_blank" class="signup-link" style="display:none;">Sign up</a></li>
+                            </ul>
             </div>
         </nav>
     </header>

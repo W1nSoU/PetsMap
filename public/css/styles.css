@@ -71,6 +71,11 @@ header {
     margin: 0;
     letter-spacing: 1.5px;
 }
+.logo-link {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+}
 
 nav {
     display: flex;
@@ -609,4 +614,9 @@ footer {
 .user-menu .dropdown.open {
     display: block;
     /* Додайте ваші анімації/стилі */
+}
+
+.user-badge.signed-out+.dropdown {
+    display: none !important;
+    pointer-events: none !important;
 }
