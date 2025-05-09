@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  fetch('/public/header.html')
+  fetch('header.html')
       .then(resp => resp.text())
       .then(html => {
           document.getElementById('header').innerHTML = html;
@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
           if (window.initUserMenu) window.initUserMenu();
       });
 
-  fetch('/public/footer.html')
+  fetch('footer.html')
       .then(resp => resp.text())
       .then(html => { document.getElementById('footer').innerHTML = html; });
 });
