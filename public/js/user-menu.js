@@ -1,4 +1,4 @@
-(() => {
+window.initUserMenu = function() {
     const userBadge = document.getElementById('userBadge');
     const badgeText = document.getElementById('badgeText');
     const dropdownMenu = document.getElementById('dropdownMenu');
@@ -6,6 +6,8 @@
     const userMenu = document.querySelector('.user-menu');
     const signupHeaderLink = document.getElementById('signupHeaderLink');
     let isLoggedIn = false;
+
+    if (!userBadge || !userMenu || !dropdownMenu) return;
 
     // Відкривати меню по наведенню (hover)
     userMenu.addEventListener('mouseenter', () => {
@@ -22,9 +24,7 @@
     // Клік по бейджу
     userBadge.addEventListener('click', (e) => {
         if (!isLoggedIn) {
-            // Відкрити сторінку реєстрації у новому вікні
             window.location.href = 'signup.html';
-            // Текст "Sign up" не зникає
             e.stopPropagation();
             return;
         }
@@ -40,13 +40,14 @@
     });
 
     // Вийти: змінити бейдж, заблокувати меню
-    logoutBtn.addEventListener('click', () => {
-        isLoggedIn = false;
-        badgeText.textContent = 'Sign up';
-        userBadge.classList.add('signed-out');
-        dropdownMenu.classList.remove('open');
-        userBadge.blur();
-    if (signupHeaderLink) signupHeaderLink.style.display = 'inline-block';
-});
-})();
-
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+            isLoggedIn = false;
+            badgeText.textContent = 'Sign up';
+            userBadge.classList.add('signed-out');
+            dropdownMenu.classList.remove('open');
+            userBadge.blur();
+            if (signupHeaderLink) signupHeaderLink.style.display = 'inline-block';
+        });
+    }
+};

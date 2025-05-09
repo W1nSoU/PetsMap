@@ -1,20 +1,31 @@
 body {
-    background: #f5f3ef;
+    background: #fff;
     font-family: 'Montserrat', Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
+main {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: none;
+    width: 100%;
+    padding-top: 45px;
+    padding-bottom: 61px;
+}
 
 .profile-container {
-    border: 4px solid #888;
-    width: 370px;
-    background: #faf9f6;
-    margin: 40px auto 0 auto;
+    border: none;
+    background: none;
+    margin: 91px 0 0 0;
+    margin-left: 120px;
+    box-shadow: none;
+    padding: 0;
+    min-height: unset;
+    width: auto;
     display: flex;
     flex-direction: row;
-    padding: 20px 15px 25px 15px; /* Зменшено відступи */
-    box-sizing: border-box;
-    min-height: 390px;
 }
 
 .profile-photo-section {
@@ -26,19 +37,24 @@ body {
 }
 
 .profile-photo {
-    width: 120px;
-    height: 120px;
+    width: 170px;
+    height: 170px;
     background: #655846;
     border-radius: 50%;
     margin-bottom: 4px;
+    margin-left: 100px;
+    margin-top: -24px;
 }
 
 .edit-caption {
-    font-size: 13px;
-    color: #c9c3b9;
+    font-size: 20px;
+    color: #b3ada3;
     margin-top: 0;
     margin-bottom: 15px; /* Зменшено відступ */
     text-align: center;
+    position: static;
+    margin-top: 6px;
+    margin-left: 95px;
 }
 
 .profile-info-section {
@@ -47,15 +63,18 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+    margin-left: 30px; /* Зменшено відступ */
+    gap: 28px;
 }
 
 .profile-group {
-    margin-bottom: 10px; /* Зменшено відступ */
+    margin-bottom: 0px; /* Зменшено відступ */
     width: 100%;
+    gap: 10px;
 }
 
 .profile-label {
-    font-size: 18px; /* Зменшено для компактності */
+    font-size: 2.3rem;; /* Зменшено для компактності */
     font-weight: 700;
     color: #191919;
     margin-bottom: 2px;
@@ -65,13 +84,14 @@ body {
 }
 
 .profile-value {
-    font-size: 18px; /* Зменшено для компактності */
+    font-size: 21px; /* Зменшено для компактності */
     color: #191919;
     margin-bottom: 0;
     margin-top: 0;
     font-family: 'Montserrat', Arial, sans-serif;
     display: block;
 }
+
 
 .profile-input {
     width: 200px; /* Зменшено ширину */
@@ -88,7 +108,7 @@ body {
 
 .profile-link {
     color: #ee9600;
-    font-size: 16px; /* Зменшено для компактності */
+    font-size: 20px; /* Зменшено для компактності */
     margin-top: 4px;
     margin-bottom: 0;
     text-decoration: none;
@@ -104,27 +124,45 @@ body {
 hr {
     border: none;
     border-top: 1.5px solid #bababa;
-    margin: 10px 0; /* Зменшено відступи */
-    width: 100%;
+    margin: 10px 0;
+    width: 50%;
+    /* Замість 100% */
+    align-self: flex-start;
+    /* Щоб лінія вирівнювалась зліва */
 }
 
 .logout-btn {
-    display: block;
-    width: 90%;
-    margin: 25px auto 0 auto; /* Зменшено верхній відступ */
-    font-size: 28px; /* Зменшено для компактності */
-    font-family: 'Montserrat', Arial, sans-serif;
-    background: #d1cdc2;
-    color: #34322d;
     border: none;
-    border-radius: 2px;
-    padding: 8px 0;
+    border-radius: 28px;
+    padding: 18px 48px;
+    font-size: 1.22rem;
+    font-weight: 700;
     cursor: pointer;
-    font-weight: 400;
-    letter-spacing: 1px;
-    transition: background 0.2s;
+    box-shadow: 0 3px 12px rgba(91, 77, 59, 0.10);
+    transition: background 0.2s, color 0.2s, border 0.2s, transform 0.18s;
+    outline: none;
+    background: var(--button-bg);
+    color: #fff;
 }
 
-.logout-btn:hover {
-    background: #bcb8ab;
+.logout-btn:hover,
+.logout-btn:focus {
+    background: var(--button-bg-hover);
+    transform: translateY(-2px) scale(1.07);
+}
+.Email {
+    font-size: 21px;
+    color: #191919;
+    margin-bottom: 0;
+    margin-top: 0;
+    font-family: 'Montserrat', Arial, sans-serif;
+    display: block;
+}
+.password {
+    font-size: 21px;
+    color: #191919;
+    margin-bottom: 0;
+    margin-top: 0;
+    font-family: 'Montserrat', Arial, sans-serif;
+    display: block;
 }

@@ -4,14 +4,17 @@
   <meta charset="UTF-8">
   <title>User Profile</title>
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/userprofile.css">
 </head>
 <body>
+  <div id="header"></div>
+<main>
   <div class="profile-container">
     <div class="profile-photo-section">
       <div class="profile-photo"></div>
       <div class="edit-caption">Edit</div>
-    </div>
+    </div> 
     <div class="profile-info-section">
       <div class="profile-group">
         <label class="profile-label">Name</label>
@@ -20,19 +23,23 @@
       </div>
       <hr>
       <div class="profile-group">
-        <input type="email" name="email" placeholder="Email" value="">
-        <input type="text" class="profile-input" value="">
+        <label class="profile-label">Email</label>
+        <label class="Email">secure@petsheltermap.com</label>
         <a href="#" class="profile-link">Change email</a>
       </div>
       <hr>
       <div class="profile-group">
         <label class="profile-label">password</label>
-        <input type="password" class="profile-input" value="">
+        <label class="password">********</label>
         <a href="#" class="profile-link">Change password</a>
       </div>
       <hr>
       <button class="logout-btn">Logout</button>
     </div>
   </div>
+</main>
+<div id="footer"></div>
+<script src="js/include-layout.js"></script>
+<script src="js/user-menu.js"></script>
 </body>
 </html>
