@@ -68,45 +68,50 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* Три плитки в рядку */
     gap: 34px 26px; /* Відступи між плитками */
-    position: relative; /* Встановлюємо відносне позиціонування для ізоляції плиток */
 }
 
 /* Тінь на плитці */
 .about-card {
-    position: relative; /* Встановлюємо відносне позиціонування для ізоляції */
+    position: relative; /* Для ізоляції */
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    max-width: 100%; /* Плитка займає всю ширину в межах своєї колонки */
+    overflow: hidden; /* Контент не виходить за межі */
+    max-width: 100%; /* Плитка займає всю ширину */
     text-align: center;
     font-family: 'Montserrat', sans-serif;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    z-index: 0; /* Початковий рівень плитки */
+    z-index: 1; /* Початковий рівень */
+    height: 425px; /* Фіксована висота плитки (300px зображення + 125px текст) */
 }
 
 /* Масштабування плитки при наведенні */
 .about-card:hover {
-    transform: translateY(-10px); /* Піднімаємо тільки ту плитку, на яку наведено */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Збільшуємо тінь тільки для цієї плитки */
-    background-color: #f9f9f9; /* Змінюємо фон тільки для цієї плитки */
-    z-index: 1; /* Піднімаємо плитку над іншими */
+    transform: translateY(-10px); /* Піднімаємо плитку */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Збільшуємо тінь */
+    background-color: #f9f9f9; /* Змінюємо фон */
+    z-index: 10; /* Піднімаємо над іншими */
 }
 
 /* Контент плитки */
 .about-card-content {
-    position: relative;
+    position: absolute; /* Змінюємо на абсолютне позиціонування */
+    bottom: 0; /* Прив’язуємо до низу плитки */
+    left: 0;
+    right: 0;
     padding: 1rem;
     background-color: white;
-    z-index: 2; /* Текст поверх плитки */
-    max-height: 125px; /* Висота тексту, який видно спочатку */
-    overflow: hidden; /* Приховує текст, що виходить за межі */
-    transition: max-height 0.5s ease; /* Плавний перехід для відкриття тексту */
+    z-index: 2; /* Контент поверх зображення */
+    max-height: 125px; /* Початкова висота */
+    overflow: hidden; /* Приховуємо зайвий текст */
+    transition: max-height 0.5s ease, transform 0.3s ease; /* Плавний перехід */
 }
 
 /* Розкриття тексту при наведенні */
 .about-card:hover .about-card-content {
-    max-height: 380px; /* Відкриваємо весь текст тільки для наведеної плитки */
+    max-height: 380px; /* Розкриваємо текст */
+    transform: translateY(0); /* Залишаємо на місці */
+    background-color: rgba(255, 255, 255, 0.95); /* Ледь прозорий фон для читабельності */
 }
 
 /* Зображення плитки */
@@ -120,7 +125,7 @@ body {
 
 /* Масштабування зображення при наведенні */
 .about-card:hover .about-card-img {
-    transform: scale(1.10); /* Збільшуємо зображення тільки для наведеної плитки */
+    transform: scale(1.10); /* Збільшуємо зображення */
 }
 
 /* Responsive for mobile */
