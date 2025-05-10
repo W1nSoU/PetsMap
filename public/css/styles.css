@@ -662,3 +662,12 @@ footer {
     cursor: pointer;
     z-index: 10001;
 }
+
+.gm-style .gm-style-cc {
+    display: none;
+    /* Приховує текст умов */
+}
+
+.gm-style .gmnoprint {
+    display: none;
+    /* Приховує текст авторських прав */ }
