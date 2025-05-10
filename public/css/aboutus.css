@@ -63,46 +63,53 @@ body {
     margin-bottom: 38px;
 }
 
+/* Контейнер плиток */
 .about-cards {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 34px 26px;
+    grid-template-columns: repeat(3, 1fr); /* Три плитки в рядку */
+    gap: 34px 26px; /* Відступи між плитками */
+    position: relative; /* Встановлюємо відносне позиціонування для ізоляції плиток */
 }
 
+/* Тінь на плитці */
 .about-card {
-    position: relative;
+    position: relative; /* Встановлюємо відносне позиціонування для ізоляції */
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    max-width: 300px;
+    max-width: 100%; /* Плитка займає всю ширину в межах своєї колонки */
     text-align: center;
     font-family: 'Montserrat', sans-serif;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 0; /* Початковий рівень плитки */
 }
 
-.about-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 1;
+/* Масштабування плитки при наведенні */
+.about-card:hover {
+    transform: translateY(-10px); /* Піднімаємо тільки ту плитку, на яку наведено */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Збільшуємо тінь тільки для цієї плитки */
+    background-color: #f9f9f9; /* Змінюємо фон тільки для цієї плитки */
+    z-index: 1; /* Піднімаємо плитку над іншими */
 }
 
-.about-card:hover::before {
-    opacity: 1;
+/* Контент плитки */
+.about-card-content {
+    position: relative;
+    padding: 1rem;
+    background-color: white;
+    z-index: 2; /* Текст поверх плитки */
+    max-height: 125px; /* Висота тексту, який видно спочатку */
+    overflow: hidden; /* Приховує текст, що виходить за межі */
+    transition: max-height 0.5s ease; /* Плавний перехід для відкриття тексту */
 }
 
-.about-card:hover ~ body {
-    box-shadow: inset 0 0 0 100vmax rgba(0, 0, 0, 0.3); /* Тінь на всьому body */
-    background-color: rgba(0, 0, 0, 0.3); /* Напівпрозорий фон */
+/* Розкриття тексту при наведенні */
+.about-card:hover .about-card-content {
+    max-height: 380px; /* Відкриваємо весь текст тільки для наведеної плитки */
 }
 
+/* Зображення плитки */
 .about-card-img {
     width: 100%;
     height: 300px;
@@ -111,40 +118,9 @@ body {
     z-index: 1;
 }
 
-.about-card-content {
-    position: relative;
-    padding: 1rem;
-    background-color: white;
-    z-index: 2;
-    max-height: 125px;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-}
-
-.about-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    background-color: #f9f9f9;
-}
-
+/* Масштабування зображення при наведенні */
 .about-card:hover .about-card-img {
-    transform: scale(1.10);
-}
-
-.about-card:hover .about-card-content {
-    max-height: 300px; /* Відкриваємо весь текст при наведенні */
-}
-
-.about-card h3 {
-    font-size: 1.5rem;
-    color: #333;
-    margin: 1rem 0;
-}
-
-.about-card p {
-    font-size: 1rem;
-    color: #333;
-    line-height: 1.6;
+    transform: scale(1.10); /* Збільшуємо зображення тільки для наведеної плитки */
 }
 
 /* Responsive for mobile */
