@@ -21,10 +21,24 @@ window.initUserMenu = function() {
         userBadge.blur();
     });
 
+    // Відкриття банера
+    function openLoginBanner() {
+        const banner = document.getElementById('login-banner');
+        if (banner) banner.style.display = 'flex';
+        document.body.classList.add('signup-modal-open');
+    }
+
+    // Закриття банера
+    function closeLoginBanner() {
+        const banner = document.getElementById('login-banner');
+        if (banner) banner.style.display = 'none';
+        document.body.classList.remove('signup-modal-open');
+    }
+
+    // Клік по бейджу
     userBadge.addEventListener('click', (e) => {
         if (!isLoggedIn) {
-            const banner = document.getElementById('login-banner');
-            if (banner) banner.style.display = 'flex';
+            openLoginBanner();
             e.stopPropagation();
             return;
         }
@@ -50,4 +64,11 @@ window.initUserMenu = function() {
             if (signupHeaderLink) signupHeaderLink.style.display = 'inline-block';
         });
     }
+
+    // Прив'язати закриття банера до хрестика
+    document.addEventListener('click', (e) => {
+        if (e.target.classList && e.target.classList.contains('close-banner')) {
+            closeLoginBanner();
+        }
+    });
 };

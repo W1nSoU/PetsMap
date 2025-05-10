@@ -12,7 +12,8 @@
                     <label class="signup-label" for="chk" aria-hidden="true">Sign up</label>
                     <input type="text" name="txt" placeholder="User name" required>
                     <input type="email" name="email" placeholder="Email" required>
-                    <input type="tel" name="phone" placeholder="Phone number" required class="signup-phone">
+                    <input type="tel" name="phone" placeholder="+380 (__) ___-__-__" required class="signup-phone"
+                        pattern="^\+380\s?\(?\d{2}\)?\s?\d{3}-?\d{2}-?\d{2}$">
                     <input type="password" name="pswd" placeholder="Password" required>
                     <div class="volunteer-checkbox">
                         <input type="checkbox" name="volunteer" id="volunteer">
@@ -32,3 +33,20 @@
         </div>
     </div>
 </div>
+<script>
+    (function () {
+            var phoneInput = document.querySelector('.signup-phone');
+            if (phoneInput) {
+                phoneInput.addEventListener('focus', function () {
+                    if (!this.value.startsWith('+380')) {
+                        this.value = '+380 ';
+                    }
+                });
+                phoneInput.addEventListener('input', function () {
+                    if (!this.value.startsWith('+380')) {
+                        this.value = '+380 ';
+                    }
+                });
+            }
+        })();
+</script>

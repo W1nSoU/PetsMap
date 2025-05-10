@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="home-page">
     <div id="header"></div>
     <div id="login-banner-container"></div>
     <div class="center-wrapper">
@@ -67,7 +67,42 @@
             .then(resp => resp.text())
             .then(html => {
                 document.getElementById('login-banner-container').innerHTML = html;
-                // Можна ініціалізувати додаткову логіку для форм тут
+
+                // Відкрити банер (по кліку на кнопку)
+                window.openLoginBanner = function () {
+                    document.getElementById('login-banner').style.display = 'flex';
+                    document.body.classList.add('signup-modal-open');
+                };
+
+                // Закрити банер (по кліку на хрестик)
+                const closeBtn = document.querySelector('.close-banner');
+                if (closeBtn) {
+                    closeBtn.onclick = function () {
+                        document.getElementById('login-banner').style.display = 'none';
+                        document.body.classList.remove('signup-modal-open');
+                    };
+                }
+
+                // Автозаповнення +380 для телефону
+                var phoneInput = document.querySelector('.signup-phone');
+                if (phoneInput) {
+                    phoneInput.addEventListener('focus', function () {
+                        if (!this.value.startsWith('+380')) {
+                            this.value = '+380 ';
+                        }
+                    });
+                    phoneInput.addEventListener('input', function () {
+                        if (!this.value.startsWith('+380')) {
+                            this.value = '+380 ';
+                        }
+                        // Дозволяємо тільки 9 цифр після +380
+                        let digits = this.value.replace(/\D/g, '').slice(3, 12); // після +380
+                        if (digits.length > 9) {
+                            digits = digits.slice(0, 9);
+                        }
+                        this.value = '+380 ' + digits;
+                    });
+                }
             });
     </script>
 </body>

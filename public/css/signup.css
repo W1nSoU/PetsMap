@@ -3,7 +3,7 @@
     height: 600px;
     background: #5b4d3b url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/cover;
     overflow: hidden;
-    border-radius: 10px;
+    border-radius: 32px;
 }
 
 #chk {
@@ -21,7 +21,7 @@
     font-size: 3.3em;
     justify-content: center;
     display: flex;
-    margin: 40px 40px 40px 60px;
+    margin: 50px 40px 40px 40px;
     font-weight: bold;
     cursor: pointer;
     transition: .5s ease-in-out;
@@ -36,13 +36,12 @@
     font-size: 3.9em;
     justify-content: center;
     display: flex;
-    margin: 100px 60px 60px 60px; 
+    margin: 110px 60px 80px 60px;
     font-weight: bold;
     cursor: pointer;
-    transition: .5s ease-in-out;
-    transform: scale(.6);
+    transition: .5s ease-in-out, margin-top .5s, transform .5s;
+    transform: scale(.6) translateY(0);
 }
-
 input {
     width: 80%;
     height: 20px;
@@ -108,12 +107,22 @@ input {
     transition: .8s ease-in-out;
 }
 
+.login-email {
+    /* збільш відступ зверху */
+    margin-bottom: 10px;
+}
+
+.login input[type="password"] {
+    margin-top: 20px;
+    /* додай відступ для пароля */
+}
+
 #chk:checked~.login {
     transform: translateY(-500px);
 }
 
 #chk:checked~.login .login-label {
-    transform: scale(1);
+    transform: scale(1) translateY(20px);
 }
 
 #chk:checked~.signup .signup-label {
@@ -190,4 +199,15 @@ body.signup-page .center-wrapper {
     text-shadow: 0 1px 6px #5b4d3b;
     margin-right: 15px ;
     top: 5mm;
+}
+
+body.signup-modal-open>*:not(#login-banner-container):not(script):not(style) {
+    filter: blur(6px);
+    pointer-events: none;
+    user-select: none;
+    transition: filter 0.3s;
+}
+
+body.signup-modal-open {
+    overflow: hidden;
 }
