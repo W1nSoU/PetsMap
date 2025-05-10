@@ -21,7 +21,7 @@
     font-size: 3.3em;
     justify-content: center;
     display: flex;
-    margin: 40px 40px 20px 40px;
+    margin: 40px 40px 40px 60px;
     font-weight: bold;
     cursor: pointer;
     transition: .5s ease-in-out;
@@ -36,7 +36,7 @@
     font-size: 3.9em;
     justify-content: center;
     display: flex;
-    margin: 60px;
+    margin: 100px 60px 60px 60px; 
     font-weight: bold;
     cursor: pointer;
     transition: .5s ease-in-out;
@@ -46,7 +46,7 @@
 input {
     width: 80%;
     height: 20px;
-    background: #e0dede;
+    background: #fff;
     justify-content: center;
     display: flex;
     margin: 10px auto;
@@ -54,6 +54,8 @@ input {
     border: none;
     outline: none;
     border-radius: 5px;
+    margin-top: 15px;
+    font-size: 1em;
 }
 
 .signup-btn {
@@ -63,7 +65,7 @@ input {
     display: block;
     color: #5B4D3BD1;
     background: #fff;
-    font-size: 1em;
+    font-size: 1.4em;
     font-weight: bold;
     margin-top: 20px;
     outline: none;
@@ -83,8 +85,8 @@ input {
     margin: 10px auto;
     display: block;
     color: #F6F5F2;
-    background: #5B4D3BD1;
-    font-size: 1em;
+    background: #5b4d3b;
+    font-size: 1.4em;
     font-weight: bold;
     margin-top: 20px;
     outline: none;
@@ -102,7 +104,7 @@ input {
     height: 460px;
     background: #eee;
     border-radius: 60% / 10%;
-    transform: translateY(-180px);
+    transform: translateY(-200px);
     transition: .8s ease-in-out;
 }
 
@@ -153,4 +155,39 @@ footer {
 body.signup-page .center-wrapper {
     margin-top: -100px;
     margin-bottom: -40px;
+}
+
+.volunteer-checkbox {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    /* чекбокс справа, текст зліва */
+    margin: 8px 0 12px 0;
+    justify-content: center;
+    /* Додаємо центрування */
+}
+
+.volunteer-checkbox input[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+    accent-color: #fff;
+    margin-right: 0;
+    margin-right: 14px;
+    margin-left: 0;
+    top: -100mm;
+    
+}
+
+.volunteer-text {
+    color: #fff;
+    font-size: 1em;
+    /* як у input */
+    font-family: inherit;
+    /* як у input */
+    font-weight: 500;
+    /* як у input, якщо треба */
+    letter-spacing: 0.01em;
+    text-shadow: 0 1px 6px #5b4d3b;
+    margin-right: 15px ;
+    top: 5mm;
 }

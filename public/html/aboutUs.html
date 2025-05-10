@@ -13,6 +13,8 @@
 </head>
 <body>
     <div id="header"></div>
+    <div id="login-banner-container"></div>
+    <div class="center-wrapper">
     <main class="about-main">
         <h1 class="about-title">Про нас | PetShelterMap</h1>
         <div class="about-description">
@@ -69,5 +71,13 @@
     <script src="../js/user-menu.js"></script>
     <script src="../js/include-layout.js"></script>
     <script src="../js/user-menu.js"></script>
+    <script>
+        fetch('../login-banner.html')
+            .then(resp => resp.text())
+            .then(html => {
+                document.getElementById('login-banner-container').innerHTML = html;
+                // Можна ініціалізувати додаткову логіку для форм тут
+            });
+    </script>
 </body>
 </html>

@@ -21,10 +21,10 @@ window.initUserMenu = function() {
         userBadge.blur();
     });
 
-    // Клік по бейджу
     userBadge.addEventListener('click', (e) => {
         if (!isLoggedIn) {
-            window.location.href = 'signup.html';
+            const banner = document.getElementById('login-banner');
+            if (banner) banner.style.display = 'flex';
             e.stopPropagation();
             return;
         }

@@ -44,23 +44,27 @@ body {
 /* Inputs styling */
 .auth-signup input[type="email"],
 .auth-signup input[type="number"],
-.auth-signup input[type="password"] {
+.auth-signup input[type="password"],
+.auth-login form input[type="email"],
+.auth-login form input[type="password"] {
     width: 100%;
-    margin-bottom: 20px;
-    padding: 18px 20px 18px 20px;
+    margin-bottom: 90px;
+    padding: 24px 26px 24px 26px;
     border: none;
-    border-radius: 20px;
-    background: #faf9f7;
-    color: #333;
-    font-size: 1.25rem;
+    border-radius: 28px;
+    background: #fff;
+    color: #fff;
+    font-size: 1.65rem;
     box-sizing: border-box;
     outline: none;
     font-family: inherit;
-    font-weight: 500;
+    font-weight: 900;
     transition: box-shadow 0.2s;
+    height: 56px;
 }
 
-.auth-signup input:focus {
+.auth-signup input:focus,
+.auth-login form input:focus {
     box-shadow: 0 0 0 2px #cfc2b4;
 }
 
@@ -161,22 +165,6 @@ body {
 }
 
 /* Login form inputs/buttons (re-use styles) */
-.auth-login form input[type="email"],
-.auth-login form input[type="password"] {
-    width: 100%;
-    margin-bottom: 20px;
-    padding: 18px 20px 18px 20px;
-    border: none;
-    border-radius: 20px;
-    background: #faf9f7;
-    color: #333;
-    font-size: 1.25rem;
-    box-sizing: border-box;
-    outline: none;
-    font-family: inherit;
-    font-weight: 500;
-}
-
 .auth-login form button[type="submit"] {
     width: 80%;
     padding: 14px 0;
@@ -202,3 +190,4 @@ body {
         font-size: 2rem;
     }
 }
+

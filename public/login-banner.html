@@ -1,0 +1,34 @@
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="../css/user-menu.css">
+<link rel="stylesheet" href="../css/signup.css">
+<div id="login-banner" class="login-banner" style="display:none;">
+    <div class="center-wrapper">
+        <div class="main">
+            <span class="close-banner"
+                onclick="document.getElementById('login-banner').style.display='none'">&times;</span>
+            <input type="checkbox" id="chk" aria-hidden="true">
+            <div class="signup">
+                <form id="signupForm">
+                    <label class="signup-label" for="chk" aria-hidden="true">Sign up</label>
+                    <input type="text" name="txt" placeholder="User name" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="tel" name="phone" placeholder="Phone number" required class="signup-phone">
+                    <input type="password" name="pswd" placeholder="Password" required>
+                    <div class="volunteer-checkbox">
+                        <input type="checkbox" name="volunteer" id="volunteer">
+                        <label class="volunteer-text" for="volunteer">I'm volunteer</label>
+                    </div>             
+                    <button class="signup-btn" type="submit">Sign up</button>
+                </form>
+            </div>
+            <div class="login">
+                <form id="loginForm">
+                    <label class="login-label" for="chk" aria-hidden="true">Login</label>
+                    <input type="email" name="email" placeholder="Email" required class="login-email">
+                    <input type="password" name="pswd" placeholder="Password" required>
+                    <button class="login-btn" type="submit">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

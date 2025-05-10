@@ -131,15 +131,16 @@ nav a:hover {
     flex: 1 0 auto;
     max-width: 1320px;
     margin: 0 auto;
+    margin-top: -130px;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    background: var(--main-bg);
+    background: none !important;
 }
 
 main {
-    flex: 1 0 auto;
+    flex: 0 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -153,7 +154,7 @@ main {
     justify-content: center;
     gap: 56px;
     padding: 0;
-    margin-top: 110px;
+    margin-top: 70px;
     /* піднімає контент ближче до header */
     margin-bottom: 0px;
     /* відстань до .stats */
@@ -257,12 +258,12 @@ main {
 
 /* Статистика */
 .stats {
-    margin: 0 auto 0 auto;
+   margin: 50px auto 8px auto;
     display: flex;
     gap: 80px;
     background: none;
     justify-content: center;
-    margin-top: 70px;
+    margin-top: 50px;
     max-width: 900px;
     width: 100%;
 }
@@ -276,6 +277,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: -100px;
 }
 
 .stat-icon {
@@ -619,4 +621,39 @@ footer {
 .user-badge.signed-out+.dropdown {
     display: none !important;
     pointer-events: none !important;
+}
+
+.login-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.32);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-banner .center-wrapper {
+    min-height: unset;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-banner .main {
+    position: relative;
+}
+
+.close-banner {
+    position: absolute;
+    top: 18px;
+    right: 32px;
+    font-size: 2.2rem;
+    color: #b3ada3;
+    cursor: pointer;
+    z-index: 10001;
 }

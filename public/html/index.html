@@ -13,6 +13,7 @@
 
 <body>
     <div id="header"></div>
+    <div id="login-banner-container"></div>
     <div class="center-wrapper">
         <main>
             <div class="main-content">
@@ -61,5 +62,13 @@
     <script src="../js/scripts.js"></script>
     <script src="../js/user-menu.js"></script>
     <script src="../js/signup-modal.js"></script>
+    <script>
+        fetch('../login-banner.html')
+            .then(resp => resp.text())
+            .then(html => {
+                document.getElementById('login-banner-container').innerHTML = html;
+                // Можна ініціалізувати додаткову логіку для форм тут
+            });
+    </script>
 </body>
 </html>
