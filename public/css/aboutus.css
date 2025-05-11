@@ -44,7 +44,7 @@ body {
 }
 
 .about-title {
-    font-size: 2.2rem;
+    font-size: 2.6rem;
     font-weight: 700;
     text-align: center;
     margin-bottom: 32px;
@@ -53,8 +53,8 @@ body {
     letter-spacing: 0.5px;
 }
 
-.about-description {
-    font-size: 1.15rem;
+.about-subtitle {
+    font-size: 1.5rem;
     line-height: 1.55;
     background: #f5f5f5;
     border-radius: 8px;
@@ -104,14 +104,40 @@ body {
     z-index: 2; /* Контент поверх зображення */
     max-height: 125px; /* Початкова висота */
     overflow: hidden; /* Приховуємо зайвий текст */
-    transition: max-height 0.5s ease, transform 0.3s ease; /* Плавний перехід */
+    opacity: 1;
+        pointer-events: none;
+        transition:
+            max-height 0.5s ease,
+            transform 0.3s ease,
+            opacity 0.5s ease;
+}
+
+.about-card-content::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 3em;
+    pointer-events: none;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+    transition: opacity 0.5s;
+    opacity: 1;
+}
+
+/* При наведенні — градієнт зникає */
+.about-card:hover .about-card-content::after {
+    opacity: 0;
+    transition: opacity 0.5s;
 }
 
 /* Розкриття тексту при наведенні */
 .about-card:hover .about-card-content {
-    max-height: 380px; /* Розкриваємо текст */
-    transform: translateY(0); /* Залишаємо на місці */
-    background-color: rgba(255, 255, 255, 0.95); /* Ледь прозорий фон для читабельності */
+    max-height: 380px;
+        transform: translateY(0);
+        background-color: rgba(255, 255, 255, 0.8);
+        opacity: 1;
+        pointer-events: auto;
 }
 
 /* Зображення плитки */
@@ -143,4 +169,6 @@ body {
 }
 body.about-page .center-wrapper {
     margin-top: 0;
+    min-height: 1200px;
+    /* або потрібна тобі висота */
 }

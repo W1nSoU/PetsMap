@@ -1,0 +1,106 @@
+/* Основний фон і шрифт */
+body.find-page {
+    background: #fff;
+    color: #5B4D3B;
+    margin: 0;
+    padding: 0;
+}
+
+/* Контейнер для карток */
+.find-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px 24px;
+    max-width: 1200px;
+    margin: 0 auto 48px auto;
+    padding: 32px 12px;
+    justify-content: center;
+}
+
+/* Оформлення картки */
+/* ...existing code... */
+
+.find-card {
+    background: #fff;
+    overflow: hidden;
+    width: 100%;
+    max-width: 340px;
+    /* height: 230px;  <-- видали цей рядок */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: none;
+    border-radius: 0;
+    position: relative;
+}
+
+/* Зображення */
+.find-card-img {
+    object-fit: cover;
+    /* Без скруглення */
+    border-radius: 0;
+    background: #f5f5f5;
+    flex-shrink: 0;
+    width: 475.5px;
+    height: 317px;
+    aspect-ratio: 475.50/317.00;
+}
+
+
+
+/* Автор/волонтер */
+.find-card p strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 6px;
+    color: #7a6a54;
+}
+
+/* Головний заголовок */
+.find-main-title {
+    color: #5B4D3B;
+    font-family: "Montserrat Alternates", 'Montserrat', Arial, sans-serif;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-align: left;
+    /* Текст по лівому краю */
+    margin-top: 32px;
+    margin-bottom: 32px;
+    letter-spacing: 0.5px;
+    max-width: 700px;
+    /* Обмеження ширини */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .find-cards {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 700px;
+    }
+}
+
+@media (max-width: 700px) {
+    .find-cards {
+        grid-template-columns: 1fr;
+        max-width: 340px;
+        padding: 12px 4px;
+    }
+
+    .find-card-img {
+        height: 90px;
+    }
+
+    .find-card h3 {
+        font-size: 16px;
+    }
+
+    .find-card p {
+        font-size: 13px;
+    }
+}

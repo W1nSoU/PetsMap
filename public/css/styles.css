@@ -51,6 +51,14 @@ header {
     margin-top: 15px;
 }
 
+header,
+header nav,
+header nav a,
+header .user-badge {
+    color: #6d6256 !important;
+    /* Темно-сірий, але не чорний */
+}
+
 .logo {
     display: flex;
     align-items: center;
@@ -671,3 +679,4 @@ footer {
 .gm-style .gmnoprint {
     display: none;
     /* Приховує текст авторських прав */ }
+
