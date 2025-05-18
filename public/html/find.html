@@ -15,13 +15,67 @@
 
 <body class="find-page">
     <div id="header"></div>
+    
     <div id="login-banner-container"></div>
     <div class="center-wrapper">
         <main>
             <h2 class="find-main-title">Знайди свого<br> друга:тваринки<br>шукають дім</h2>
+            <!-- Filter (тепер одразу під заголовком) -->
+            <div class="border-bottom find-filter">
+              <div class="row justify-content-md-start align-items-md-center">
+                <div class="col-md-4 mb-3 mb-md-0">
+                  <h5 class="mb-0">
+                    <span id="find-count" class="text-dark fw-semibold"></span> шукають дім
+                  </h5>
+                </div>
+                <div class="col-md-8 text-md-end">
+                  <div class="row gx-2">
+                    
+                    <div class="col-auto">
+                      <select class="form-select form-select-sm" name="animal">
+                        <option value="animal0" selected>Всі</option>
+                        <option value="animal1">Собаки</option>
+                        <option value="animal3">Коти</option>
+                        <option value="animal4">Птахи</option>
+                        <option value="animal5">Свійські</option>
+                        <option value="animal6">Дикі</option>
+                        <option value="animal7">Екзотичні</option>
+                      </select>
+                    </div>
+                    <div class="col-auto">
+                      <select class="form-select form-select-sm" name="health">
+                        <option value="health0" selected>Всі</option>
+                        <option value="health1">Здоровий</option>
+                        <option value="health2">На лікуванні</option>
+                      </select>
+                    </div>
+                    <div class="col-auto">
+                      <select class="form-select form-select-sm" name="duration">
+                        <option value="duration0" selected>Всі</option>
+                        <option value="duration1">0-3 міс.</option>
+                        <option value="duration2">3-9 міс.</option>
+                        <option value="duration3">9-24 міс.</option>
+                        <option value="duration4">24+ міс.</option>
+                      </select>
+                    </div>
+                    <div class="col-auto ">
+                      <select class="form-select form-select-sm" name="history">
+                        <option value="history0" selected>Всі</option>
+                        <option value="history1">Постраждалі від війни</option>
+                        <option value="history2">Постраждалі від насильства</option>
+                        <option value="history3">Постраждалі від хвороби</option>
+                        <option value="history4">Загублені</option>
+                      </select>
+                    </div>
+                     <button id="find-filter-btn" class="find-filter-btn">Пошук</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Картки -->
             <div class="find-cards">
                 <!-- Card 1 -->
-                <div class="find-card">
+                <div class="find-card" data-animal="animal3" data-health="health1" data-duration="duration4" data-history="history0">
                     <img class="find-card-img" src="../images/find1.png" alt="Мурчик">
                     <div class="find-card-content">
                         <h3>Мурчик шукає дім</h3>
@@ -31,7 +85,7 @@
                     </div>
                 </div>
                 <!-- Card 2 -->
-                <div class="find-card">
+                <div class="find-card" data-animal="animal1" data-health="health1" data-duration="duration2" data-history="history0">
                     <img class="find-card-img" src="../images/find2.png" alt="Рекс">
                     <div class="find-card-content">
                         <h3>Рекс – вірний друг</h3>
@@ -41,7 +95,7 @@
                     </div>
                 </div>
                 <!-- Card 3 -->
-                <div class="find-card">
+                <div class="find-card" data-animal="animal5" data-health="health1" data-duration="duration1" data-history="history0">
                     <img class="find-card-img" src="../images/find3.png" alt="Сніжок">
                     <div class="find-card-content">
                         <h3>Сніжок – милий кролик</h3>
@@ -51,7 +105,7 @@
                     </div>
                 </div>
                 <!-- Card 4 -->
-                <div class="find-card">
+                <div class="find-card" data-animal="animal3" data-health="health2" data-duration="duration1" data-history="history1">
                     <img class="find-card-img" src="../images/find4.png" alt="Аліса">
                     <div class="find-card-content">
                         <h3>Місячна красуня – Аліса</h3>
@@ -61,7 +115,7 @@
                     </div>
                 </div>
                 <!-- Card 5 -->
-                <div class="find-card">
+                <div class="find-card" data-animal="animal1" data-health="health1" data-duration="duration1" data-history="history2">
                     <img class="find-card-img" src="../images/find5.png" alt="Кай">
                     <div class="find-card-content">
                         <h3>Рудий промінчик – Кай</h3>
@@ -71,7 +125,7 @@
                     </div>
                 </div>
                 <!-- Card 6 -->
-                <div class="find-card">
+                <div class="find-card" data-animal="animal5" data-health="health2" data-duration="duration1" data-history="history3">
                     <img class="find-card-img" src="../images/find6.png" alt="Хом'як">
                     <div class="find-card-content">
                         <h3>Пухнастий малюк</h3>
@@ -81,7 +135,7 @@
                     </div>
                 </div>
                 <!-- Card 7 -->
-                <div class="find-card">
+                <div class="find-card" data-animal="animal3" data-health="health1" data-duration="duration1" data-history="history4">
                     <img class="find-card-img" src="../images/find7.png" alt="Вуглик">
                     <div class="find-card-content">
                         <h3>Маленький бешкетник</h3>
@@ -91,7 +145,7 @@
                     </div>
                 </div>
                 <!-- Card 8 -->
-                <div class="find-card">
+                <div class="find-card" data-animal="animal1" data-health="health1" data-duration="duration3" data-history="history0">
                     <img class="find-card-img" src="../images/find8.png" alt="Чарлі">
                     <div class="find-card-content">
                         <h3>Веселий мандрівник – Чарлі</h3>
@@ -101,7 +155,7 @@
                     </div>
                 </div>
                 <!-- Card 9 -->
-                <div class="find-card">
+                <div class="find-card" data-animal="animal7" data-health="health1" data-duration="duration1" data-history="history0">
                     <img class="find-card-img" src="../images/find9.png" alt="Пеппі">
                     <div class="find-card-content">
                         <h3>Чарівна Пеппі</h3>
@@ -160,6 +214,45 @@
                     });
                 }
             });
+
+        function updateFindCount() {
+            // Рахуємо тільки видимі картки (які не приховані фільтром)
+            const count = document.querySelectorAll('.find-card:not([style*="display: none"])').length;
+            document.getElementById('find-count').textContent = count + ' тваринок';
+        }
+        // Оновити при завантаженні
+        updateFindCount();
+
+        // Якщо у тебе є фільтрація — викликай updateFindCount() після фільтрації
+        // Наприклад, після кліку на кнопку "Пошук":
+        document.getElementById('find-filter-btn')?.addEventListener('click', updateFindCount);
+    </script>
+    <script>
+        document.getElementById('find-filter-btn').onclick = function() {
+            // Отримуємо значення фільтрів
+            const animal = document.querySelector('select[name="animal"]')?.value || '';
+            const health = document.querySelector('select[name="health"]')?.value || '';
+            const duration = document.querySelector('select[name="duration"]')?.value || '';
+            const history = document.querySelector('select[name="history"]')?.value || '';
+
+            // Фільтруємо картки
+            document.querySelectorAll('.find-card').forEach(card => {
+                const matchAnimal = (animal === 'animal0' || card.dataset.animal === animal);
+                const matchHealth = (health === 'health0' || card.dataset.health === health);
+                const matchDuration = (duration === 'duration0' || card.dataset.duration === duration);
+                const matchHistory = (!history || history === 'history0' || card.dataset.history === history);
+
+                if (matchAnimal && matchHealth && matchDuration && matchHistory) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Оновлюємо лічильник
+            const count = document.querySelectorAll('.find-card:not([style*="display: none"])').length;
+            document.getElementById('find-count').textContent = count + ' тваринок';
+        };
     </script>
 </body>
 

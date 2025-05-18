@@ -18,14 +18,11 @@ body.find-page {
 }
 
 /* Оформлення картки */
-/* ...existing code... */
-
 .find-card {
     background: #fff;
     overflow: hidden;
     width: 100%;
     max-width: 340px;
-    /* height: 230px;  <-- видали цей рядок */
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -38,7 +35,6 @@ body.find-page {
 /* Зображення */
 .find-card-img {
     object-fit: cover;
-    /* Без скруглення */
     border-radius: 0;
     background: #f5f5f5;
     flex-shrink: 0;
@@ -46,8 +42,6 @@ body.find-page {
     height: 317px;
     aspect-ratio: 475.50/317.00;
 }
-
-
 
 /* Автор/волонтер */
 .find-card p strong {
@@ -67,14 +61,124 @@ body.find-page {
     font-weight: 700;
     line-height: normal;
     text-align: left;
-    /* Текст по лівому краю */
     margin-top: 32px;
     margin-bottom: 32px;
     letter-spacing: 0.5px;
     max-width: 700px;
-    /* Обмеження ширини */
     margin-left: auto;
     margin-right: auto;
+}
+
+/* Фільтр пошуку */
+.find-filter {
+    border-bottom: 1px solid #e2e8f0;
+    background: #f8fafc;
+    padding-bottom: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.find-filter h5 {
+    font-size: 1.15rem;
+    color: #2d3a4a;
+    margin: 0;
+    font-weight: 700;
+}
+
+.find-filter .text-dark {
+    color: #2d3a4a !important;
+}
+
+.find-filter .fw-semibold {
+    font-weight: 600;
+}
+
+.find-filter .row {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: right;
+  gap: 12px;
+}
+
+.find-filter .row.gx-2 {
+    gap: 10px 10px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.find-filter .col-md-4,
+.find-filter .col-md-8,
+.find-filter .col-auto{
+    flex: 0 0 auto;
+}
+
+.find-filter .col-md-4 {
+  flex: 0 1 200px;
+}
+
+.find-filter .col-md-8 {
+    flex: 2 1 340px;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+
+.find-filter .col-auto {
+    flex: 0 0 auto;
+}
+
+.find-filter select.form-select {
+    padding: 4px 28px 4px 10px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    background: #fff;
+    color: #2d3a4a;
+    font-size: 1rem;
+    min-width: 120px;
+    transition: border-color 0.2s;
+    outline: none;
+}
+
+.find-filter select.form-select:focus {
+    border-color: #5a7d3a;
+    background: #f1f5f9;
+}
+
+.find-filter-btn {
+    padding: 7px 28px;
+    background: #5B4D3B; /* Новий колір */
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-left: 8px;
+}
+.find-filter-btn:hover, .find-filter-btn:focus {
+    background: #3e3225; /* Темніший відтінок для ховера */
+}
+
+@media (max-width: 900px) {
+    .find-filter .row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px 0;
+    }
+    .find-filter .col-md-8 {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 600px) {
+    .find-filter .col-md-4,
+    .find-filter .col-md-8 {
+        flex: 1 1 100%;
+    }
+    .find-filter select.form-select {
+        min-width: 100px;
+        font-size: 0.98rem;
+    }
 }
 
 /* Responsive */
