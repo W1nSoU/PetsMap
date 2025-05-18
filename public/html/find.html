@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/user-menu.css">
     <link rel="stylesheet" href="../css/find.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
@@ -19,152 +20,204 @@
     <div id="login-banner-container"></div>
     <div class="center-wrapper">
         <main>
-            <h2 class="find-main-title">Знайди свого<br> друга:тваринки<br>шукають дім</h2>
-            <!-- Filter (тепер одразу під заголовком) -->
-            <div class="border-bottom find-filter">
-              <div class="row justify-content-md-start align-items-md-center">
-                <div class="col-md-4 mb-3 mb-md-0">
-                  <h5 class="mb-0">
-                    <span id="find-count" class="text-dark fw-semibold"></span> шукають дім
-                  </h5>
+            <!-- Sidebar Filter -->
+            <div class="container content-space-1">
+                <div class="row">
+                    <div class="col-lg-3 order-lg-2">
+                        <!-- Кнопка відкриття -->
+                        <button id="openSidebar" class="btn btn-brown d-lg-none mb-3">
+                            <i class="bi-list"></i> Фільтр
+                        </button>
+
+                        <!-- Sidebar -->
+                        <div id="sidebarMenu" class="sidebar-menu">
+                            <button id="closeSidebar" class="close-sidebar">&times;</button>
+                            <div class="sidebar-content">
+                                <!-- Navbar -->
+                                <div class="navbar-expand-lg mb-5">
+                                    <!-- Navbar Collapse -->
+                                    <div id="navbarVerticalNavMenuEg1" class="collapse navbar-collapse show">
+                                        <div class="w-100">
+                                            <!-- Form -->
+                                            <form>
+                                                <div class="mb-5">
+                                                    <h5 class="mb-3">Місто</h5>
+                                                    <div class="d-grid gap-2">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="lviv" id="cityLviv">
+                                                            <label class="form-check-label d-flex" for="cityLviv">Львів</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="kyiv" id="cityKyiv">
+                                                            <label class="form-check-label d-flex" for="cityKyiv">Київ</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="ivano-frankivsk" id="cityIvanoFrankivsk">
+                                                            <label class="form-check-label d-flex" for="cityIvanoFrankivsk">Івано-Франківськ</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-5">
+                                                    <h5 class="mb-3">Відстань</h5>
+                                                    <p class="form-text">В межах <span id="rangeSliderDistance"></span> км від <span class="fw-semibold text-dark">Києва</span></p>
+                                                    <!-- Range Slider -->
+                                                    <div class="range-slider">
+                                                        <div id="distanceSlider"></div>
+                                                    </div>
+                                                    <div class="d-flex justify-content-between align-items-center mt-5">
+                                                        <span class="text-body">5 км</span>
+                                                        <span class="text-body">100 км</span>
+                                                    </div>
+                                                    <!-- End Range Slider -->
+                                                </div>
+                                                <div class="mb-5">
+                                                    <h5 class="mb-3">Тип тварини</h5>
+                                                    <div class="d-grid gap-2">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="animal1" id="animalDog">
+                                                            <label class="form-check-label d-flex" for="animalDog">Собаки</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="animal3" id="animalCat">
+                                                            <label class="form-check-label d-flex" for="animalCat">Коти</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="animal4" id="animalBird">
+                                                            <label class="form-check-label d-flex" for="animalBird">Птахи</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="animal5" id="animalFarm">
+                                                            <label class="form-check-label d-flex" for="animalFarm">Свійські</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="animal6" id="animalWild">
+                                                            <label class="form-check-label d-flex" for="animalWild">Дикі</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="animal7" id="animalExotic">
+                                                            <label class="form-check-label d-flex" for="animalExotic">Екзотичні</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Додай інші фільтри за потреби -->
+                                                <div class="d-grid">
+                                                    <button type="button" class="btn btn-brown btn-transition" id="find-filter-btn">Пошук</button>
+                                                </div>
+                                                <div class="d-grid mt-2">
+                                                    <button type="button" class="btn btn-outline-secondary" id="clear-filters-btn">Очистити фільтри</button>
+                                                </div>
+                                            </form>
+                                            <!-- End Form -->
+                                        </div>
+                                    </div>
+                                    <!-- End Navbar Collapse -->
+                                </div>
+                                <!-- End Navbar -->
+                            </div>
+                        </div>
+                        <!-- End Sidebar -->
+                    </div>
+                    <!-- End Col -->
+                    <div class="col-lg-9">
+                        <h2 class="find-main-title">Знайди свого<br> друга:тваринки<br>шукають дім</h2>
+                        <!-- Картки -->
+                        <div class="find-cards">
+                            <!-- Card 1 -->
+                            <div class="find-card" data-animal="animal3" data-health="health1" data-duration="duration4" data-history="history0">
+                                <img class="find-card-img" src="../images/find1.png" alt="Мурчик">
+                                <div class="find-card-content">
+                                    <h3>Мурчик шукає дім</h3>
+                                    <p>Мурчик пухнастий котик із яскравим рудим забарвленням та муркотливим характером. Йому 2 роки,
+                                        він здоровий і готовий стати вашим найвірнішим другом.</p>
+                                    <strong>Олена К., волонтер</strong>
+                                </div>
+                            </div>
+                            <!-- Card 2 -->
+                            <div class="find-card" data-animal="animal1" data-health="health1" data-duration="duration2" data-history="history0">
+                                <img class="find-card-img" src="../images/find2.png" alt="Рекс">
+                                <div class="find-card-content">
+                                    <h3>Рекс – вірний друг</h3>
+                                    <p>Рекс енергійний пес породи лабрадор, якому 3 роки. Він любить довгі прогулянки та обійми.
+                                        Шукає активну сім'ю, яка подарує дому тепло.</p>
+                                    <strong>Притулок "Щаслива лапа"</strong>
+                                </div>
+                            </div>
+                            <!-- Card 3 -->
+                            <div class="find-card" data-animal="animal5" data-health="health1" data-duration="duration1" data-history="history0">
+                                <img class="find-card-img" src="../images/find3.png" alt="Сніжок">
+                                <div class="find-card-content">
+                                    <h3>Сніжок – милий кролик</h3>
+                                    <p>Сніжок – милий кролик білого кольору, якому 1 рік. Він спокійний, любить свіжу моркву та
+                                        чекає на турботливого господаря.</p>
+                                    <strong>Марія І., волонтер</strong>
+                                </div>
+                            </div>
+                            <!-- Card 4 -->
+                            <div class="find-card" data-animal="animal3" data-health="health2" data-duration="duration1" data-history="history1">
+                                <img class="find-card-img" src="../images/find4.png" alt="Аліса">
+                                <div class="find-card-content">
+                                    <h3>Місячна красуня – Аліса</h3>
+                                    <p>Аліса – елегантна кішка з сіробілим забарвленням та виразними зеленими очима. Їй близько
+                                        року, вона ласкава та любить гратися.</p>
+                                    <strong>Волонтерський центр "Надія"</strong>
+                                </div>
+                            </div>
+                            <!-- Card 5 -->
+                            <div class="find-card" data-animal="animal1" data-health="health1" data-duration="duration1" data-history="history2">
+                                <img class="find-card-img" src="../images/find5.png" alt="Кай">
+                                <div class="find-card-content">
+                                    <h3>Рудий промінчик – Кай</h3>
+                                    <p>Рудий песик породи шиба-іну, якому 1.5 роки. Він дуже дружелюбний, енергійний та стане
+                                        чудовим компаньйоном для активної людини.</p>
+                                    <strong>Приватний притулок "Друг"</strong>
+                                </div>
+                            </div>
+                            <!-- Card 6 -->
+                            <div class="find-card" data-animal="animal5" data-health="health2" data-duration="duration1" data-history="history3">
+                                <img class="find-card-img" src="../images/find6.png" alt="Хом'як">
+                                <div class="find-card-content">
+                                    <h3>Пухнастий малюк</h3>
+                                    <p>Хом'як -- маленький та кумедний домашній улюбленець. Він любить бігати в колесі, гризти
+                                        насіння та чекає на дбайливого господаря.</p>
+                                    <strong>Ірина С., волонтер</strong>
+                                </div>
+                            </div>
+                            <!-- Card 7 -->
+                            <div class="find-card" data-animal="animal3" data-health="health1" data-duration="duration1" data-history="history4">
+                                <img class="find-card-img" src="../images/find7.png" alt="Вуглик">
+                                <div class="find-card-content">
+                                    <h3>Маленький бешкетник</h3>
+                                    <p>Вуглик – чорно-біле кошеня, сповнене енергії та цікавості. Йому всього 3 місяці, він любить
+                                        гратися та господарювати вдома.</p>
+                                    <strong>Притулок "Кохотама"</strong>
+                                </div>
+                            </div>
+                            <!-- Card 8 -->
+                            <div class="find-card" data-animal="animal1" data-health="health1" data-duration="duration3" data-history="history0">
+                                <img class="find-card-img" src="../images/find8.png" alt="Чарлі">
+                                <div class="find-card-content">
+                                    <h3>Веселий мандрівник – Чарлі</h3>
+                                    <p>Чарлі – енергійний пес породи бігль. Йому близько 4 років, він любить гуляти, господарювати
+                                        нові місця та стане вірним другом для всієї родини.</p>
+                                    <strong>Притулок "Вірне серце"</strong>
+                                </div>
+                            </div>
+                            <!-- Card 9 -->
+                            <div class="find-card" data-animal="animal7" data-health="health1" data-duration="duration1" data-history="history0">
+                                <img class="find-card-img" src="../images/find9.png" alt="Пеппі">
+                                <div class="find-card-content">
+                                    <h3>Чарівна Пеппі</h3>
+                                    <p>Пеппі – чарівна морська свинка з рудим забарвленням. Вона спокійна, любить свіжу зелень та
+                                        чекає на доброго господаря.</p>
+                                    <strong>Андрій Р., волонтер</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-8 text-md-end">
-                  <div class="row gx-2">
-                    
-                    <div class="col-auto">
-                      <select class="form-select form-select-sm" name="animal">
-                        <option value="animal0" selected>Всі</option>
-                        <option value="animal1">Собаки</option>
-                        <option value="animal3">Коти</option>
-                        <option value="animal4">Птахи</option>
-                        <option value="animal5">Свійські</option>
-                        <option value="animal6">Дикі</option>
-                        <option value="animal7">Екзотичні</option>
-                      </select>
-                    </div>
-                    <div class="col-auto">
-                      <select class="form-select form-select-sm" name="health">
-                        <option value="health0" selected>Всі</option>
-                        <option value="health1">Здоровий</option>
-                        <option value="health2">На лікуванні</option>
-                      </select>
-                    </div>
-                    <div class="col-auto">
-                      <select class="form-select form-select-sm" name="duration">
-                        <option value="duration0" selected>Всі</option>
-                        <option value="duration1">0-3 міс.</option>
-                        <option value="duration2">3-9 міс.</option>
-                        <option value="duration3">9-24 міс.</option>
-                        <option value="duration4">24+ міс.</option>
-                      </select>
-                    </div>
-                    <div class="col-auto ">
-                      <select class="form-select form-select-sm" name="history">
-                        <option value="history0" selected>Всі</option>
-                        <option value="history1">Постраждалі від війни</option>
-                        <option value="history2">Постраждалі від насильства</option>
-                        <option value="history3">Постраждалі від хвороби</option>
-                        <option value="history4">Загублені</option>
-                      </select>
-                    </div>
-                     <button id="find-filter-btn" class="find-filter-btn">Пошук</button>
-                  </div>
-                </div>
-              </div>
+                <!-- End Row -->
             </div>
-            <!-- Картки -->
-            <div class="find-cards">
-                <!-- Card 1 -->
-                <div class="find-card" data-animal="animal3" data-health="health1" data-duration="duration4" data-history="history0">
-                    <img class="find-card-img" src="../images/find1.png" alt="Мурчик">
-                    <div class="find-card-content">
-                        <h3>Мурчик шукає дім</h3>
-                        <p>Мурчик пухнастий котик із яскравим рудим забарвленням та муркотливим характером. Йому 2 роки,
-                            він здоровий і готовий стати вашим найвірнішим другом.</p>
-                        <strong>Олена К., волонтер</strong>
-                    </div>
-                </div>
-                <!-- Card 2 -->
-                <div class="find-card" data-animal="animal1" data-health="health1" data-duration="duration2" data-history="history0">
-                    <img class="find-card-img" src="../images/find2.png" alt="Рекс">
-                    <div class="find-card-content">
-                        <h3>Рекс – вірний друг</h3>
-                        <p>Рекс енергійний пес породи лабрадор, якому 3 роки. Він любить довгі прогулянки та обійми.
-                            Шукає активну сім'ю, яка подарує дому тепло.</p>
-                        <strong>Притулок "Щаслива лапа"</strong>
-                    </div>
-                </div>
-                <!-- Card 3 -->
-                <div class="find-card" data-animal="animal5" data-health="health1" data-duration="duration1" data-history="history0">
-                    <img class="find-card-img" src="../images/find3.png" alt="Сніжок">
-                    <div class="find-card-content">
-                        <h3>Сніжок – милий кролик</h3>
-                        <p>Сніжок – милий кролик білого кольору, якому 1 рік. Він спокійний, любить свіжу моркву та
-                            чекає на турботливого господаря.</p>
-                        <strong>Марія І., волонтер</strong>
-                    </div>
-                </div>
-                <!-- Card 4 -->
-                <div class="find-card" data-animal="animal3" data-health="health2" data-duration="duration1" data-history="history1">
-                    <img class="find-card-img" src="../images/find4.png" alt="Аліса">
-                    <div class="find-card-content">
-                        <h3>Місячна красуня – Аліса</h3>
-                        <p>Аліса – елегантна кішка з сіробілим забарвленням та виразними зеленими очима. Їй близько
-                            року, вона ласкава та любить гратися.</p>
-                        <strong>Волонтерський центр "Надія"</strong>
-                    </div>
-                </div>
-                <!-- Card 5 -->
-                <div class="find-card" data-animal="animal1" data-health="health1" data-duration="duration1" data-history="history2">
-                    <img class="find-card-img" src="../images/find5.png" alt="Кай">
-                    <div class="find-card-content">
-                        <h3>Рудий промінчик – Кай</h3>
-                        <p>Рудий песик породи шиба-іну, якому 1.5 роки. Він дуже дружелюбний, енергійний та стане
-                            чудовим компаньйоном для активної людини.</p>
-                        <strong>Приватний притулок "Друг"</strong>
-                    </div>
-                </div>
-                <!-- Card 6 -->
-                <div class="find-card" data-animal="animal5" data-health="health2" data-duration="duration1" data-history="history3">
-                    <img class="find-card-img" src="../images/find6.png" alt="Хом'як">
-                    <div class="find-card-content">
-                        <h3>Пухнастий малюк</h3>
-                        <p>Хом'як -- маленький та кумедний домашній улюбленець. Він любить бігати в колесі, гризти
-                            насіння та чекає на дбайливого господаря.</p>
-                        <strong>Ірина С., волонтер</strong>
-                    </div>
-                </div>
-                <!-- Card 7 -->
-                <div class="find-card" data-animal="animal3" data-health="health1" data-duration="duration1" data-history="history4">
-                    <img class="find-card-img" src="../images/find7.png" alt="Вуглик">
-                    <div class="find-card-content">
-                        <h3>Маленький бешкетник</h3>
-                        <p>Вуглик – чорно-біле кошеня, сповнене енергії та цікавості. Йому всього 3 місяці, він любить
-                            гратися та господарювати вдома.</p>
-                        <strong>Притулок "Кохотама"</strong>
-                    </div>
-                </div>
-                <!-- Card 8 -->
-                <div class="find-card" data-animal="animal1" data-health="health1" data-duration="duration3" data-history="history0">
-                    <img class="find-card-img" src="../images/find8.png" alt="Чарлі">
-                    <div class="find-card-content">
-                        <h3>Веселий мандрівник – Чарлі</h3>
-                        <p>Чарлі – енергійний пес породи бігль. Йому близько 4 років, він любить гуляти, господарювати
-                            нові місця та стане вірним другом для всієї родини.</p>
-                        <strong>Притулок "Вірне серце"</strong>
-                    </div>
-                </div>
-                <!-- Card 9 -->
-                <div class="find-card" data-animal="animal7" data-health="health1" data-duration="duration1" data-history="history0">
-                    <img class="find-card-img" src="../images/find9.png" alt="Пеппі">
-                    <div class="find-card-content">
-                        <h3>Чарівна Пеппі</h3>
-                        <p>Пеппі – чарівна морська свинка з рудим забарвленням. Вона спокійна, любить свіжу зелень та
-                            чекає на доброго господаря.</p>
-                        <strong>Андрій Р., волонтер</strong>
-                    </div>
-                </div>
-            </div>
+            <!-- End Sidebar Filter -->
         </main>
     </div>
     <div id="footer"></div>
@@ -172,6 +225,7 @@
     <script src="../js/user-menu.js"></script>
     <script src="../js/scripts.js"></script>
     <script src="../js/signup-modal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.js"></script>
     <script>
         fetch('../login-banner.html')
             .then(resp => resp.text())
@@ -252,6 +306,58 @@
             // Оновлюємо лічильник
             const count = document.querySelectorAll('.find-card:not([style*="display: none"])').length;
             document.getElementById('find-count').textContent = count + ' тваринок';
+        };
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var slider = document.getElementById('distanceSlider');
+            if (slider) {
+                noUiSlider.create(slider, {
+                    start: 25,
+                    connect: [true, false],
+                    step: 1,
+                    range: {
+                        'min': 5,
+                        'max': 100
+                    }
+                });
+
+                var distanceValue = document.getElementById('rangeSliderDistance');
+                slider.noUiSlider.on('update', function (values, handle) {
+                    distanceValue.textContent = Math.round(values[handle]);
+                });
+            }
+        });
+    </script>
+    <script>
+        document.getElementById('openSidebar').onclick = function() {
+            document.getElementById('sidebarMenu').classList.add('active');
+        };
+        document.getElementById('closeSidebar').onclick = function() {
+            document.getElementById('sidebarMenu').classList.remove('active');
+        };
+        // Закриття по кліку поза меню (опціонально)
+        document.addEventListener('click', function(e){
+            const sidebar = document.getElementById('sidebarMenu');
+            if(sidebar.classList.contains('active') && !sidebar.contains(e.target) && e.target.id !== 'openSidebar'){
+                sidebar.classList.remove('active');
+            }
+        });
+    </script>
+    <script>
+        document.getElementById('clear-filters-btn').onclick = function() {
+            // Очистити всі чекбокси
+            document.querySelectorAll('#sidebarMenu input[type="checkbox"]').forEach(cb => cb.checked = false);
+
+            // Скинути слайдер (якщо є)
+            var slider = document.getElementById('distanceSlider');
+            if (slider && slider.noUiSlider) {
+                slider.noUiSlider.set(25); // або значення за замовчуванням
+            }
+
+            // Оновити лічильник і показати всі картки
+            document.querySelectorAll('.find-card').forEach(card => card.style.display = '');
+            updateFindCount && updateFindCount();
         };
     </script>
 </body>
