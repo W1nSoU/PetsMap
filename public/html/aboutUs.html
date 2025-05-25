@@ -77,13 +77,13 @@
             .then(html => {
                 document.getElementById('login-banner-container').innerHTML = html;
 
-                // Відкрити банер (по кліку на кнопку)
+
                 window.openLoginBanner = function () {
                     document.getElementById('login-banner').style.display = 'flex';
                     document.body.classList.add('signup-modal-open');
                 };
 
-                // Закрити банер (по кліку на хрестик)
+
                 const closeBtn = document.querySelector('.close-banner');
                 if (closeBtn) {
                     closeBtn.onclick = function () {
@@ -92,7 +92,6 @@
                     };
                 }
 
-                // Автозаповнення +380 для телефону
                 var phoneInput = document.querySelector('.signup-phone');
                 if (phoneInput) {
                     phoneInput.addEventListener('focus', function () {
@@ -104,7 +103,6 @@
                         if (!this.value.startsWith('+380')) {
                             this.value = '+380 ';
                         }
-                        // Дозволяємо тільки 9 цифр після +380
                         let digits = this.value.replace(/\D/g, '').slice(3, 12); // після +380
                         if (digits.length > 9) {
                             digits = digits.slice(0, 9);
