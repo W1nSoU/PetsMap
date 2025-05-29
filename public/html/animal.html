@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Тваринка | PetShelterMap</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/find.css">
+</head>
+<body>
+    <div id="header"></div>
+    <main>
+        <div class="container content-space-1">
+            <div id="animal-detail"></div>
+        </div>
+    </main>
+    <div id="footer"></div>
+    <script>
+    // 1. Отримуємо id з URL
+    function getAnimalId() {
+        const params = new URLSearchParams(window.location.search);
+        return params.get('id');
+    }
+
+    // 2. Отримуємо дані з localStorage
+    function getAnimalDataFromStorage(id) {
+        const animals = JSON.parse(localStorage.getItem('animalsData') || '[]');
+        return animals.find(a => a.id == id);
+    }
+
+    // 3. Відображаємо деталі
+    function renderAnimalDetail() {
+        const id = getAnimalId();
+        const animal = getAnimalDataFromStorage(id);
+        if (!animal) {
+            document.getElementById('animal-detail').innerHTML = '<p>Тваринку не знайдено.</p>';
+            return;
+        }
+        document.getElementById('animal-detail').innerHTML = `
+            <img src="${animal.img}" alt="${animal.name}" class="animal-detail-img">
+            <h1>${animal.name}</h1>
+            <p>${animal.description}</p>
+            <p><strong>${animal.volunteer}</strong></p>
+            <p><strong>Місто:</strong> ${animal.city}</p>
+            <p><strong>Відстань:</strong> ${animal.distance} км</p>
+        `;
+    }
+    document.addEventListener('DOMContentLoaded', renderAnimalDetail);
+    </script>
+    <script src="../js/include-layout.js"></script>
+</body>
+</html>
