@@ -546,6 +546,65 @@ footer {
     color: var(--gray-dark);
 }
 
+
+.contacts-menu {
+    position: relative;
+    display: inline-block;
+}
+
+.contacts-badge {
+    background: var(--brown);
+    color: #fff;
+    border-radius: 16px;
+    padding: 8px 22px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 20;
+    outline: none;
+    min-width: 110px;
+    height: 42px;
+    box-sizing: border-box;
+    transition: background 0.2s, min-width 0.3s, width 0.3s;
+}
+
+.contacts-badge .badge-bars {
+    display: none;
+    /* Можеш додати анімацію як у user-badge, якщо потрібно */
+}
+
+.contacts-menu .dropdown {
+    background: #f6f5f2;
+    min-width: 160px;
+    border-radius: 12px;
+    box-shadow: 0 2px 16px rgba(60, 60, 57, 0.09);
+    position: absolute;
+    top: 45px;
+    right: 0;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transition: all .5s cubic-bezier(.44, 1.45, .54, .99);
+    z-index: 10;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    border: 1px solid var(--gray-light);
+    pointer-events: none;
+}
+
+.contacts-menu:hover .dropdown,
+.contacts-menu:focus-within .dropdown {
+    opacity: 1;
+    height: 132px;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
 @media (max-width: 600px) {
     .user-badge {
         padding: 8px 6px;
@@ -680,3 +739,52 @@ footer {
     display: none;
     /* Приховує текст авторських прав */ }
 
+        .nav-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+    
+        .nav-dropdown-toggle {
+            color: var(--gray-dark);
+            text-decoration: none;
+            padding: 10px 32px;
+            font-weight: 500;
+            border-radius: 8px;
+            font-size: 1.3rem;
+            transition: background 0.2s;
+            line-height: 1.2;
+            background: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+    
+        .nav-dropdown-toggle:hover,
+        .nav-dropdown-toggle:focus {
+            background: var(--gray-light);
+        }
+    
+        .nav-dropdown .dropdown {
+            background: #f6f5f2;
+            min-width: 160px;
+            border-radius: 12px;
+            box-shadow: 0 2px 16px rgba(60, 60, 57, 0.09);
+            position: absolute;
+            top: 44px;
+            left: 0;
+            opacity: 0;
+            height: 0;
+            overflow: hidden;
+            transition: all .5s cubic-bezier(.44, 1.45, .54, .99);
+            z-index: 10;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            border: 1px solid var(--gray-light);
+            pointer-events: none;
+        }
+    
+        .nav-dropdown:hover .dropdown,
+        .nav-dropdown:focus-within .dropdown {
+            opacity: 1;
+            height: 132px;
+            pointer-events: auto;   }
