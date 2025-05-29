@@ -2,34 +2,50 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Відгуки | PetShelterMap</title>
+    <title>Тваринка | PetShelterMap</title>
     <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/user-menu.css">
     <link rel="stylesheet" href="../css/find.css">
-    <link rel="stylesheet" href="../css/feedback.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="header"></div>
-
     <main>
-<div class="reviews-container">
-        <div class="review">
-            <h3>Георгій</h3>
-            <p class="date">14 грудня 2023, 15:03</p>
-            <p>Глушник Сервіс — майстерня, яку я всім друзям рекомендую...</p>
+        <div class="container content-space-1">
+            <div id="animal-detail"></div>
         </div>
-        <div class="review">
-            <h3>Назар Юрченко</h3>
-            <p class="date">19 листопада 2023, 15:04</p>
-            <p>Їжджу на Gran Turismo, не сама ходова модель...</p>
-        </div>
-    </div>
     </main>
-
     <div id="footer"></div>
+    <script>
+    // 1. Отримуємо id з URL
+    function getAnimalId() {
+        const params = new URLSearchParams(window.location.search);
+        return params.get('id');
+    }
 
+    // 2. Отримуємо дані з localStorage
+    function getAnimalDataFromStorage(id) {
+        const animals = JSON.parse(localStorage.getItem('animalsData') || '[]');
+        return animals.find(a => a.id == id);
+    }
+
+    // 3. Відображаємо деталі
+    function renderAnimalDetail() {
+        const id = getAnimalId();
+        const animal = getAnimalDataFromStorage(id);
+        if (!animal) {
+            document.getElementById('animal-detail').innerHTML = '<p>Тваринку не знайдено.</p>';
+            return;
+        }
+        document.getElementById('animal-detail').innerHTML = `
+            <img src="${animal.img}" alt="${animal.name}" class="animal-detail-img">
+            <h1>${animal.name}</h1>
+            <p>${animal.description}</p>
+            <p><strong>${animal.volunteer}</strong></p>
+            <p><strong>Місто:</strong> ${animal.city}</p>
+            <p><strong>Відстань:</strong> ${animal.distance} км</p>
+        `;
+    }
+    document.addEventListener('DOMContentLoaded', renderAnimalDetail);
+    </script>
     <script src="../js/include-layout.js"></script>
 </body>
 </html>
