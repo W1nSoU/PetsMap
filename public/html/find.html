@@ -16,23 +16,25 @@
 
 <body class="find-page">
     <div id="header"></div>
-    
+    <button id="openSidebar" class="btn btn-brown d-block mb-3 btn-filter" style="margin-left: 50px;">
+    <i class="bi-list"></i> Фільтр
+</button>
     <div id="login-banner-container"></div>
     <div class="center-wrapper">
         <main>
+            
             <!-- Sidebar Filter -->
             <div class="container content-space-1">
                 <div class="row">
                     <div class="col-lg-3 order-lg-2">
                         <!-- Кнопка відкриття -->
-                        <button id="openSidebar" class="btn btn-brown d-lg-none mb-3">
-                            <i class="bi-list"></i> Фільтр
-                        </button>
+                        
 
                         <!-- Sidebar -->
-                        <div id="sidebarMenu" class="sidebar-menu">
+                        <div id="sidebarMenu" class="sidebar-menu sidebar-content">
                             <button id="closeSidebar" class="close-sidebar">&times;</button>
                             <div class="sidebar-content">
+                                <h1>Знайти тварину</h1>
                                 <!-- Navbar -->
                                 <div class="navbar-expand-lg mb-5">
                                     <!-- Navbar Collapse -->
@@ -41,69 +43,87 @@
                                             <!-- Form -->
                                             <form>
                                                 <div class="mb-5">
-                                                    <h5 class="mb-3">Місто</h5>
+                                                    <h2 class="mb-3">Місто</h2>
                                                     <div class="d-grid gap-2">
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" value="lviv" id="cityLviv">
-                                                            <label class="form-check-label d-flex" for="cityLviv">Львів</label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" value="kyiv" id="cityKyiv">
-                                                            <label class="form-check-label d-flex" for="cityKyiv">Київ</label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" value="ivano-frankivsk" id="cityIvanoFrankivsk">
-                                                            <label class="form-check-label d-flex" for="cityIvanoFrankivsk">Івано-Франківськ</label>
+                                                            <div class="form-check">
+                                                                <label class="form-check-label d-flex align-items-center gap-2" for="cityLviv">
+                                                                    <input class="form-check-input" type="checkbox" value="lviv" id="cityLviv">
+                                                                    Львів
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <label class="form-check-label d-flex align-items-center gap-2" for="cityKyiv">
+                                                                    <input class="form-check-input" type="checkbox" value="kyiv" id="cityKyiv">
+                                                                    Київ
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <label class="form-check-label d-flex align-items-center gap-2" for="cityIvanoFrankivsk">
+                                                                    <input class="form-check-input" type="checkbox" value="ivano-frankivsk" id="cityIvanoFrankivsk">
+                                                                    Івано-Франківськ
+                                                                </label>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="mb-5">
-                                                    <h5 class="mb-3">Відстань</h5>
+                                                    <h2 class="mb-3">Відстань</h2>
                                                     <p class="form-text">В межах <span id="rangeSliderDistance"></span> км від <span class="fw-semibold text-dark">Міста</span></p>
                                                     <!-- Range Slider -->
-                                                    <div class="range-slider">
+                                                    <div class="range-slider position-relative">
                                                         <div id="distanceSlider"></div>
-                                                    </div>
-                                                    <div class="d-flex justify-content-between align-items-center mt-5">
-                                                        <span class="text-body">5 км</span>
-                                                        <span class="text-body">100 км</span>
+                                                        <div class="d-flex justify-content-between align-items-center mt-2">
+                                                            <span class="text-body" style="position: absolute; left: 0;">5 км</span>
+                                                            <span class="text-body" style="position: absolute; right: 0;">100 км</span>
+                                                        </div>
                                                     </div>
                                                     <!-- End Range Slider -->
                                                 </div>
                                                 <div class="mb-5">
-                                                    <h5 class="mb-3">Тип тварини</h5>
+                                                    <h2 class="mb-3">Тип тварини</h2>
                                                     <div class="d-grid gap-2">
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" value="animal1" id="animalDog">
-                                                            <label class="form-check-label d-flex" for="animalDog">Собаки</label>
+                                                            <label class="form-check-label" for="animalDog">
+                                                                <input class="form-check-input" type="checkbox" value="animal1" id="animalDog">
+                                                                Собаки
+                                                            </label>
                                                         </div>
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" value="animal2" id="animalCat">
-                                                            <label class="form-check-label d-flex" for="animalCat">Коти</label>
+                                                            <label class="form-check-label d-flex align-items-center gap-2" for="animalCat">
+                                                                <input class="form-check-input" type="checkbox" value="animal2" id="animalCat">
+                                                                Коти
+                                                            </label>
                                                         </div>
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" value="animal3" id="animalBird">
-                                                            <label class="form-check-label d-flex" for="animalBird">Птахи</label>
+                                                            <label class="form-check-label d-flex align-items-center gap-2" for="animalBird">
+                                                                <input class="form-check-input" type="checkbox" value="animal3" id="animalBird">
+                                                                Птахи
+                                                            </label>
                                                         </div>
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" value="animal4" id="animalFarm">
-                                                            <label class="form-check-label d-flex" for="animalFarm">Свійські</label>
+                                                            <label class="form-check-label d-flex align-items-center gap-2" for="animalFarm">
+                                                                <input class="form-check-input" type="checkbox" value="animal4" id="animalFarm">
+                                                                Свійські
+                                                            </label>
                                                         </div>
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" value="animal5" id="animalWild">
-                                                            <label class="form-check-label d-flex" for="animalWild">Дикі</label>
+                                                            <label class="form-check-label d-flex align-items-center gap-2" for="animalWild">
+                                                                <input class="form-check-input" type="checkbox" value="animal5" id="animalWild">
+                                                                Дикі
+                                                            </label>
                                                         </div>
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" value="animal6" id="animalExotic">
-                                                            <label class="form-check-label d-flex" for="animalExotic">Екзотичні</label>
+                                                            <label class="form-check-label d-flex align-items-center gap-2" for="animalExotic">
+                                                                <input class="form-check-input" type="checkbox" value="animal6" id="animalExotic">
+                                                                Екзотичні
+                                                            </label>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <!-- Додай інші фільтри за потреби -->
-                                                <div class="d-grid">
-                                                    <button type="button" class="btn btn-brown btn-transition" id="find-filter-btn">Пошук</button>
-                                                </div>
-                                                <div class="d-grid mt-2">
+                                                <div class="button-container">
+                                                    <button type="button" class="btn btn-brown btn-transition btn-search" id="find-filter-btn">Пошук</button>
                                                     <button type="button" class="btn btn-outline-secondary" id="clear-filters-btn">Очистити фільтри</button>
                                                 </div>
                                             </form>
@@ -119,7 +139,7 @@
                     </div>
                     <!-- End Col -->
                     <div class="col-lg-9">
-                        <h2 class="find-main-title">Знайди свого<br> друга:тваринки<br>шукають дім</h2>
+                        <h2 class="find-main-title" style="text-align: center;">Знайди свого друга: тваринки шукають дім</h2>
                         <!-- Картки -->
                         <div class="find-cards">
                             <!-- Card 1: Кіт -->
