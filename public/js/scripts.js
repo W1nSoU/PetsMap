@@ -3,19 +3,39 @@ let map;
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 50.4501, lng: 30.5234 }, // Центр карти (Київ)
-    zoom: 6, // Масштаб
-    mapTypeControl: false, // Вимикає кнопки "Карта"/"Супутник"
-    fullscreenControl: false, // Вимикає кнопку повноекранного режиму
-    streetViewControl: false, // Вимикає кнопку Street View
-    zoomControl: false, // Вимикає кнопки масштабування
+    zoom: 6,
+    mapTypeControl: false,
+    fullscreenControl: false,
+    streetViewControl: false,
+    zoomControl: false,
   });
 
-  // Масив притулків (сюди додай свої реальні дані)
+  // Масив притулків з детальною інформацією
   const shelters = [
-    { name: "Shelter A", lat: 50.4501, lng: 30.5234 },
-    { name: "Shelter B", lat: 49.8397, lng: 24.0297 },
-    { name: "Shelter C", lat: 48.9226, lng: 24.7111 },
-    // { name: "Shelter D", lat: ..., lng: ... },
+    {
+      name: "Shelter A",
+      lat: 50.4501,
+      lng: 30.5234,
+      address: "вул. Київська, 1, Київ",
+      phone: "+380441112233",
+      description: "Найбільший притулок Києва. Понад 200 тварин шукають дім.",
+    },
+    {
+      name: "Shelter B",
+      lat: 49.8397,
+      lng: 24.0297,
+      address: "просп. Свободи, 10, Львів",
+      phone: "+380322223344",
+      description: "Притулок для котів та собак. Працюємо з 2010 року.",
+    },
+    {
+      name: "Shelter C",
+      lat: 48.9226,
+      lng: 24.7111,
+      address: "вул. Грушевського, 5, Івано-Франківськ",
+      phone: "+380342556677",
+      description: "Маленький, але затишний притулок для тварин.",
+    },
     // Додай ще притулки тут
   ];
 
@@ -27,12 +47,16 @@ function initMap() {
       title: shelter.name,
     });
 
-    // Інфо-вікно з кнопкою Donate
+    // Інфо-вікно з унікальною інформацією
     const infoWindow = new google.maps.InfoWindow({
       content: `
-        <div style="min-width:140px">
+        <div style="min-width:180px">
           <h4 style="margin:0 0 8px 0;">${shelter.name}</h4>
-          <button onclick="donateToShelter('${shelter.name.replace(/'/g, "\\'")}')" style="padding:6px 16px;background:#5b4d3b;color:#fff;border:none;border-radius:6px;cursor:pointer;">Donate</button>
+          <div style="font-size:0.97em;">
+            <div><b>Адреса:</b> ${shelter.address}</div>
+            <div><b>Телефон:</b> <a href="tel:${shelter.phone}">${shelter.phone}</a></div>
+            <div style="margin-top:6px;">${shelter.description}</div>
+          </div>
         </div>
       `,
     });
@@ -42,11 +66,6 @@ function initMap() {
     });
   });
 }
-
-// Глобальна функція для кнопки Donate
-window.donateToShelter = function(shelterName) {
-  alert(`Дякуємо за підтримку ${shelterName}!`);
-};
 
 // Якщо є кнопка "Знайти тварину"
 const findShelterBtn = document.getElementById("findShelter");
