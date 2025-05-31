@@ -61,6 +61,7 @@
     <script src="../js/scripts.js"></script>
     <script src="../js/user-menu.js"></script>
     <script src="../js/signup-modal.js"></script>
+    <script src="../js/signup.js"></script>
     <script>
         fetch('../login-banner.html')
             .then(resp => resp.text())
@@ -102,7 +103,13 @@
                         this.value = '+380 ' + digits;
                     });
                 }
+
+                // Після вставки банера:
+                if (window.initSignupFormListener) {
+                    window.initSignupFormListener();
+                }
             });
     </script>
+     
 </body>
 </html>
