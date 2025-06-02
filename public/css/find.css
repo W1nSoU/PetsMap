@@ -5,7 +5,55 @@ body.find-page {
     margin: 0;
     padding: 0;
 }
+/* Виправлення кнопки Check */
+.form-check-input {
+    width: 15px; 
+    height: 15px; 
+    margin: 2px;
+    padding: 5px;
+  }
 
+  .form-check-label {
+    display: flex;
+    align-items: center; 
+    gap: 8px; 
+}
+
+
+.form-check {
+    margin-bottom: 18px; 
+}
+/* mb class */
+.mb-3 {
+    margin-top: 40px; 
+}
+
+
+.button-container {
+    display: flex; 
+    gap: 10px; 
+    justify-content: space-between;
+    height: 45px;
+    width: 100%; 
+    margin-bottom: 25px;
+    margin-top: 30px;
+}
+.btn-filter{
+    width: 200px; 
+    height: 70px;
+    font-size: 25px;
+    margin-left: 0px;
+
+}
+.btn-search{
+    width: 200px; 
+    font-size: 18px;
+}
+.sidebar-content {
+    max-height: 100%; /* Встановлює максимальну висоту боксу */
+    overflow-y: auto; /* Додає вертикальний скрол */
+    padding-right: 10px; /* Додає відступ для зручності скролу */
+}
 /* Контейнер для карток */
 .find-cards {
     display: grid;
@@ -16,7 +64,17 @@ body.find-page {
     padding: 32px 12px;
     justify-content: center;
 }
+.range-slider {
+    position: relative; 
+}
 
+.range-slider .d-flex {
+    position: absolute; 
+    top: 100%; 
+    left: 0;
+    width: 100%; 
+    padding-top: 5px;
+}
 /* Оформлення картки */
 .find-card {
     background: #fff;

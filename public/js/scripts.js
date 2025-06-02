@@ -29,12 +29,22 @@ function initMap() {
       description: "Притулок для котів та собак. Працюємо з 2010 року.",
     },
     {
+      image: "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npbaVYegdmCndl0IIcBV_mICv-kzY1nBUva4059UQ_IHA5zS-qNsdBDqWO7mCR5bfuSK8eJkFe8Qi6LHG1qB_d6lSCR3D2u2jkBGJFWNfQdnevqLwwewgm0QBC82yapaqsScN1b=w426-h240-k-no",
       name: "Shelter C",
       lat: 48.9226,
       lng: 24.7111,
       address: "вул. Грушевського, 5, Івано-Франківськ",
       phone: "+380342556677",
       description: "Маленький, але затишний притулок для тварин.",
+    },
+    {
+      image: "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npbaVYegdmCndl0IIcBV_mICv-kzY1nBUva4059UQ_IHA5zS-qNsdBDqWO7mCR5bfuSK8eJkFe8Qi6LHG1qB_d6lSCR3D2u2jkBGJFWNfQdnevqLwwewgm0QBC82yapaqsScN1b=w426-h240-k-no",
+      name: "Тваринний Притулок 'Милосердя'",
+      lat: 49.8848696,
+      lng: 23.9500426,
+      address: "вул. Притулкова, 10, Львівська область",
+      phone: "+380936587820", 
+      description: "Притулок для тварин у Львівській області. Допомагаємо знайти дім для тварин.",
     },
     // Додай ще притулки тут
   ];
