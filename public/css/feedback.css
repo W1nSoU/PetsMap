@@ -1,4 +1,4 @@
-        body {
+body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             margin: 0;
@@ -13,7 +13,7 @@
         .review {
             background-color: #fff;
             border: 1px solid #ddd;
-            border-radius: 5px;
+            border-radius: 18px; /* Збільшено для більшої заокругленості */
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             width: 45%;
             margin: 10px;
