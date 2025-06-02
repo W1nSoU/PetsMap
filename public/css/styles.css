@@ -505,23 +505,32 @@ footer {
     right: 0;
     opacity: 0;
     height: 0;
-    overflow: hidden;
+    pointer-events: none;
     transition: all .5s cubic-bezier(.44, 1.45, .54, .99);
     z-index: 10;
     padding: 0;
     margin: 0;
     list-style: none;
     border: 1px solid var(--gray-light);
+    display: block;
+}
+
+body.logged-in .user-menu .dropdown.open {
+    opacity: 1;
+    height: 132px;
+    pointer-events: auto;
+}
+
+body:not(.logged-in) .user-menu .dropdown.open {
+    opacity: 0;
+    height: 0;
     pointer-events: none;
 }
 
-.user-menu:hover .dropdown,
-.user-menu:focus-within .dropdown {
-    opacity: 1;
-    height: 132px;
-    /* 3 items * 44px */
-    transform: translateY(0);
-    pointer-events: auto;
+.user-badge.signed-out+.dropdown {
+    opacity: 0 !important;
+    height: 0 !important;
+    pointer-events: none !important;
 }
 
 .dropdown li {
@@ -682,7 +691,7 @@ footer {
 }
 
 .user-menu .dropdown {
-    display: none;
+    display: block;
 }
 
 .user-menu .dropdown.open {
@@ -780,7 +789,7 @@ footer {
             margin: 0;
             list-style: none;
             border: 1px solid var(--gray-light);
-            pointer-events: none;
+            display: block;
         }
     
         .nav-dropdown:hover .dropdown,
@@ -788,3 +797,17 @@ footer {
             opacity: 1;
             height: 132px;
             pointer-events: auto;   }
+
+        body.logged-in .user-menu:hover .dropdown,
+body.logged-in .user-menu:focus-within .dropdown {
+    opacity: 1;
+    height: 132px;
+    pointer-events: auto;
+}
+
+body:not(.logged-in) .user-menu:hover .dropdown,
+body:not(.logged-in) .user-menu:focus-within .dropdown {
+    opacity: 0;
+    height: 0;
+    pointer-events: none;
+}

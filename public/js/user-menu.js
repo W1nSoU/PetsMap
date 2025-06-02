@@ -4,71 +4,84 @@ window.initUserMenu = function() {
     const dropdownMenu = document.getElementById('dropdownMenu');
     const logoutBtn = document.getElementById('logout-btn');
     const userMenu = document.querySelector('.user-menu');
-    const signupHeaderLink = document.getElementById('signupHeaderLink');
-    let isLoggedIn = false;
+    let isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
+    let username = sessionStorage.getItem('username') || '';
+
+    function setLoggedIn(val, name) {
+        isLoggedIn = val;
+        sessionStorage.setItem('isLoggedIn', val ? 'true' : 'false');
+        if (val) {
+            document.body.classList.add('logged-in');
+            userBadge.classList.remove('signed-out');
+            badgeText.textContent = name || username || 'Аккаунт';
+            sessionStorage.setItem('username', name || username || '');
+            dropdownMenu.classList.remove('open'); // закриваємо дропдаун при логіні
+        } else {
+            document.body.classList.remove('logged-in');
+            userBadge.classList.add('signed-out');
+            badgeText.textContent = 'Увійти';
+            dropdownMenu.classList.remove('open');
+            sessionStorage.removeItem('username');
+        }
+    }
+    setLoggedIn(isLoggedIn, username);
 
     if (!userBadge || !userMenu || !dropdownMenu) return;
 
-    // Відкривати меню по наведенню (hover)
-    userMenu.addEventListener('mouseenter', () => {
-        if (!isLoggedIn) return;
-        dropdownMenu.classList.add('open');
-    });
-
-    // Закривати меню, коли миша йде з області меню
-    userMenu.addEventListener('mouseleave', () => {
-        dropdownMenu.classList.remove('open');
-        userBadge.blur();
-    });
-
-    // Відкриття банера
-    function openLoginBanner() {
-        const banner = document.getElementById('login-banner');
-        if (banner) banner.style.display = 'flex';
-        document.body.classList.add('signup-modal-open');
-    }
-
-    // Закриття банера
-    function closeLoginBanner() {
-        const banner = document.getElementById('login-banner');
-        if (banner) banner.style.display = 'none';
-        document.body.classList.remove('signup-modal-open');
-    }
-
-    // Клік по бейджу
+    // Клік по бейджу: якщо залогінений — дропдаун, якщо ні — банер
     userBadge.addEventListener('click', (e) => {
-        if (!isLoggedIn) {
-            openLoginBanner();
-            e.stopPropagation();
-            return;
+        if (isLoggedIn) {
+            dropdownMenu.classList.toggle('open');
+        } else {
+            // Банер доступний тільки якщо НЕ залогінений
+            if (!isLoggedIn) {
+                const banner = document.getElementById('login-banner');
+                if (banner) banner.style.display = 'flex';
+                document.body.classList.add('signup-modal-open');
+            }
         }
-        dropdownMenu.classList.toggle('open');
         e.stopPropagation();
     });
 
-    // Закривати меню при кліку поза ним (по всій сторінці)
+    // Дропдаун закривається при кліку поза меню
     document.addEventListener('click', (e) => {
         if (!userMenu.contains(e.target)) {
             dropdownMenu.classList.remove('open');
         }
     });
 
-    // Вийти: змінити бейдж, заблокувати меню
+    // Відкривати дропдаун по hover тільки якщо залогінений
+    userMenu.addEventListener('mouseenter', () => {
+        if (isLoggedIn) dropdownMenu.classList.add('open');
+    });
+    userMenu.addEventListener('mouseleave', () => {
+        dropdownMenu.classList.remove('open');
+        userBadge.blur();
+    });
+
+    // Вийти з аккаунту
     if (logoutBtn) {
         logoutBtn.addEventListener('click', () => {
-            isLoggedIn = false;
-            badgeText.textContent = 'Sign up';
-            userBadge.classList.add('signed-out');
+            setLoggedIn(false);
             dropdownMenu.classList.remove('open');
-            userBadge.blur();
-            if (signupHeaderLink) signupHeaderLink.style.display = 'inline-block';
         });
     }
 
-    // Прив'язати закриття банера до хрестика
+    // Закриття банера по хрестику
     document.addEventListener('click', (e) => {
         if (e.target.classList && e.target.classList.contains('close-banner')) {
-            closeLoginBanner();
+            const banner = document.getElementById('login-banner');
+            if (banner) banner.style.display = 'none';
+            document.body.classList.remove('signup-modal-open');
         }
     });
+
+    // Глобальна функція для логіну з signup.js
+    window.setUserLoggedIn = function(name) {
+        setLoggedIn(true, name);
+        const banner = document.getElementById('login-banner');
+        if (banner) banner.style.display = 'none';
+        document.body.classList.remove('signup-modal-open');
+        dropdownMenu.classList.remove('open');
+    };
 };

@@ -61,6 +61,11 @@ async function loginSubmitHandler(e) {
         console.log('Login result:', result); // Додаємо лог для діагностики
         if (result.success) {
             alert('Вхід успішний!');
+            if (window.setUserLoggedIn) window.setUserLoggedIn(result.username);
+            // Додатково ховаємо банер на всяк випадок
+            const banner = document.getElementById('login-banner');
+            if (banner) banner.style.display = 'none';
+            document.body.classList.remove('signup-modal-open');
         } else if (result.error === 'Invalid credentials') {
             alert('Дані не збігаються!');
         } else {
