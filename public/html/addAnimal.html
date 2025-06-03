@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Додати тваринку | PetShelterMap</title>
+    <link rel="stylesheet" href="../css/addAnimal.css">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div id="header"></div>
+    <div class="container">
+        <div class="section">
+            <label>Ім'я тваринки</label>
+            <input type="text" placeholder="Введіть ім'я тваринки">
+        </div>
+
+        <div class="section">
+            <label>Тип тваринки</label>
+            <select>
+                <option>Виберіть тип</option>
+                <option>Собака</option>
+                <option>Кіт</option>
+                <option>Папуга</option>
+                <option>Гризун</option>
+                <option>Інше</option>
+            </select>
+        </div>
+
+        <div class="section">
+            <label>Причина здачі</label>
+            <div class="button-group" id="reason-group">
+                <button type="button" class="reason-btn">Переїзд</button>
+                <button type="button" class="reason-btn">Алергія</button>
+                <button type="button" class="reason-btn">Фінансові труднощі</button>
+                <button type="button" class="reason-btn">Знайдено на вулиці</button>
+                <button type="button" class="reason-btn">Інше</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <label>Вік</label>
+            <input type="text" placeholder="Введіть вік тварини">
+        </div>
+
+        <div class="section">
+            <label>Стать</label>
+            <div class="button-group" id="gender-group">
+                <button type="button" class="reason-btn">Хлопчик</button>
+                <button type="button" class="reason-btn">Дівчинка</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <label>Порода</label>
+            <input type="text" placeholder="Введіть породу тварини">
+        </div>
+
+        <div class="section">
+            <label>Стерилізований</label>
+            <div class="toggle" id="sterilization-toggle">
+                <input type="radio" name="sterilization" value="yes" id="sterilization-yes">
+                <label for="sterilization-yes">Так</label>
+                <input type="radio" name="sterilization" value="no" id="sterilization-no">
+                <label for="sterilization-no">Ні</label>
+            </div>
+        </div>
+
+        <div class="section">
+            <label>Щеплення</label>
+            <select>
+                <option>Виберіть один з варіантів</option>
+                <option>Так</option>
+                <option>Ні</option>
+                <option>Не відомо</option>
+            </select>
+        </div>
+
+        <div class="section">
+            <label>Мікрочіп</label>
+            <div class="toggle" id="microchip-toggle">
+                <input type="radio" name="microchip" value="yes" id="microchip-yes">
+                <label for="microchip-yes">Так</label>
+                <input type="radio" name="microchip" value="no" id="microchip-no">
+                <label for="microchip-no">Ні</label>
+            </div>
+        </div>
+
+        <div class="section">
+            <label>Ветеринарний паспорт</label>
+            <div class="toggle" id="vet-mood-toggle">
+                <input type="radio" name="vet_mood" value="yes" id="vet_mood-yes">
+                <label for="vet_mood-yes">Так</label>
+                <input type="radio" name="vet_mood" value="no" id="vet_mood-no">
+                <label for="vet_mood-no">Ні</label>
+            </div>
+        </div>
+
+        <div class="section">
+            <label>Фотографія тваринки</label>
+            <input type="file" id="animal-photo" accept="image/*" style="display:none;">
+            <label for="animal-photo" id="photo-upload-label">+</label>
+            <div id="photo-preview"></div>
+        </div>
+
+        <div class="section">
+            <label>Додадткова інфрмація</label>
+            <textarea placeholder="Додаткова інформація"></textarea>
+        </div>
+
+        <div class="section">
+            <button type="submit" id="submit-animal" class="submit-btn">Додати тваринку</button>
+        </div>
+    </div>
+    <div id="footer"></div>
+    <script src="../js/include-layout.js"></script>
+    <script>
+        document.getElementById('animal-photo').addEventListener('change', function(event) {
+            const preview = document.getElementById('photo-preview');
+            const file = event.target.files[0];
+            if (file) {
+                preview.innerHTML = '';
+                const img = document.createElement('img');
+                img.style.maxWidth = '180px';
+                img.style.maxHeight = '180px';
+                img.style.borderRadius = '16px';
+                img.src = URL.createObjectURL(file);
+
+                const removeBtn = document.createElement('span');
+                removeBtn.textContent = '×';
+                removeBtn.title = 'Видалити фото';
+                removeBtn.className = 'photo-remove-btn';
+                removeBtn.onclick = function() {
+                    preview.innerHTML = '';
+                    document.getElementById('animal-photo').value = '';
+                };
+
+                const wrapper = document.createElement('div');
+                wrapper.style.position = 'relative';
+                wrapper.style.display = 'inline-block';
+                wrapper.appendChild(img);
+                wrapper.appendChild(removeBtn);
+                preview.appendChild(wrapper);
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.button-group').forEach(group => {
+                const buttons = group.querySelectorAll('button');
+                buttons.forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        if (btn.classList.contains('active')) {
+                            btn.classList.remove('active');
+                        } else {
+                            buttons.forEach(b => b.classList.remove('active'));
+                            btn.classList.add('active');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
