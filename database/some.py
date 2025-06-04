@@ -4,20 +4,27 @@ import sqlite3
 conn = sqlite3.connect('D:/PetsMap/PetsMap/database/animals.db')
 cursor = conn.cursor()
 
-
-
-# Додавання запису до таблиці
+# Створення таблиці для запису даних про тварин
 cursor.execute('''
-INSERT INTO animals (name, description, image_path, city, volunteer)
-VALUES (
-    'Мурчик',
-    'Мурчик пухнастий котик із яскравим рудим забарвленням та муркотливим характером. Йому 2 роки, він здоровий і готовий стати вашим найвірнішим другом.',
-    'http://localhost:3000/images/find1.png',
-    'Київ',
-    'Олена К., волонтер'
+CREATE TABLE IF NOT EXISTS animals (
+    id INTEGER PRIMARY KEY AUTOINCREMENT, -- Унікальний ідентифікатор
+    name TEXT NOT NULL, -- Ім'я тваринки
+    type TEXT NOT NULL, -- Тип тваринки (Собака, Кіт, Птах, Гризун, Інше)
+    reason TEXT NOT NULL, -- Причина здачі (Переїзд, Алергія, Фінансові труднощі, Знайдено на вулиці, Інше)
+    age INTEGER NOT NULL, -- Вік тваринки
+    gender TEXT NOT NULL, -- Стать (Хлопчик, Дівчинка)
+    breed TEXT NOT NULL, -- Порода
+    sterilization TEXT NOT NULL, -- Стерилізований (Так, Ні)
+    vaccination TEXT NOT NULL, -- Щеплення (Так, Ні, Не знаю)
+    microchip TEXT NOT NULL, -- Мікрочіп (Так, Ні)
+    vet_passport TEXT NOT NULL, -- Ветеринарний паспорт (Так, Ні)
+    image_path TEXT NOT NULL, -- Шлях до фотографії тваринки
+    description TEXT NOT NULL -- Інформація про тваринку
 )
 ''')
 
-# Збереження змін і закриття з'єднання
+# Підтвердження змін
 conn.commit()
+
+# Закриття з'єднання
 conn.close()

@@ -1,164 +1,186 @@
 <!DOCTYPE html>
 <html lang="uk">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Додати тваринку | PetShelterMap</title>
+    <title>PetShelterMap</title>
+    <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/addAnimal.css">
     <link rel="stylesheet" href="../css/styles.css">
-</head>
+   </head>
+
 <body>
     <div id="header"></div>
+    <div id="login-banner-container"></div>
     <div class="container">
-        <div class="section">
-            <label>Ім'я тваринки</label>
-            <input type="text" placeholder="Введіть ім'я тваринки">
-        </div>
-
-        <div class="section">
-            <label>Тип тваринки</label>
-            <select>
-                <option>Виберіть тип</option>
-                <option>Собака</option>
-                <option>Кіт</option>
-                <option>Папуга</option>
-                <option>Гризун</option>
-                <option>Інше</option>
-            </select>
-        </div>
-
-        <div class="section">
-            <label>Причина здачі</label>
-            <div class="button-group" id="reason-group">
-                <button type="button" class="reason-btn">Переїзд</button>
-                <button type="button" class="reason-btn">Алергія</button>
-                <button type="button" class="reason-btn">Фінансові труднощі</button>
-                <button type="button" class="reason-btn">Знайдено на вулиці</button>
-                <button type="button" class="reason-btn">Інше</button>
+        <form action="/addAnimal" method="POST" enctype="multipart/form-data">
+            <div class="section">
+                <label for="name">Ім'я тваринки</label>
+                <input type="text" id="name" name="name" placeholder="Введіть ім'я тваринки" required>
             </div>
-        </div>
 
-        <div class="section">
-            <label>Вік</label>
-            <input type="text" placeholder="Введіть вік тварини">
-        </div>
-
-        <div class="section">
-            <label>Стать</label>
-            <div class="button-group" id="gender-group">
-                <button type="button" class="reason-btn">Хлопчик</button>
-                <button type="button" class="reason-btn">Дівчинка</button>
+            <div class="section">
+                <label for="type">Тип тваринки</label>
+                <select id="type" name="type" required>
+                    <option value="">Виберіть тип</option>
+                    <option value="Собака">Собака</option>
+                    <option value="Кіт">Кіт</option>
+                    <option value="Птах">Птах</option>
+                    <option value="Гризун">Гризун</option>
+                    <option value="Інше">Інше</option>
+                </select>
             </div>
-        </div>
 
-        <div class="section">
-            <label>Порода</label>
-            <input type="text" placeholder="Введіть породу тварини">
-        </div>
-
-        <div class="section">
-            <label>Стерилізований</label>
-            <div class="toggle" id="sterilization-toggle">
-                <input type="radio" name="sterilization" value="yes" id="sterilization-yes">
-                <label for="sterilization-yes">Так</label>
-                <input type="radio" name="sterilization" value="no" id="sterilization-no">
-                <label for="sterilization-no">Ні</label>
+            <div class="section">
+                <label>Причина здачі</label>
+                <div class="toggle" id="reason-toggle">
+                    <input type="radio" name="reason" value="Переїзд" id="reason-move" required>
+                    <label for="reason-move">Переїзд</label>
+                    <input type="radio" name="reason" value="Алергія" id="reason-allergy" >
+                    <label for="reason-allergy">Алергія</label>
+                    <input type="radio" name="reason" value="Фінансові труднощі" id="reason-financial">
+                    <label for="reason-financial">Фінансові труднощі</label>
+                    <input type="radio" name="reason" value="Знайдено на вулиці" id="reason-found">
+                    <label for="reason-found">Знайдено на вулиці</label>
+                    <input type="radio" name="reason" value="Інше" id="reason-other">
+                    <label for="reason-other">Інше</label>
+                </div>
             </div>
-        </div>
 
-        <div class="section">
-            <label>Щеплення</label>
-            <select>
-                <option>Виберіть один з варіантів</option>
-                <option>Так</option>
-                <option>Ні</option>
-                <option>Не відомо</option>
-            </select>
-        </div>
-
-        <div class="section">
-            <label>Мікрочіп</label>
-            <div class="toggle" id="microchip-toggle">
-                <input type="radio" name="microchip" value="yes" id="microchip-yes">
-                <label for="microchip-yes">Так</label>
-                <input type="radio" name="microchip" value="no" id="microchip-no">
-                <label for="microchip-no">Ні</label>
+            <div class="section">
+                    <label for="age">Вік</label>
+                <div class="age">
+                    <input type="number" id="age" name="age" placeholder="Введіть вік тварини" required>
+                </div>
             </div>
-        </div>
 
-        <div class="section">
-            <label>Ветеринарний паспорт</label>
-            <div class="toggle" id="vet-mood-toggle">
-                <input type="radio" name="vet_mood" value="yes" id="vet_mood-yes">
-                <label for="vet_mood-yes">Так</label>
-                <input type="radio" name="vet_mood" value="no" id="vet_mood-no">
-                <label for="vet_mood-no">Ні</label>
+            <div class="section">
+                <label>Стать</label>
+                <div class="toggle" id="gender-group">
+                    <input type="radio" id="gender-male" name="gender" value="Хлопчик" required>
+                    <label for="gender-male">Хлопчик</label>
+                    <input type="radio" id="gender-female" name="gender" value="Дівчинка">
+                    <label for="gender-female">Дівчинка</label>
+                </div>
             </div>
-        </div>
 
-        <div class="section">
-            <label>Фотографія тваринки</label>
-            <input type="file" id="animal-photo" accept="image/*" style="display:none;">
-            <label for="animal-photo" id="photo-upload-label">+</label>
-            <div id="photo-preview"></div>
-        </div>
+            <div class="section">
+                <label for="breed">Порода</label>
+                <input type="text" id="breed" name="breed" placeholder="Введіть породу тварини" required>
+            </div>
 
-        <div class="section">
-            <label>Додадткова інфрмація</label>
-            <textarea placeholder="Додаткова інформація"></textarea>
-        </div>
+            <div class="section">
+                <label>Стерилізований</label>
+                <div class="toggle" id="sterilization-toggle">
+                    <input type="radio" name="sterilization" value="Так" id="sterilization-yes" required>
+                    <label for="sterilization-yes">Так</label>
+                    <input type="radio" name="sterilization" value="Ні" id="sterilization-no">
+                    <label for="sterilization-no">Ні</label>
+                </div>
+            </div>
 
-        <div class="section">
-            <button type="submit" id="submit-animal" class="submit-btn">Додати тваринку</button>
-        </div>
+            <div class="section">
+                <label>Щеплення</label>
+                <select name="vaccination" id="vaccination">
+                    <option value="">Виберіть один з варіантів</option>
+                    <option value="yes">Так</option>
+                    <option value="no">Ні</option>
+                    <option value="unknown">Не відомо</option>
+                </select>
+            </div>
+            
+            <div class="section">
+                <label>Мікрочіп</label>
+                <div class="toggle" id="microchip-toggle">
+                    <input type="radio" name="microchip" value="yes" id="microchip-yes">
+                    <label for="microchip-yes">Так</label>
+                    <input type="radio" name="microchip" value="no" id="microchip-no">
+                    <label for="microchip-no">Ні</label>
+                </div>
+            </div>
+            
+            <div class="section">
+                <label>Ветеринарний паспорт</label>
+                <div class="toggle" id="vet-mood-toggle">
+                    <input type="radio" name="vet_passport" value="yes" id="vet_mood-yes">
+                    <label for="vet_mood-yes">Так</label>
+                    <input type="radio" name="vet_passport" value="no" id="vet_mood-no">
+                    <label for="vet_mood-no">Ні</label>
+                </div>
+            </div>
+            
+            <div class="section">
+                <label>Фотографія тваринки</label>
+                <input type="file" id="image_path" name="image_path" accept="image/*" style="display:none;">
+                <label for="image_path" id="photo-upload-label">+</label>
+                <div id="photo-preview"></div>
+            </div>
+            
+            <div class="section">
+                <label>Додаткова інформація</label>
+                <textarea name="description" id="description" placeholder="Додаткова інформація"></textarea>
+            </div>
+            
+            <div class="section">
+                <button type="button" id="submit-animal" class="submit-btn">Додати тваринку</button>
+            </div>
+            
+            <script>
+                document.getElementById('image_path').addEventListener('change', function () {
+                    const photoPreview = document.getElementById('photo-preview');
+                    const file = this.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = function (e) {
+                            photoPreview.innerHTML = `<img src="${e.target.result}" alt="Фото тваринки" style="max-width: 100%; max-height: 100%; border-radius: 10px;">`;
+                        };
+                        reader.readAsDataURL(file);
+                    } else {
+                        photoPreview.innerHTML = ''; // Очищення попереднього перегляду, якщо файл не вибрано
+                    }
+                });
+
+                document.getElementById('submit-animal').addEventListener('click', async function() {
+                    const formData = new FormData();
+                    formData.append('name', document.getElementById('name').value);
+                    formData.append('type', document.getElementById('type').value);
+                    formData.append('reason', document.querySelector('input[name="reason"]:checked')?.value || '');
+                    formData.append('age', document.getElementById('age').value);
+                    formData.append('gender', document.querySelector('input[name="gender"]:checked')?.value || '');
+                    formData.append('breed', document.getElementById('breed').value);
+                    formData.append('sterilization', document.querySelector('input[name="sterilization"]:checked')?.value || '');
+                    
+                    formData.append('vaccination', document.getElementById('vaccination').value);
+                    formData.append('microchip', document.querySelector('input[name="microchip"]:checked')?.value || '');
+                    formData.append('vet_passport', document.querySelector('input[name="vet_passport"]:checked')?.value || '');
+
+                    const photo = document.getElementById('image_path').files[0];
+                    if (photo) {
+                        formData.append('image_path', photo);
+                    }
+                    formData.append('description', document.getElementById('description').value);
+
+                    try {
+                        const response = await fetch('/api/animals', {
+                            method: 'POST',
+                            body: formData
+                        });
+
+                        if (response.ok) {
+                            alert('Тваринку успішно додано!');
+                        } else {
+                            const error = await response.json();
+                            alert(`Помилка: ${error.error || 'Невідома помилка'}`);
+                        }
+                    } catch (error) {
+                        console.error('Помилка:', error);
+                        alert('Сталася помилка.');
+                    }
+                });
+            </script>
+        </form>
     </div>
     <div id="footer"></div>
-    <script src="../js/include-layout.js"></script>
-    <script>
-        document.getElementById('animal-photo').addEventListener('change', function(event) {
-            const preview = document.getElementById('photo-preview');
-            const file = event.target.files[0];
-            if (file) {
-                preview.innerHTML = '';
-                const img = document.createElement('img');
-                img.style.maxWidth = '180px';
-                img.style.maxHeight = '180px';
-                img.style.borderRadius = '16px';
-                img.src = URL.createObjectURL(file);
-
-                const removeBtn = document.createElement('span');
-                removeBtn.textContent = '×';
-                removeBtn.title = 'Видалити фото';
-                removeBtn.className = 'photo-remove-btn';
-                removeBtn.onclick = function() {
-                    preview.innerHTML = '';
-                    document.getElementById('animal-photo').value = '';
-                };
-
-                const wrapper = document.createElement('div');
-                wrapper.style.position = 'relative';
-                wrapper.style.display = 'inline-block';
-                wrapper.appendChild(img);
-                wrapper.appendChild(removeBtn);
-                preview.appendChild(wrapper);
-            }
-        });
-
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.button-group').forEach(group => {
-                const buttons = group.querySelectorAll('button');
-                buttons.forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        if (btn.classList.contains('active')) {
-                            btn.classList.remove('active');
-                        } else {
-                            buttons.forEach(b => b.classList.remove('active'));
-                            btn.classList.add('active');
-                        }
-                    });
-                });
-            });
-        });
-    </script>
 </body>
 </html>
