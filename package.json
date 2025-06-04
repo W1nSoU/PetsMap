@@ -1,0 +1,27 @@
+{
+  "name": "petsmap",
+  "version": "1.0.0",
+  "description": "**PetShelterMap** — це інтерактивна карта притулків для тварин. Проєкт допомагає швидко знаходити притулки на мапі, переглядати інформацію про них та контакти.",
+  "main": "sever.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/W1nSoU/PetsMap.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/W1nSoU/PetsMap/issues"
+  },
+  "homepage": "https://github.com/W1nSoU/PetsMap#readme",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "body-parser": "^2.2.0",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "sqlite3": "^5.1.7"
+  }
+}
