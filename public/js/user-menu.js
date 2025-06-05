@@ -15,7 +15,7 @@ window.initUserMenu = function() {
             userBadge.classList.remove('signed-out');
             badgeText.textContent = name || username || 'Аккаунт';
             sessionStorage.setItem('username', name || username || '');
-            dropdownMenu.classList.remove('open'); // закриваємо дропдаун при логіні
+            dropdownMenu.classList.remove('open');
         } else {
             document.body.classList.remove('logged-in');
             userBadge.classList.add('signed-out');
@@ -23,6 +23,8 @@ window.initUserMenu = function() {
             dropdownMenu.classList.remove('open');
             sessionStorage.removeItem('username');
         }
+        // Force reflow to ensure dropdown updates correctly
+        void dropdownMenu.offsetWidth;
         console.log('[Auth] Logged in:', val);
     }
     setLoggedIn(isLoggedIn, username);
@@ -31,13 +33,15 @@ window.initUserMenu = function() {
 
     // Клік по бейджу: якщо залогінений — дропдаун, якщо ні — банер
     userBadge.addEventListener('click', (e) => {
-        if (isLoggedIn) {
-            dropdownMenu.classList.toggle('open');
-        } else {
+        isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
+        if (!isLoggedIn) {
             const banner = document.getElementById('login-banner');
             if (banner) banner.style.display = 'flex';
             document.body.classList.add('signup-modal-open');
+            e.stopPropagation();
+            return;
         }
+        dropdownMenu.classList.toggle('open');
         e.stopPropagation();
     });
 
@@ -50,7 +54,7 @@ window.initUserMenu = function() {
 
     // Відкривати дропдаун по hover тільки якщо залогінений
     userMenu.addEventListener('mouseenter', () => {
-        console.log('[Hover] Mouse entered userMenu. isLoggedIn:', isLoggedIn);
+        isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
         if (isLoggedIn) dropdownMenu.classList.add('open');
     });
 
@@ -60,6 +64,8 @@ window.initUserMenu = function() {
         // Зачекаємо трохи, щоб дати шанс мишці перейти між userMenu і dropdownMenu
         clearTimeout(hoverTimeout);
         hoverTimeout = setTimeout(() => {
+            // Always check login state to prevent accidental dropdown flicker
+            isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
             if (!userMenu.matches(':hover') && !dropdownMenu.matches(':hover')) {
                 dropdownMenu.classList.remove('open');
                 userBadge.blur();

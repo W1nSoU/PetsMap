@@ -1,0 +1,136 @@
+/* Контейнер */
+.user-menu {
+    position: relative;
+    display: inline-block;
+}
+
+/* Кнопка-бейдж */
+.user-badge {
+    background: var(--brown);
+    color: #fff;
+    border-radius: 16px;
+    padding: 10px 32px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 20;
+    min-width: 110px;
+    height: 42px;
+    box-sizing: border-box;
+    transition: background 0.2s ease;
+    outline: none;
+}
+
+.user-badge .badge-text,
+.user-badge .badge-bars {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+}
+
+.user-badge .badge-bars {
+    flex-direction: column;
+    gap: 5px;
+    opacity: 0;
+}
+
+.user-badge .badge-bars span {
+    display: block;
+    height: 3px;
+    width: 28px;
+    background: #fff;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.user-badge:hover .badge-text,
+.user-badge:focus .badge-text {
+    opacity: 0;
+}
+
+.user-badge:hover .badge-bars,
+.user-badge:focus .badge-bars {
+    opacity: 1;
+}
+
+/* Стан "не залогінений" */
+.user-badge.signed-out {
+    background: var(--gray-light);
+    color: var(--gray-dark);
+    cursor: default;
+}
+
+.user-badge.signed-out .badge-bars {
+    display: none;
+}
+
+/* Випадаюче меню */
+.user-menu .dropdown {
+    position: absolute;
+    top: 48px;
+    right: 0;
+    min-width: 160px;
+    background: #f6f5f2;
+    border-radius: 12px;
+    box-shadow: 0 2px 16px rgba(60, 60, 57, 0.09);
+    border: 1px solid var(--gray-light);
+    z-index: 10;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    display: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.user-menu .dropdown.open {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.user-badge.signed-out+.dropdown {
+    display: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+/* Стилі пунктів меню */
+.dropdown li {
+    width: 100%;
+}
+
+.dropdown a,
+.dropdown button {
+    display: block;
+    width: 100%;
+    padding: 12px 22px;
+    font-size: 1.05rem;
+    text-align: left;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--brown);
+    transition: background 0.18s ease, color 0.18s ease;
+    font-family: inherit;
+    font-weight: inherit;
+    outline: none;
+}
+
+.dropdown a:hover,
+.dropdown button:hover {
+    background: var(--gray-light);
+    color: var(--gray-dark); 
+}
+

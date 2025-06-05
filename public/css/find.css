@@ -1,3 +1,89 @@
+:root {
+    --button-bg: #5b4d3b;
+    --button-bg-hover: #3c3c39;
+    --button-secondary-bg: transparent;
+    --button-secondary-border: #5b4d3b;
+    --button-secondary-hover: #ebe7e1;
+}
+
+/* Контейнер для кнопок */
+.button-row, .buttons {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 22px;
+    margin-top: 30px;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 120px; /* або 350px, якщо потрібно більше відступу */
+}
+
+/* Основний стиль кнопок */
+.button-row button,
+.button-row a,
+.buttons button,
+.buttons a {
+    border: none;
+    border-radius: 24px;
+    padding: 14px 36px;
+    font-size: 1.08rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(91, 77, 59, 0.07);
+    transition: background 0.2s, color 0.2s, border 0.2s, transform 0.18s;
+    outline: none;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+/* Основна кнопка */
+.btn-brown,
+.btn-add-animal,
+.btn-filter {
+    border-radius: 24px;
+    padding: 14px 36px;
+    font-size: 1.08rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(91, 77, 59, 0.07);
+    transition: background 0.2s, color 0.2s, border 0.2s, transform 0.18s;
+    outline: none;
+    display: inline-flex;
+    align-items: center;
+    background: var(--button-bg);
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Hover/Focus ефект */
+.btn-brown:hover,
+.btn-brown:focus,
+.btn-add-animal:hover,
+.btn-add-animal:focus,
+.btn-filter:hover,
+.btn-filter:focus {
+    background: var(--button-bg-hover);
+    transform: translateY(-2px) scale(1.04);
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Вторинна кнопка (якщо треба) */
+.button-row .secondary,
+.buttons .secondary {
+    background: var(--button-secondary-bg);
+    border: 2px solid var(--button-secondary-border);
+    color: var(--button-bg);
+}
+
+.button-row .secondary:hover,
+.button-row .secondary:focus,
+.buttons .secondary:hover,
+.buttons .secondary:focus {
+    background: var(--button-secondary-hover);
+    transform: translateY(-2px) scale(1.04);
+}
+
 /* Основний фон і шрифт */
 body.find-page {
     background: #fff;
@@ -45,11 +131,18 @@ body.find-page {
     margin-top: 30px;
 }
 .btn-filter{
-    width: 200px; 
-    height: 70px;
-    font-size: 25px;
-    margin-left: 0px;
-
+    
+    border-radius: 24px;
+    padding: 14px 36px;
+    font-size: 1.08rem;
+    height: 48px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(91, 77, 59, 0.07);
+    transition: background 0.2s, color 0.2s, border 0.2s, transform 0.18s;
+    outline: none;
+    background: var(--button-bg);
+    color: #fff;
 }
 .btn-search{
     width: 200px; 
@@ -210,7 +303,6 @@ body.find-page {
     padding: 7px 28px;
     background: #5B4D3B; /* Новий колір */
     color: #fff;
-    border: none;
     border-radius: 6px;
     font-size: 1rem;
     font-family: 'Montserrat', sans-serif;
@@ -241,7 +333,7 @@ body.find-page {
 
 /* Кнопка з обведенням */
 .btn-outline-secondary {
-    border: 1px solid #bdbdbd;
+    border: 1px solid #5B4D3B;
     background: #fff;
     color: #5B4D3B;
     border-radius: 6px;
@@ -465,5 +557,39 @@ body.find-page {
         max-width: 100%;
         flex: 0 0 100%;
     }
+}
+
+.button-row {
+    display: flex;
+    justify-content: flex-start; /* кнопка зліва */
+    align-items: center;
+    margin-bottom: 16px;
+    margin-top: 0;
+    padding-left: 120px; /* відступ зліва */
+}
+
+.btn-add-animal {
+    background: transparent;
+    border: 2px solid #5b4d3b;
+    color: #5b4d3b;
+    border-radius: 24px;
+    padding: 14px 36px;
+    font-size: 1.08rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(91, 77, 59, 0.07);
+    transition: background 0.2s, color 0.2s, border 0.2s, transform 0.18s;
+    outline: none;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+}
+.btn-add-animal:hover,
+.btn-add-animal:focus {
+    background: #ebe7e1;
+    color: #5b4d3b;
+    border: 2px solid #5b4d3b;
+    transform: translateY(-2px) scale(1.04);
+    text-decoration: none;
 }
 

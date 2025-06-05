@@ -54,8 +54,7 @@ header {
 
 header,
 header nav,
-header nav a,
-header .user-badge {
+header nav a {
     color: #6d6256 !important;
     /* Темно-сірий, але не чорний */
 }
@@ -109,32 +108,6 @@ nav a:hover {
     background: var(--gray-light);
 }
 
-.user-badge {
-    font-size: 1.3rem;
-    /* такий самий розмір, як у nav a */
-    padding: 10px 32px;
-    /* підбір під новий розмір — можна змінити для бажаної висоти */
-    min-width: 120px;
-    /* мінімальна ширина, щоб текст гарно вміщувався */
-    height: 48px;
-    /* фіксована висота для стабільності */
-    border-radius: 24px;
-    /* більше заокруглення для великої кнопки */
-    font-weight: 700;
-    /* залишаємо жирний для акценту */
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s;
-    cursor: pointer;
-    background: var(--brown);
-    color: #fff;
-    margin-left: 8px;
-    position: relative;
-    z-index: 20;
-    outline: none;
-    box-sizing: border-box;
-}
 
 .center-wrapper {
     flex: 1 0 auto;
@@ -421,140 +394,6 @@ footer {
     }
 }
 
-.user-menu {
-    position: relative;
-    display: inline-block;
-}
-
-/* Фіксований badge, плавне перемикання, без “зависань” і дьоргання */
-.user-badge {
-    background: var(--brown);
-    color: #fff;
-    border-radius: 16px;
-    padding: 8px 22px;
-    margin-left: 8px;
-    font-weight: 600;
-    font-size: 1rem;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    z-index: 20;
-    outline: none;
-    min-width: 110px;
-    height: 42px;
-    box-sizing: border-box;
-    transition: background 0.2s, min-width 0.3s, width 0.3s;
-}
-
-.user-badge .badge-text,
-.user-badge .badge-bars {
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: opacity 0.2s;
-    pointer-events: none;
-}
-
-.user-badge .badge-bars {
-    opacity: 0;
-    /* pointer-events: none; (залишаємо для чистоти) */
-}
-
-.user-badge:hover .badge-text,
-.user-badge:focus .badge-text {
-    opacity: 0;
-}
-
-.user-badge:hover .badge-bars,
-.user-badge:focus .badge-bars {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-/* Гамбургер-бар — три смужки */
-.user-badge .badge-bars {
-    flex-direction: column;
-    gap: 5px;
-}
-
-.user-badge .badge-bars span {
-    display: block;
-    height: 3px;
-    width: 28px;
-    background: #fff;
-    border-radius: 2px;
-    transition: all 0.3s;
-}
-
-/* Випадаюче меню */
-.user-menu .dropdown {
-    display: none;
-    opacity: 0;
-    height: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease, height 0.3s ease;
-    background: #f6f5f2;
-    min-width: 160px;
-    border-radius: 12px;
-    box-shadow: 0 2px 16px rgba(60, 60, 57, 0.09);
-    position: absolute;
-    top: 45px;
-    right: 0;
-    z-index: 10;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    border: 1px solid var(--gray-light);
-}
-
-.user-menu .dropdown.open {
-    display: block;
-    opacity: 1;
-    height: 132px;
-    pointer-events: auto;
-}
-
-/* body.logged-in .user-menu .dropdown.open,
-body:not(.logged-in) .user-menu .dropdown.open {
-    // JS now controls logic, so these are not needed
-} */
-
-.user-badge.signed-out+.dropdown {
-    opacity: 0 !important;
-    height: 0 !important;
-    pointer-events: none !important;
-}
-
-.dropdown li {
-    width: 100%;
-}
-
-.dropdown a {
-    display: block;
-    width: 100%;
-    padding: 12px 22px;
-    color: var(--brown);
-    text-align: left;
-    text-decoration: none;
-    font-size: 1.08rem;
-    background: none;
-    transition: background 0.18s;
-    border-radius: 0;
-}
-
-.dropdown a:hover {
-    background: var(--gray-light);
-    color: var(--gray-dark);
-}
 
 
 .contacts-menu {
@@ -615,28 +454,6 @@ body:not(.logged-in) .user-menu .dropdown.open {
     pointer-events: auto;
 }
 
-@media (max-width: 600px) {
-    .user-badge {
-        padding: 8px 6px;
-        font-size: 0.98rem;
-        min-width: 76px;
-        height: 38px;
-    }
-
-    .user-badge .badge-bars span {
-        width: 18px;
-    }
-
-    .dropdown a {
-        font-size: 0.97rem;
-        padding: 10px 12px;
-    }
-
-    .user-menu .dropdown {
-        min-width: 110px;
-        right: 0;
-    }
-}
 .volunteer-register-link {
     display: block;
     margin: 30px 0 20px 0;
@@ -661,49 +478,6 @@ body:not(.logged-in) .user-menu .dropdown.open {
     /* Підкреслення не зʼявляється при наведенні */
 }
 
-.dropdown button {
-    display: block;
-    width: 100%;
-    padding: 12px 22px;
-    color: var(--brown);
-    text-align: left;
-    font-size: 1.08rem;
-    background: none;
-    border: none;
-    border-radius: 0;
-    cursor: pointer;
-    transition: background 0.18s, color 0.18s;
-    font-family: inherit;
-    /* Щоб не змінювався шрифт */
-    font-weight: inherit;
-    /* Наслідувати жирність */
-    outline: none;
-}
-
-.dropdown button:hover,
-.dropdown button:focus {
-    background: var(--gray-light);
-    color: var(--gray-dark);
-}
-.user-badge.signed-out {
-    background: var(--gray-light);
-    color: var(--gray-dark);
-    cursor: pointer;
-}
-
-/* .user-menu .dropdown {
-    display: block;
-}
-
-.user-menu .dropdown.open {
-    display: block;
-}
-*/
-
-.user-badge.signed-out+.dropdown {
-    display: none !important;
-    pointer-events: none !important;
-}
 
 .login-banner {
     position: fixed;
@@ -802,12 +576,3 @@ body:not(.logged-in) .user-menu .dropdown.open {
 /* Логіку появи дропдауна для .user-menu тепер контролює JS (mouseenter/mouseleave)
    Тому ці стилі не потрібні, інакше буде миготіння при переході між .user-badge і .dropdown.
 */
-
-.user-badge .badge-text {
-    color: #ebe7e1 !important;
-}
-
-/* body:not(.logged-in) .user-menu .dropdown,
-body.logged-in .user-menu .dropdown {
-    // JS now controls logic, so these are not needed
-} */
