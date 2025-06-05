@@ -58,11 +58,9 @@
 
         <div class="section">
             <label>Стерилізований</label>
-            <div class="toggle" id="sterilization-toggle">
-                <input type="radio" name="sterilization" value="yes" id="sterilization-yes">
-                <label for="sterilization-yes">Так</label>
-                <input type="radio" name="sterilization" value="no" id="sterilization-no">
-                <label for="sterilization-no">Ні</label>
+            <div class="button-group" id="sterilization-group">
+                <button type="button" class="btn btn-brown btn-transition circle-btn">Так</button>
+                <button type="button" class="btn btn-brown btn-transition circle-btn">Ні</button>
             </div>
         </div>
 
@@ -78,21 +76,17 @@
 
         <div class="section">
             <label>Мікрочіп</label>
-            <div class="toggle" id="microchip-toggle">
-                <input type="radio" name="microchip" value="yes" id="microchip-yes">
-                <label for="microchip-yes">Так</label>
-                <input type="radio" name="microchip" value="no" id="microchip-no">
-                <label for="microchip-no">Ні</label>
+            <div class="button-group" id="microchip-group">
+                <button type="button" class="btn btn-brown btn-transition circle-btn">Так</button>
+                <button type="button" class="btn btn-brown btn-transition circle-btn">Ні</button>
             </div>
         </div>
 
         <div class="section">
             <label>Ветеринарний паспорт</label>
-            <div class="toggle" id="vet-mood-toggle">
-                <input type="radio" name="vet_mood" value="yes" id="vet_mood-yes">
-                <label for="vet_mood-yes">Так</label>
-                <input type="radio" name="vet_mood" value="no" id="vet_mood-no">
-                <label for="vet_mood-no">Ні</label>
+            <div class="button-group" id="vet-mood-group">
+                <button type="button" class="btn btn-brown btn-transition circle-btn">Так</button>
+                <button type="button" class="btn btn-brown btn-transition circle-btn">Ні</button>
             </div>
         </div>
 
@@ -144,6 +138,7 @@
             }
         });
 
+        // Кнопки
         document.addEventListener('DOMContentLoaded', function() {
             document.querySelectorAll('.button-group').forEach(group => {
                 const buttons = group.querySelectorAll('button');
@@ -156,6 +151,48 @@
                             btn.classList.add('active');
                         }
                     });
+                });
+            });
+
+            // Тогли (радіо)
+            document.querySelectorAll('.toggle').forEach(toggle => {
+                const radios = toggle.querySelectorAll('input[type="radio"]');
+                radios.forEach(radio => {
+                    // Запам'ятовуємо стан перед кліком
+                    radio.addEventListener('mousedown', function() {
+                        radio.wasChecked = radio.checked;
+                    });
+                    radio.addEventListener('click', function(e) {
+                        if (radio.wasChecked) {
+                            e.preventDefault();
+                            radio.checked = false;
+                            radios.forEach(r => {
+                                const label = toggle.querySelector('label[for="' + r.id + '"]');
+                                if (label) label.classList.remove('active');
+                                r.classList.remove('active-radio');
+                            });
+                        } else {
+                            radios.forEach(r => {
+                                const label = toggle.querySelector('label[for="' + r.id + '"]');
+                                if (label) label.classList.remove('active');
+                                r.classList.remove('active-radio');
+                            });
+                            radio.classList.add('active-radio');
+                            const label = toggle.querySelector('label[for="' + radio.id + '"]');
+                            if (label) label.classList.add('active');
+                        }
+                    });
+                    // ініціалізація
+                    const label = toggle.querySelector('label[for="' + radio.id + '"]');
+                    if (label) {
+                        if (radio.checked) {
+                            radio.classList.add('active-radio');
+                            label.classList.add('active');
+                        } else {
+                            radio.classList.remove('active-radio');
+                            label.classList.remove('active');
+                        }
+                    }
                 });
             });
         });

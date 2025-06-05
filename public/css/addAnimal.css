@@ -101,8 +101,10 @@ select {
 }
 
 .button-group .active {
-    background: #000;
+    background: #5B4D3B;
     color: #fff;
+    border-radius: 20px;
+    border: 2px solid #5B4D3B;
 }
 
 .toggle {
@@ -197,4 +199,22 @@ select {
 
 .photo-remove-btn:hover {
     background: #b71c1c;
+}
+
+.circle-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    padding: 0;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s, border 0.2s;
+}
+
+.button-group .circle-btn.active {
+    background: #5B4D3B;
+    color: #fff;
+    border: 2px solid #5B4D3B;
 }
