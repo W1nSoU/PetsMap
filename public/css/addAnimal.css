@@ -51,6 +51,9 @@ label {
     font-weight: bold;
     text-align: left; /* Вирівнювання тексту мітки праворуч */
 }
+.age input {
+    border-radius: 7px;
+}
 
 input[type="text"],
 select,
@@ -109,7 +112,11 @@ select {
 
 .toggle {
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
+    justify-content: flex-start; 
+    align-items: center;
+    justify-content: center;
 }
 
 .toggle input[type="radio"] {
@@ -123,7 +130,7 @@ select {
     width: 24px;
     height: 24px;
     border: 2px solid #5B4D3B;
-    border-radius: 50%;
+    border-radius: 16px;
     text-align: center;
     font-size: 12px;
     cursor: pointer;
@@ -149,7 +156,7 @@ select {
     cursor: pointer;
     transition: background 0.2s;
     width: 100%;
-    max-width: 200px;
+    max-width: 400px;
     margin: 0 auto;
     display: block;
 }
@@ -199,22 +206,4 @@ select {
 
 .photo-remove-btn:hover {
     background: #b71c1c;
-}
-
-.circle-btn {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    padding: 0;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s, color 0.2s, border 0.2s;
-}
-
-.button-group .circle-btn.active {
-    background: #5B4D3B;
-    color: #fff;
-    border: 2px solid #5B4D3B;
 }

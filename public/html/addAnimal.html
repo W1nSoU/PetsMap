@@ -1,66 +1,75 @@
 <!DOCTYPE html>
 <html lang="uk">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Додати тваринку | PetShelterMap</title>
+    <title>PetShelterMap</title>
+    <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/addAnimal.css">
     <link rel="stylesheet" href="../css/styles.css">
-</head>
+   </head>
+
 <body>
     <div id="header"></div>
+    <div id="login-banner-container"></div>
     <div class="container">
-        <div class="section">
-            <label>Ім'я тваринки</label>
-            <input type="text" placeholder="Введіть ім'я тваринки">
-        </div>
+        <form action="/addAnimal" method="POST" enctype="multipart/form-data">
+            <div class="section">
+                <label for="name">Ім'я тваринки</label>
+                <input type="text" id="name" name="name" placeholder="Введіть ім'я тваринки" required>
+            </div>
 
-        <div class="section">
-            <label>Тип тваринки</label>
-            <select>
-                <option>Виберіть тип</option>
-                <option>Собака</option>
-                <option>Кіт</option>
-                <option>Папуга</option>
-                <option>Гризун</option>
-                <option>Інше</option>
-            </select>
-        </div>
+            <div class="section">
+                <label for="type">Тип тваринки</label>
+                <select id="type" name="type" required>
+                    <option value="">Виберіть тип</option>
+                    <option value="Собака">Собака</option>
+                    <option value="Кіт">Кіт</option>
+                    <option value="Птах">Птах</option>
+                    <option value="Гризун">Гризун</option>
+                    <option value="Інше">Інше</option>
+                </select>
+            </div>
 
         <div class="section">
             <label>Причина здачі</label>
             <div class="button-group" id="reason-group">
-                <button type="button" class="btn btn-brown btn-transition reason-btn">Переїзд</button>
-                <button type="button" class="btn btn-brown btn-transition reason-btn">Алергія</button>
-                <button type="button" class="btn btn-brown btn-transition reason-btn">Фінансові труднощі</button>
-                <button type="button" class="btn btn-brown btn-transition reason-btn">Знайдено на вулиці</button>
-                <button type="button" class="btn btn-brown btn-transition reason-btn">Інше</button>
+                <button type="button" class="reason-btn">Переїзд</button>
+                <button type="button" class="reason-btn">Алергія</button>
+                <button type="button" class="reason-btn">Фінансові труднощі</button>
+                <button type="button" class="reason-btn">Знайдено на вулиці</button>
+                <button type="button" class="reason-btn">Інше</button>
             </div>
         </div>
 
-        <div class="section">
-            <label>Вік</label>
-            <input type="text" placeholder="Введіть вік тварини">
-        </div>
+            <div class="section">
+                    <label for="age">Вік</label>
+                <div class="age">
+                    <input type="number" id="age" name="age" placeholder="Введіть вік тварини" required>
+                </div>
+            </div>
 
         <div class="section">
             <label>Стать</label>
             <div class="button-group" id="gender-group">
-                <button type="button" class="btn btn-brown btn-transition reason-btn">Хлопчик</button>
-                <button type="button" class="btn btn-brown btn-transition reason-btn">Дівчинка</button>
+                <button type="button" class="reason-btn">Хлопчик</button>
+                <button type="button" class="reason-btn">Дівчинка</button>
             </div>
         </div>
 
-        <div class="section">
-            <label>Порода</label>
-            <input type="text" placeholder="Введіть породу тварини">
-        </div>
+            <div class="section">
+                <label for="breed">Порода</label>
+                <input type="text" id="breed" name="breed" placeholder="Введіть породу тварини" required>
+            </div>
 
         <div class="section">
             <label>Стерилізований</label>
-            <div class="button-group" id="sterilization-group">
-                <button type="button" class="btn btn-brown btn-transition circle-btn">Так</button>
-                <button type="button" class="btn btn-brown btn-transition circle-btn">Ні</button>
+            <div class="toggle" id="sterilization-toggle">
+                <input type="radio" name="sterilization" value="yes" id="sterilization-yes">
+                <label for="sterilization-yes">Так</label>
+                <input type="radio" name="sterilization" value="no" id="sterilization-no">
+                <label for="sterilization-no">Ні</label>
             </div>
         </div>
 
@@ -76,17 +85,21 @@
 
         <div class="section">
             <label>Мікрочіп</label>
-            <div class="button-group" id="microchip-group">
-                <button type="button" class="btn btn-brown btn-transition circle-btn">Так</button>
-                <button type="button" class="btn btn-brown btn-transition circle-btn">Ні</button>
+            <div class="toggle" id="microchip-toggle">
+                <input type="radio" name="microchip" value="yes" id="microchip-yes">
+                <label for="microchip-yes">Так</label>
+                <input type="radio" name="microchip" value="no" id="microchip-no">
+                <label for="microchip-no">Ні</label>
             </div>
         </div>
 
         <div class="section">
             <label>Ветеринарний паспорт</label>
-            <div class="button-group" id="vet-mood-group">
-                <button type="button" class="btn btn-brown btn-transition circle-btn">Так</button>
-                <button type="button" class="btn btn-brown btn-transition circle-btn">Ні</button>
+            <div class="toggle" id="vet-mood-toggle">
+                <input type="radio" name="vet_mood" value="yes" id="vet_mood-yes">
+                <label for="vet_mood-yes">Так</label>
+                <input type="radio" name="vet_mood" value="no" id="vet_mood-no">
+                <label for="vet_mood-no">Ні</label>
             </div>
         </div>
 
@@ -102,8 +115,8 @@
             <textarea placeholder="Додаткова інформація"></textarea>
         </div>
 
-        <div class="section button-center">
-            <button type="submit" id="submit-animal" class="btn btn-brown btn-transition submit-btn">Додати тваринку</button>
+        <div class="section">
+            <button type="submit" id="submit-animal" class="submit-btn">Додати тваринку</button>
         </div>
     </div>
     <div id="footer"></div>
@@ -138,7 +151,6 @@
             }
         });
 
-        // Кнопки
         document.addEventListener('DOMContentLoaded', function() {
             document.querySelectorAll('.button-group').forEach(group => {
                 const buttons = group.querySelectorAll('button');
@@ -147,52 +159,10 @@
                         if (btn.classList.contains('active')) {
                             btn.classList.remove('active');
                         } else {
-                            buttons.forEach(b => b.classList.remove('active'));
-                            btn.classList.add('active');
+                            const error = await response.json();
+                            alert(`Помилка: ${error.error || 'Невідома помилка'}`);
                         }
                     });
-                });
-            });
-
-            // Тогли (радіо)
-            document.querySelectorAll('.toggle').forEach(toggle => {
-                const radios = toggle.querySelectorAll('input[type="radio"]');
-                radios.forEach(radio => {
-                    // Запам'ятовуємо стан перед кліком
-                    radio.addEventListener('mousedown', function() {
-                        radio.wasChecked = radio.checked;
-                    });
-                    radio.addEventListener('click', function(e) {
-                        if (radio.wasChecked) {
-                            e.preventDefault();
-                            radio.checked = false;
-                            radios.forEach(r => {
-                                const label = toggle.querySelector('label[for="' + r.id + '"]');
-                                if (label) label.classList.remove('active');
-                                r.classList.remove('active-radio');
-                            });
-                        } else {
-                            radios.forEach(r => {
-                                const label = toggle.querySelector('label[for="' + r.id + '"]');
-                                if (label) label.classList.remove('active');
-                                r.classList.remove('active-radio');
-                            });
-                            radio.classList.add('active-radio');
-                            const label = toggle.querySelector('label[for="' + radio.id + '"]');
-                            if (label) label.classList.add('active');
-                        }
-                    });
-                    // ініціалізація
-                    const label = toggle.querySelector('label[for="' + radio.id + '"]');
-                    if (label) {
-                        if (radio.checked) {
-                            radio.classList.add('active-radio');
-                            label.classList.add('active');
-                        } else {
-                            radio.classList.remove('active-radio');
-                            label.classList.remove('active');
-                        }
-                    }
                 });
             });
         });

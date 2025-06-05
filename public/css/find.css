@@ -28,6 +28,12 @@ body.find-page {
     margin-top: 40px; 
 }
 
+.find-container {
+    display: flex;
+    flex-wrap: wrap; /* Дозволяє переносити картки на наступний рядок, якщо вони не вміщаються */
+    gap: 16px; /* Відстань між картками */
+    justify-content: center; /* Вирівнювання карток по центру */
+}
 
 .button-container {
     display: flex; 
