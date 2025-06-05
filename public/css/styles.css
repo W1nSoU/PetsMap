@@ -18,6 +18,7 @@
     --stat-bg: #f6f5f2;
 }
 
+
 html,
 body {
     height: 100%;
@@ -28,9 +29,9 @@ body {
 }
 
 body {
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
 }
 
 header {
@@ -126,12 +127,16 @@ body.home-page .center-wrapper {
 }
 
 main {
-    flex: 0 0 auto;
+    flex: 1 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     background: none;
     width: 100%;
+}
+
+#footer {
+    flex-shrink: 0;
 }
 
 .main-content {
@@ -286,12 +291,13 @@ main {
     font-size: 1.05rem;
 }
 
-/* Футер одразу під .stats, без скролу */
+
 footer {
     flex-shrink: 0;
     background: var(--main-bg);
     color: var(--gray-dark);
     text-align: center;
+    position: bottom;
     padding: 12px 0 8px 0;
     font-size: 1rem;
     margin-top: 25px;
@@ -576,3 +582,21 @@ footer {
 /* Логіку появи дропдауна для .user-menu тепер контролює JS (mouseenter/mouseleave)
    Тому ці стилі не потрібні, інакше буде миготіння при переході між .user-badge і .dropdown.
 */
+body.logged-in .user-menu:hover .dropdown,
+body.logged-in .user-menu:focus-within .dropdown {
+    pointer-events: auto;
+}
+
+body.logged-in .user-menu:hover .dropdown,
+body.logged-in .user-menu:focus-within .dropdown {
+    opacity: 1;
+    height: 132px;
+    pointer-events: auto;
+}
+
+body:not(.logged-in) .user-menu:hover .dropdown,
+body:not(.logged-in) .user-menu:focus-within .dropdown {
+    opacity: 0;
+    height: 0;
+    pointer-events: none;
+}
