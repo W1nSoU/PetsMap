@@ -7,6 +7,9 @@ window.initUserMenu = function() {
     let isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
     let username = sessionStorage.getItem('username') || '';
 
+    console.log("JS index loaded");
+
+
     function setLoggedIn(val, name) {
         isLoggedIn = val;
         sessionStorage.setItem('isLoggedIn', val ? 'true' : 'false');
