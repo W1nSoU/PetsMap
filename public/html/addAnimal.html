@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="../css/styles.css">
    </head>
 
+
+   <script src="../js/include-layout.js"></script>
+
 <body>
     <div id="header"></div>
     <div id="login-banner-container"></div>
@@ -31,6 +34,16 @@
                     <option value="Інше">Інше</option>
                 </select>
             </div>
+
+            <div class="section">
+                <label for="location">Місцезнаходження</label>
+                <select id="location" name="location" required>
+                    <option value="">Виберіть місцезнаходження</option>
+                    <option value="Київ">Київ</option>
+                    <option value="Львів">Львів</option>
+                    <option value="Івано-Франківськ">Івано-Франківськ</option>
+                </select>
+            </div>    
 
             <div class="section">
                 <label>Причина здачі</label>
@@ -147,6 +160,7 @@
                     const formData = new FormData();
                     formData.append('name', document.getElementById('name').value);
                     formData.append('type', document.getElementById('type').value);
+                    formData.append('location', document.getElementById('location').value);
                     formData.append('reason', document.querySelector('input[name="reason"]:checked')?.value || '');
                     formData.append('age', document.getElementById('age').value);
                     formData.append('gender', document.querySelector('input[name="gender"]:checked')?.value || '');
@@ -171,6 +185,7 @@
 
                         if (response.ok) {
                             alert('Тваринку успішно додано!');
+                            location.reload();
                         } else {
                             const error = await response.json();
                             alert(`Помилка: ${error.error || 'Невідома помилка'}`);

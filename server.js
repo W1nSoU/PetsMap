@@ -98,12 +98,12 @@ app.get('/api/animals', (req, res) => {
 });
 
 app.post('/api/animals', upload.single('image_path'), (req, res) => {
-    const { name, type, reason, age, gender, breed, sterilization, vaccination, microchip, vet_passport, description} = req.body;
+    const { name, type, location, reason, age, gender, breed, sterilization, vaccination, microchip, vet_passport, description} = req.body;
     const image_path = req.file ? req.file.path : null;
 
     animals.run(
-        `INSERT INTO animals (name, type, reason, age, gender, breed, sterilization, vaccination, microchip, vet_passport, image_path, description) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-        [name, type, reason, age, gender, breed, sterilization, vaccination, microchip, vet_passport, image_path, description],
+        `INSERT INTO animals (name, type, location, reason, age, gender, breed, sterilization, vaccination, microchip, vet_passport, image_path, description) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        [name, type, location, reason, age, gender, breed, sterilization, vaccination, microchip, vet_passport, image_path, description],
         function (err) {
             if (err) {
                 console.error('Database error:', err); 
