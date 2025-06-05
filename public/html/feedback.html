@@ -15,6 +15,16 @@
 
     <main>
 <div class="reviews-container">
+    <div class="review-form">
+    <form id="feedback-form">
+        <div class="review-form-header">
+            <span id="review-username">
+            </span>
+        </div>
+        <textarea id="review-text" name="review" placeholder="Напишіть свій відгук..." required></textarea>
+        <button type="submit" class="btn btn-brown btn-transition">Залишити відгук</button>
+    </form>
+</div>
         <div class="review">
             <h3>Олена Коваль</h3>
             <p class="date">29 травня 2025, 15:03</p>
@@ -51,5 +61,47 @@
     <div id="footer"></div>
 
     <script src="../js/include-layout.js"></script>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Симуляція отримання імені користувача (замініть на реальну перевірку)
+    let username = localStorage.getItem('username'); // або отримати з бекенду
+    if (!username) {
+        username = 'Гість';
+    }
+    document.getElementById('review-username').textContent = username;
+
+    document.getElementById('feedback-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const reviewText = document.getElementById('review-text').value.trim();
+        if (!reviewText) return;
+
+        // Додаємо поточну дату у форматі YYYY-MM-DD HH:mm
+        const now = new Date();
+        const date = now.getFullYear() + '-' +
+            String(now.getMonth() + 1).padStart(2, '0') + '-' +
+            String(now.getDate()).padStart(2, '0') + ' ' +
+            String(now.getHours()).padStart(2, '0') + ':' +
+            String(now.getMinutes()).padStart(2, '0');
+
+        fetch('/addReview', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                username: username,
+                review: reviewText,
+                date: date
+            })
+        })
+        .then(res => {
+            if (res.ok) {
+                alert('Відгук успішно надіслано!');
+                location.reload();
+            } else {
+                alert('Сталася помилка. Спробуйте ще раз.');
+            }
+        });
+    });
+});
+    </script>
 </body>
 </html>

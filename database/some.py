@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS animals (
     id INTEGER PRIMARY KEY AUTOINCREMENT, -- Унікальний ідентифікатор
     name TEXT NOT NULL, -- Ім'я тваринки
     type TEXT NOT NULL, -- Тип тваринки (Собака, Кіт, Птах, Гризун, Інше)
-    location TEXT NOT NULL, -- Місто
+    location TEXT NOT NULL, -- Місцезнаходження (Київ, Львів, Івано-Франківськ)
     reason TEXT NOT NULL, -- Причина здачі (Переїзд, Алергія, Фінансові труднощі, Знайдено на вулиці, Інше)
     age INTEGER NOT NULL, -- Вік тваринки
     gender TEXT NOT NULL, -- Стать (Хлопчик, Дівчинка)
@@ -23,12 +23,6 @@ CREATE TABLE IF NOT EXISTS animals (
     description TEXT NOT NULL -- Інформація про тваринку
 )
 ''')
-
-# Видалення всіх записів з таблиці
-cursor.execute('DELETE FROM animals')
-
-# За потреби — скидання лічильника AUTOINCREMENT
-cursor.execute('DELETE FROM sqlite_sequence WHERE name="animals"')
 
 # Підтвердження змін
 conn.commit()

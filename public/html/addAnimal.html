@@ -46,52 +46,55 @@
             </div>    
 
             <div class="section">
-                <label>Причина здачі</label>
-                <div class="toggle" id="reason-toggle">
-                    <input type="radio" name="reason" value="Переїзд" id="reason-move" required>
-                    <label for="reason-move">Переїзд</label>
-                    <input type="radio" name="reason" value="Алергія" id="reason-allergy" >
-                    <label for="reason-allergy">Алергія</label>
-                    <input type="radio" name="reason" value="Фінансові труднощі" id="reason-financial">
-                    <label for="reason-financial">Фінансові труднощі</label>
-                    <input type="radio" name="reason" value="Знайдено на вулиці" id="reason-found">
-                    <label for="reason-found">Знайдено на вулиці</label>
-                    <input type="radio" name="reason" value="Інше" id="reason-other">
-                    <label for="reason-other">Інше</label>
-                </div>
+                <label for="location">Місцезнаходження</label>
+                <select id="location" name="location" required>
+                    <option value="">Виберіть місцезнаходження</option>
+                    <option value="Київ">Київ</option>
+                    <option value="Львів">Львів</option>
+                    <option value="Івано-Франківськ">Івано-Франківськ</option>
+                </select>
+            </div>    
+
+        <div class="section">
+            <label>Причина здачі</label>
+            <div class="button-group" id="reason-group">
+                <button type="button" class="reason-btn">Переїзд</button>
+                <button type="button" class="reason-btn">Алергія</button>
+                <button type="button" class="reason-btn">Фінансові труднощі</button>
+                <button type="button" class="reason-btn">Знайдено на вулиці</button>
+                <button type="button" class="reason-btn">Інше</button>
             </div>
+        </div>
 
             <div class="section">
                     <label for="age">Вік</label>
                 <div class="age">
-                    <input type="number" id="age" name="age" placeholder="Введіть вік тварини" required>
+                    <input type="number" id="age" name="age" placeholder="Введіть вік тварини" min="0">
                 </div>
             </div>
 
-            <div class="section">
-                <label>Стать</label>
-                <div class="toggle" id="gender-group">
-                    <input type="radio" id="gender-male" name="gender" value="Хлопчик" required>
-                    <label for="gender-male">Хлопчик</label>
-                    <input type="radio" id="gender-female" name="gender" value="Дівчинка">
-                    <label for="gender-female">Дівчинка</label>
-                </div>
+        <div class="section">
+            <label>Стать</label>
+            <div class="button-group" id="gender-group">
+                <button type="button" class="reason-btn">Хлопчик</button>
+                <button type="button" class="reason-btn">Дівчинка</button>
             </div>
+        </div>
 
             <div class="section">
                 <label for="breed">Порода</label>
                 <input type="text" id="breed" name="breed" placeholder="Введіть породу тварини" required>
             </div>
 
-            <div class="section">
-                <label>Стерилізований</label>
-                <div class="toggle" id="sterilization-toggle">
-                    <input type="radio" name="sterilization" value="Так" id="sterilization-yes" required>
-                    <label for="sterilization-yes">Так</label>
-                    <input type="radio" name="sterilization" value="Ні" id="sterilization-no">
-                    <label for="sterilization-no">Ні</label>
-                </div>
+        <div class="section">
+            <label>Стерилізований</label>
+            <div class="toggle" id="sterilization-toggle">
+                <input type="radio" name="sterilization" value="yes" id="sterilization-yes">
+                <label for="sterilization-yes">Так</label>
+                <input type="radio" name="sterilization" value="no" id="sterilization-no">
+                <label for="sterilization-no">Ні</label>
             </div>
+        </div>
 
             <div class="section">
                 <label>Щеплення</label>
@@ -187,8 +190,8 @@
                             alert('Тваринку успішно додано!');
                             location.reload();
                         } else {
-                            const error = await response.json();
-                            alert(`Помилка: ${error.error || 'Невідома помилка'}`);
+                            buttons.forEach(b => b.classList.remove('active'));
+                            btn.classList.add('active');
                         }
                     } catch (error) {
                         console.error('Помилка:', error);
