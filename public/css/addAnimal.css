@@ -104,8 +104,10 @@ select {
 }
 
 .button-group .active {
-    background: #000;
+    background: #5B4D3B;
     color: #fff;
+    border-radius: 20px;
+    border: 2px solid #5B4D3B;
 }
 
 .toggle {
@@ -204,31 +206,4 @@ select {
 
 .photo-remove-btn:hover {
     background: #b71c1c;
-}
-
-.add_image {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    max-width: 340px;
-    width: 100%;
-    margin-bottom: 35px;
-}
-
-/* #5B4D3B */
-#photo-upload-label {
-    margin-top: 15px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 50px;
-    line-height: 50px;
-    border-radius: 16px;
-    background: #faf6f2;
-    color: #5B4D3B;
-    font-size: 48px;
-    cursor: pointer;
-    transition: border-color 0.2s, background 0.2s;
 }

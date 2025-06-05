@@ -1,6 +1,6 @@
 body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #fff;
             margin: 0;
             padding: 0;
         }
@@ -29,3 +29,30 @@ body {
         .review .stars {
             color: #f39c12;
         }
+        .review-form {
+            margin-bottom: 32px;
+            background: #faf6f2;
+            border-radius: 16px;
+            padding: 24px 20px;
+            box-shadow: 0 2px 8px rgba(91,77,59,0.06);
+            max-width: 100%;
+            width: 100%;      /* Додаємо цю властивість */
+            box-sizing: border-box; /* Щоб padding не виходив за межі */
+        }
+
+        .review-form-header {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #5B4D3B;
+        }
+
+        #review-text {
+            width: 100%;
+            min-height: 80px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            border: 1px solid #d1c7be;
+            padding: 10px;
+            font-size: 16px;
+            resize: none; /* Забороняє змінювати розмір поля */
+}
