@@ -32,6 +32,16 @@
                 </select>
             </div>
 
+            <div class="section">
+                <label for="location">Місцезнаходження</label>
+                <select id="location" name="location" required>
+                    <option value="">Виберіть місцезнаходження</option>
+                    <option value="Київ">Київ</option>
+                    <option value="Львів">Львів</option>
+                    <option value="Івано-Франківськ">Івано-Франківськ</option>
+                </select>
+            </div>    
+
         <div class="section">
             <label>Причина здачі</label>
             <div class="button-group" id="reason-group">
@@ -46,7 +56,7 @@
             <div class="section">
                     <label for="age">Вік</label>
                 <div class="age">
-                    <input type="number" id="age" name="age" placeholder="Введіть вік тварини" required>
+                    <input type="number" id="age" name="age" placeholder="Введіть вік тварини" min="0">
                 </div>
             </div>
 
@@ -79,7 +89,7 @@
                 <option>Виберіть один з варіантів</option>
                 <option>Так</option>
                 <option>Ні</option>
-                <option>Не відомо</option>
+                <option>Невідомо</option>
             </select>
         </div>
 
@@ -111,7 +121,7 @@
         </div>
 
         <div class="section">
-            <label>Додадткова інфрмація</label>
+            <label>Додадткова інформація</label>
             <textarea placeholder="Додаткова інформація"></textarea>
         </div>
 
@@ -159,8 +169,8 @@
                         if (btn.classList.contains('active')) {
                             btn.classList.remove('active');
                         } else {
-                            const error = await response.json();
-                            alert(`Помилка: ${error.error || 'Невідома помилка'}`);
+                            buttons.forEach(b => b.classList.remove('active'));
+                            btn.classList.add('active');
                         }
                     });
                 });

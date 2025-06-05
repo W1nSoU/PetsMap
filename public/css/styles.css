@@ -21,16 +21,13 @@
 html,
 body {
     height: 100%;
-    margin: 0;
-    background: var(--main-bg);
-    font-family: 'Montserrat', Arial, sans-serif;
-    color: var(--brown);
+    min-height: 100vh;
 }
 
 body {
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
 }
 
 header {
@@ -153,12 +150,11 @@ body.home-page .center-wrapper {
 }
 
 main {
-    flex: 0 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    background: none;
-    width: 100%;
+    flex: 1 0 auto;
+}
+
+#footer {
+    flex-shrink: 0;
 }
 
 .main-content {
@@ -313,12 +309,13 @@ main {
     font-size: 1.05rem;
 }
 
-/* Футер одразу під .stats, без скролу */
+
 footer {
     flex-shrink: 0;
     background: var(--main-bg);
     color: var(--gray-dark);
     text-align: center;
+    position: bottom;
     padding: 12px 0 8px 0;
     font-size: 1rem;
     margin-top: 25px;
@@ -797,6 +794,10 @@ body:not(.logged-in) .user-menu .dropdown.open {
         .nav-dropdown:focus-within .dropdown {
             opacity: 1;
             height: 132px;
+            pointer-events: auto;   }
+
+        body.logged-in .user-menu:hover .dropdown,
+body.logged-in .user-menu:focus-within .dropdown {
             pointer-events: auto;   }
 
         body.logged-in .user-menu:hover .dropdown,
