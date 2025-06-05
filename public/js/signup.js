@@ -34,7 +34,6 @@ async function signupSubmitHandler(e) {
 function initSignupFormListener() {
     const form = document.getElementById('signupForm');
     if (form) {
-        // Щоб не додавати кілька разів обробник, спочатку видаляємо старий (якщо був)
         form.removeEventListener('submit', signupSubmitHandler);
         form.addEventListener('submit', signupSubmitHandler);
         console.log("signupForm handler attached!");
@@ -58,18 +57,11 @@ async function loginSubmitHandler(e) {
             body: JSON.stringify(data)
         });
         const result = await res.json();
-        console.log('Login result:', result); // Додаємо лог для діагностики
         if (result.success) {
             alert('Вхід успішний!');
-            if (window.setUserLoggedIn) window.setUserLoggedIn(result.username);
-            // Додатково ховаємо банер на всяк випадок
-            const banner = document.getElementById('login-banner');
-            if (banner) banner.style.display = 'none';
-            document.body.classList.remove('signup-modal-open');
-        } else if (result.error === 'Invalid credentials') {
-            alert('Дані не збігаються!');
+            setUserLoggedIn(result.username);
         } else {
-            alert('Логін не відбувся');
+            alert(result.error || 'Дані не збігаються!');
         }
     } catch (err) {
         alert('Логін не відбувся');
@@ -95,14 +87,19 @@ function initSignupAndLoginListeners() {
     initLoginFormListener();
 }
 
-// Приклад автоматичного підключення після завантаження DOM
-// (якщо банер і форма вже є у DOM)
+// Підключаємо обробники після завантаження DOM
 document.addEventListener('DOMContentLoaded', function () {
     initSignupAndLoginListeners();
 });
 
 // Якщо банер і форма додаються або стають видимими пізніше (по кліку), 
 // викликайте initSignupAndLoginListeners() відразу після того, як форма з'явилася у DOM.
-// Наприклад, у вашому обробнику кліка на badge:
-/// document.getElementById('login-banner').style.display = 'block';
-/// initSignupAndLoginListeners();
+
+function setUserLoggedIn(username) {
+    document.body.classList.add('logged-in');
+    const badgeText = document.getElementById('badgeText');
+    if (badgeText) badgeText.textContent = username;
+    // Ховаємо банер логіну
+    const banner = document.getElementById('login-banner');
+    if (banner) banner.style.display = 'none';
+}

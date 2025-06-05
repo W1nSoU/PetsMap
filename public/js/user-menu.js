@@ -23,6 +23,7 @@ window.initUserMenu = function() {
             dropdownMenu.classList.remove('open');
             sessionStorage.removeItem('username');
         }
+        console.log('[Auth] Logged in:', val);
     }
     setLoggedIn(isLoggedIn, username);
 
@@ -33,12 +34,9 @@ window.initUserMenu = function() {
         if (isLoggedIn) {
             dropdownMenu.classList.toggle('open');
         } else {
-            // Банер доступний тільки якщо НЕ залогінений
-            if (!isLoggedIn) {
-                const banner = document.getElementById('login-banner');
-                if (banner) banner.style.display = 'flex';
-                document.body.classList.add('signup-modal-open');
-            }
+            const banner = document.getElementById('login-banner');
+            if (banner) banner.style.display = 'flex';
+            document.body.classList.add('signup-modal-open');
         }
         e.stopPropagation();
     });
@@ -52,11 +50,33 @@ window.initUserMenu = function() {
 
     // Відкривати дропдаун по hover тільки якщо залогінений
     userMenu.addEventListener('mouseenter', () => {
+        console.log('[Hover] Mouse entered userMenu. isLoggedIn:', isLoggedIn);
         if (isLoggedIn) dropdownMenu.classList.add('open');
     });
-    userMenu.addEventListener('mouseleave', () => {
-        dropdownMenu.classList.remove('open');
-        userBadge.blur();
+
+    // Нова логіка для mouseleave: враховує і userMenu, і dropdownMenu
+    let hoverTimeout;
+    function checkMouseLeave(e) {
+        // Зачекаємо трохи, щоб дати шанс мишці перейти між userMenu і dropdownMenu
+        clearTimeout(hoverTimeout);
+        hoverTimeout = setTimeout(() => {
+            if (!userMenu.matches(':hover') && !dropdownMenu.matches(':hover')) {
+                dropdownMenu.classList.remove('open');
+                userBadge.blur();
+            }
+        }, 100); // затримка 100 мс
+    }
+    userMenu.addEventListener('mouseleave', checkMouseLeave);
+    dropdownMenu.addEventListener('mouseleave', checkMouseLeave);
+    userBadge.addEventListener('mouseleave', checkMouseLeave);
+    userBadge.addEventListener('mouseenter', () => {
+        clearTimeout(hoverTimeout);
+    });
+    dropdownMenu.addEventListener('mouseenter', () => {
+        clearTimeout(hoverTimeout);
+    });
+    userMenu.addEventListener('mouseenter', () => {
+        clearTimeout(hoverTimeout);
     });
 
     // Вийти з аккаунту

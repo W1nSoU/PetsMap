@@ -497,6 +497,11 @@ footer {
 
 /* Випадаюче меню */
 .user-menu .dropdown {
+    display: none;
+    opacity: 0;
+    height: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, height 0.3s ease;
     background: #f6f5f2;
     min-width: 160px;
     border-radius: 12px;
@@ -504,29 +509,24 @@ footer {
     position: absolute;
     top: 45px;
     right: 0;
-    opacity: 0;
-    height: 0;
-    pointer-events: none;
-    transition: all .5s cubic-bezier(.44, 1.45, .54, .99);
     z-index: 10;
     padding: 0;
     margin: 0;
     list-style: none;
     border: 1px solid var(--gray-light);
-    display: block;
 }
 
-body.logged-in .user-menu .dropdown.open {
+.user-menu .dropdown.open {
+    display: block;
     opacity: 1;
     height: 132px;
     pointer-events: auto;
 }
 
+/* body.logged-in .user-menu .dropdown.open,
 body:not(.logged-in) .user-menu .dropdown.open {
-    opacity: 0;
-    height: 0;
-    pointer-events: none;
-}
+    // JS now controls logic, so these are not needed
+} */
 
 .user-badge.signed-out+.dropdown {
     opacity: 0 !important;
@@ -691,14 +691,14 @@ body:not(.logged-in) .user-menu .dropdown.open {
     cursor: pointer;
 }
 
-.user-menu .dropdown {
+/* .user-menu .dropdown {
     display: block;
 }
 
 .user-menu .dropdown.open {
     display: block;
-    /* Додайте ваші анімації/стилі */
 }
+*/
 
 .user-badge.signed-out+.dropdown {
     display: none !important;
@@ -799,16 +799,15 @@ body:not(.logged-in) .user-menu .dropdown.open {
             height: 132px;
             pointer-events: auto;   }
 
-        body.logged-in .user-menu:hover .dropdown,
-body.logged-in .user-menu:focus-within .dropdown {
-    opacity: 1;
-    height: 132px;
-    pointer-events: auto;
+/* Логіку появи дропдауна для .user-menu тепер контролює JS (mouseenter/mouseleave)
+   Тому ці стилі не потрібні, інакше буде миготіння при переході між .user-badge і .dropdown.
+*/
+
+.user-badge .badge-text {
+    color: #ebe7e1 !important;
 }
 
-body:not(.logged-in) .user-menu:hover .dropdown,
-body:not(.logged-in) .user-menu:focus-within .dropdown {
-    opacity: 0;
-    height: 0;
-    pointer-events: none;
-}
+/* body:not(.logged-in) .user-menu .dropdown,
+body.logged-in .user-menu .dropdown {
+    // JS now controls logic, so these are not needed
+} */
