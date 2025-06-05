@@ -6,306 +6,76 @@
     <title>monobank Копія</title>
     <meta name="viewport" content="width=1200, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            margin: 0;
-            min-height: 100vh;
-            background: radial-gradient(circle at 55% 30%, #fff 0%, #fff 100%);
-            font-family: 'Montserrat', Arial, sans-serif;
-            color: #222;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .content-card {
-            background: #fff;
-            border-radius: 32px;
-            box-shadow: 0 6px 32px rgba(65, 39, 102, 0.13);
-            width: 100%;
-            max-width: 1100px;
-            display: flex;
-            overflow: hidden;
-            margin: 16px;
-        }
-
-        .left,
-        .right {
-            flex: 1 1 0;
-            padding: 56px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .left {
-            background: #7c6b55;
-            border-top-left-radius: 32px;
-            border-bottom-left-radius: 32px;
-            align-items: center;
-        }
-
-        .monobank-logo {
-            font-weight: 700;
-            font-size: 32px;
-            margin-bottom: 24px;
-        }
-
-        .jar-img-container {
-            margin-bottom: 24px;
-            position: relative;
-            width: 220px;
-            height: 220px;
-        }
-
-        .jar-img {
-            width: 100%;
-            height: 100%;
-            border-radius: 24px;
-            object-fit: cover;
-            background: #eeddff;
-        }
-
-        .avatar {
-            position: absolute;
-            right: 18px;
-            bottom: 20px;
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            border: 3px solid #fff;
-            object-fit: cover;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
-        }
-
-        .info-block {
-            text-align: center;
-            margin-bottom: 24px;
-        }
-
-        .info-block .name {
-            font-weight: 400;
-            font-size: 18px;
-            color: #555;
-        }
-
-        .info-block .title {
-            font-weight: 700;
-            font-size: 26px;
-            color: #000;
-        }
-
-        .info-block .iban {
-            font-weight: 400;
-            font-size: 14px;
-            color: #b4b4b4;
-        }
-
-        .balance-block {
-            background: #fff;
-            border-radius: 16px;
-            padding: 14px 26px;
-            display: inline-flex;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            font-size: 20px;
-            font-weight: 600;
-            color: #211;
-            margin-top: 8px;
-        }
-
-        .balance-block svg {
-            margin-right: 10px;
-            width: 28px;
-            height: 28px;
-            fill: #5c40ce;
-        }
-
-        .right {
-            background: #fff;
-            border-top-right-radius: 32px;
-            border-bottom-right-radius: 32px;
-            align-items: flex-start;
-        }
-
-        .donate-box {
-            border: 2px solid #c987e9;
-            border-radius: 18px;
-            padding: 28px;
-            width: 100%;
-            max-width: 400px;
-            background: #faf7fb;
-            margin: 0 auto;
-        }
-
-        .donate-title {
-            font-weight: 600;
-            font-size: 19px;
-            color: #222;
-            margin-bottom: 16px;
-            text-align: center;
-        }
-
-        .amount-main {
-            font-weight: 700;
-            font-size: 56px;
-            color: #df73c3;
-            margin-bottom: 8px;
-            text-align: center;
-        }
-
-        .amount-label {
-            font-weight: 400;
-            font-size: 16px;
-            color: #a8a5a5;
-            text-align: center;
-            margin-bottom: 16px;
-        }
-
-        .amount-btns {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 16px;
-        }
-
-        .amount-btn {
-            padding: 10px 20px;
-            background: #fff;
-            border: 2px solid #e0caef;
-            border-radius: 22px;
-            font-weight: 600;
-            color: #6e38b7;
-            font-size: 18px;
-            cursor: pointer;
-            transition: background 0.13s;
-            flex: 1;
-            margin: 0 5px;
-        }
-
-        .amount-btn:hover {
-            background: #e9d5ff;
-            border-color: #bb8fe3;
-        }
-
-        .input-label {
-            width: 100%;
-            margin-bottom: 8px;
-            font-size: 15px;
-            color: #787878;
-        }
-
-        .donate-input {
-            width: 100%;
-            padding: 12px;
-            border-radius: 12px;
-            border: 1.5px solid #e2d9e9;
-            font-size: 18px;
-            margin-bottom: 16px;
-            outline: none;
-            background: #faf7fb;
-        }
-
-        .donate-input:focus {
-            border: 1.5px solid #c987e9;
-        }
-
-        .pay-btn,
-        .applepay-btn {
-            width: 100%;
-            padding: 12px 0;
-            font-size: 20px;
-            border-radius: 13px;
-            border: none;
-            font-weight: 700;
-            margin-bottom: 12px;
-            cursor: pointer;
-        }
-
-        .pay-btn {
-            background: #000;
-            color: #fff;
-        }
-
-        .pay-btn span {
-            font-weight: 400;
-            background: #fff;
-            color: #000;
-            padding: 1px 8px;
-            border-radius: 7px;
-            margin-left: 8px;
-        }
-
-        .applepay-btn {
-            background: #000;
-            color: #fff;
-            font-weight: 700;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 22px;
-        }
-
-        .pay-card-link {
-            color: #ef4867;
-            font-size: 16px;
-            font-weight: 600;
-            text-decoration: none;
-            text-align: center;
-            display: inline-block;
-        }
-
-        @media (max-width: 1200px) {
-            .content-card {
-                flex-direction: column;
-                align-items: center;
-                max-width: 95%;
-            }
-
-            .left,
-            .right {
-                padding: 40px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/donate.css">
 </head>
 
 <body>
-    <div class="content-card">
-        <div class="left">
-            <div class="monobank-logo">PetShelterMap Благодійність</div>
-            <div class="jar-img-container">
-            </div>
-            <div class="info-block">
-                <div class="name">Орест Г. збирає</div>
-                <div class="title">Баланс</div>
-                <div class="iban">IBAN UA 82 322001 00000 2620 0354 6153 77</div>
-            </div>
-            <div class="balance-block">
-                <svg viewBox="0 0 32 32">
-                    <path
-                        d="M16 1.333c8.093 0 14.667 6.573 14.667 14.667 0 8.093-6.573 14.667-14.667 14.667-8.093 0-14.667-6.573-14.667-14.667C1.333 7.907 7.907 1.333 16 1.333zm0 2.667C8.92 4 3.333 9.587 3.333 16.667c0 7.08 5.587 12.667 12.667 12.667s12.667-5.587 12.667-12.667C28.667 9.587 23.08 4 16 4zm-2.667 8h5.334v2.667H16v2.666h2.667v2.667H16v2.667h2.667v2.666h-5.334v-2.666H16v-2.667h-2.667v-2.667H16v-2.666h-2.667V12z" />
-                </svg>
-                Накопичено&nbsp;<span>25&nbsp;566.63&nbsp;₴</span>
-            </div>
-        </div>
-        <div class="right">
-            <div class="donate-box">
-                <div class="donate-title">Сума поповнення 🦄</div>
-                <div class="amount-main">0 <span style="font-size:32px;font-weight:600">₴</span></div>
-                <div class="amount-label">Сума повинна бути від 10 ₴ до 29 999 ₴</div>
-                <div class="amount-btns">
-                    <button type="button" class="amount-btn">+100 ₴</button>
-                    <button type="button" class="amount-btn">+500 ₴</button>
-                    <button type="button" class="amount-btn">+1000 ₴</button>
-                </div>
-                <label class="input-label" for="comment">Ім'я або коментар (необов'язково)</label>
-                <input class="donate-input" type="text" id="comment" value="738460434" autocomplete="off" />
-                <button type="button" class="pay-btn">mono<span>Pay</span></button>
-                <button type="button" class="applepay-btn"> Pay</button>
-                <a href="#" class="pay-card-link">Оплатити карткою</a>
-            </div>
-        </div>
+ 
+  <div class="container"> 
+    <div class="left-panel">
+      <h1>PetShelterMap</h1>
+      <p>Триває збір для притулку<br>“Little friends”</p>
+      <img src="../images/donate.jpg" alt="Little Friends" class="puppy-img" />
+      <div class="amount-box">
+        <p>Накопичено</p>
+        <h2>35 789</h2>
+      </div>
     </div>
+
+    <div class="right-panel">
+      <div class="donation-box">
+        <p class="donation-label">Сума поповнення</p>
+        <div class="donation-amount">
+          <input
+            type="number"
+            class="amount-input"
+            min="1"
+            max="29999"
+            step="1"
+            value="100"
+            required
+            style="width: 100px; font-size: 1.5em; text-align: right;"
+          >
+          <span class="currency">₴</span>
+        </div>
+        <p class="hint">сума повинна бути від 1 ₴ до 29 999 ₴</p>
+        <div class="buttons">
+          <button type="button" onclick="addAmount(100)">+ 100 ₴</button>
+          <button type="button" onclick="addAmount(500)">+ 500 ₴</button>
+          <button type="button" onclick="addAmount(1000)">+ 1000 ₴</button>
+        </div>
+        <input type="text" placeholder="Ім’я або коментар (необов’язково)" />
+        <div class="payment-options">
+          <button class="mono" style="background: none; border: none; padding: 0;">
+            <img src="../images/mono.jpg" alt="MonoPay" style="height:40px;">
+          </button>
+          <button class="gpay" style="background: none; border: none; padding: 0;">
+            <img src="../images/google.jpg" alt="Google Pay" style="height:40px;">
+          </button>
+          <button class="apple" style="background: none; border: none; padding: 0;">
+            <img src="../images/apple.jpg" alt="Apple Pay" style="height:40px;">
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+function addAmount(sum) {
+    const input = document.querySelector('.amount-input');
+    let current = parseInt(input.value) || 0;
+    let next = current + sum;
+    if (next > 29999) next = 29999;
+    input.value = next;
+}
+
+// Автоматичне обмеження при ручному вводі
+document.querySelector('.amount-input').addEventListener('input', function() {
+    let val = parseInt(this.value) || 0;
+    if (val > 29999) this.value = 29999;
+    if (val < 1) this.value = 1;
+});
+</script>
 </body>
 
 </html>

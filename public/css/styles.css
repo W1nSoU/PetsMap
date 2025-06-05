@@ -18,10 +18,14 @@
     --stat-bg: #f6f5f2;
 }
 
+
 html,
 body {
     height: 100%;
-    min-height: 100vh;
+    margin: 0;
+    background: var(--main-bg);
+    font-family: 'Montserrat', Arial, sans-serif;
+    color: var(--brown);
 }
 
 body {
@@ -151,6 +155,11 @@ body.home-page .center-wrapper {
 
 main {
     flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: none;
+    width: 100%;
 }
 
 #footer {
