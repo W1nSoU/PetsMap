@@ -81,11 +81,14 @@ app.post('/api/login', (req, res) => {
 });
 
 app.get('/api/profile', (req, res) => {
+    console.log('Fetching animals from database');
     res.json({ success: true, message: 'Profile endpoint' });
 });
 
-app.get('/api/animals', (req, res) => {
-    animals.all(`SELECT * FROM animals`, [], (err, rows) => {
+app.get('/api/animals', (req, res) => { 
+    console.log('Fetching animals from database');
+    animals.all(`SELECT * FROM animals`, [], (err, rows) => { 
+        console.log('Database query executed');
         if (err) return res.status(500).json({ error: 'Database error' });
 
         const animalsWithImages = rows.map(animal => ({
@@ -114,4 +117,8 @@ app.post('/api/animals', upload.single('image_path'), (req, res) => {
     );
 });
 
-app.listen(3000, () => console.log('Server started on http://localhost:3000'));
+app.get('/api/hello', (req, res) => {
+    res.json({ message: 'Hello from PetShelterMap API!' });
+});
+
+app.listen(5500, '127.0.0.1', () => console.log('Server started on http://localhost:3000'));
