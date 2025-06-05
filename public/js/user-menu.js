@@ -105,3 +105,4 @@ window.initUserMenu = function() {
         dropdownMenu.classList.remove('open');
     };
 };
+// test
